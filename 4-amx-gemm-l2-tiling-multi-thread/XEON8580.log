@@ -1,0 +1,564 @@
+gcc -Ofast -march=native -fno-strict-aliasing -fopenmp -DCORES_M=6 -DCORES_N=5 -DIS_TEST_MNK=1 -DIS_TEST_K=0 -DTEST_M=2048 -DTEST_N=2048 amx-gemm.c -o amx-gemm 
+objdump -d amx-gemm > amx-gemm.s
+make lockfreq
+make[1]: Entering directory '/home/wangchongxi/amx-gemm-handwritten/4-amx-gemm-l2-tiling-multi-thread'
+for i in 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 120 121 122 123 124 125 126 127 128 129 130 131 132 133 134 135 136 137 138 139 140 141 142 143 144 145 146 147 148 149 150 151 152 153 154 155 156 157 158 159 160 161 162 163 164 165 166 167 168 169 170 171 172 173 174 175 176 177 178 179 180 181 182 183 184 185 186 187 188 189 190 191 192 193 194 195 196 197 198 199 200 201 202 203 204 205 206 207 208 209 210 211 212 213 214 215 216 217 218 219 220 221 222 223 224 225 226 227 228 229 230 231 232 233 234 235 236 237 238 239; do \
+	echo userspace | sudo tee /sys/devices/system/cpu/cpu$i/cpufreq/scaling_governor > /dev/null; \
+	echo 2300000  | sudo tee /sys/devices/system/cpu/cpu$i/cpufreq/scaling_setspeed > /dev/null; \
+done
+make[1]: Leaving directory '/home/wangchongxi/amx-gemm-handwritten/4-amx-gemm-l2-tiling-multi-thread'
+./amx-gemm
+
+ TILE DATA USE SET - OK 
+
+Test passed: M N K =  1120   480  1216
+Test passed: M N K =  2880  3008  3584
+Test passed: M N K =  1792  1312  3200
+Test passed: M N K =  2208   192   896
+Test passed: M N K =  3008  2304  2304
+Test passed: M N K =  1504  3552  1024
+Test passed: M N K =  2048  3968   320
+Test passed: M N K =   608  4096  1856
+Test passed: M N K =   960  1120   256
+Test passed: M N K =  3808  2048  2560
+Test 30 CPU Cores (6 Cores x 5 Cores), for M = N = K
+M N K =   256   256   256, Elapsed time = 0.000400 s, Performance = 0.84 TOPS, Utilization = 0.59%
+M N K =   512   512   512, Elapsed time = 0.001181 s, Performance = 2.27 TOPS, Utilization = 1.61%
+M N K =   768   768   768, Elapsed time = 0.002078 s, Performance = 4.36 TOPS, Utilization = 3.09%
+M N K =  1024  1024  1024, Elapsed time = 0.002661 s, Performance = 8.07 TOPS, Utilization = 5.71%
+M N K =  1280  1280  1280, Elapsed time = 0.003392 s, Performance = 12.37 TOPS, Utilization = 8.75%
+M N K =  1536  1536  1536, Elapsed time = 0.003976 s, Performance = 18.23 TOPS, Utilization = 12.90%
+M N K =  1792  1792  1792, Elapsed time = 0.004671 s, Performance = 24.64 TOPS, Utilization = 17.44%
+M N K =  2048  2048  2048, Elapsed time = 0.005291 s, Performance = 32.47 TOPS, Utilization = 22.98%
+M N K =  2304  2304  2304, Elapsed time = 0.007151 s, Performance = 34.21 TOPS, Utilization = 24.21%
+M N K =  2560  2560  2560, Elapsed time = 0.014738 s, Performance = 22.77 TOPS, Utilization = 16.11%
+M N K =  2816  2816  2816, Elapsed time = 0.023718 s, Performance = 18.83 TOPS, Utilization = 13.33%
+M N K =  3072  3072  3072, Elapsed time = 0.033920 s, Performance = 17.09 TOPS, Utilization = 12.10%
+M N K =  3328  3328  3328, Elapsed time = 0.037494 s, Performance = 19.66 TOPS, Utilization = 13.91%
+M N K =  3584  3584  3584, Elapsed time = 0.040108 s, Performance = 22.96 TOPS, Utilization = 16.25%
+M N K =  3840  3840  3840, Elapsed time = 0.043698 s, Performance = 25.92 TOPS, Utilization = 18.34%
+M N K =  4096  4096  4096, Elapsed time = 0.047383 s, Performance = 29.01 TOPS, Utilization = 20.53%
+M N K =  4352  4352  4352, Elapsed time = 0.049300 s, Performance = 33.44 TOPS, Utilization = 23.66%
+M N K =  4608  4608  4608, Elapsed time = 0.052372 s, Performance = 37.37 TOPS, Utilization = 26.44%
+M N K =  4864  4864  4864, Elapsed time = 0.062609 s, Performance = 36.76 TOPS, Utilization = 26.01%
+M N K =  5120  5120  5120, Elapsed time = 0.116035 s, Performance = 23.13 TOPS, Utilization = 16.37%
+M N K =  5376  5376  5376, Elapsed time = 0.125278 s, Performance = 24.80 TOPS, Utilization = 17.55%
+M N K =  5632  5632  5632, Elapsed time = 0.191508 s, Performance = 18.66 TOPS, Utilization = 13.20%
+M N K =  5888  5888  5888, Elapsed time = 0.205522 s, Performance = 19.86 TOPS, Utilization = 14.06%
+M N K =  6144  6144  6144, Elapsed time = 0.216005 s, Performance = 21.47 TOPS, Utilization = 15.20%
+M N K =  6400  6400  6400, Elapsed time = 0.226313 s, Performance = 23.17 TOPS, Utilization = 16.39%
+M N K =  6656  6656  6656, Elapsed time = 0.237834 s, Performance = 24.80 TOPS, Utilization = 17.55%
+M N K =  6912  6912  6912, Elapsed time = 0.250421 s, Performance = 26.37 TOPS, Utilization = 18.66%
+M N K =  7168  7168  7168, Elapsed time = 0.261923 s, Performance = 28.12 TOPS, Utilization = 19.90%
+M N K =  7424  7424  7424, Elapsed time = 0.271967 s, Performance = 30.09 TOPS, Utilization = 21.29%
+M N K =  7680  7680  7680, Elapsed time = 0.284522 s, Performance = 31.84 TOPS, Utilization = 22.53%
+M N K =  7936  7936  7936, Elapsed time = 0.368436 s, Performance = 27.13 TOPS, Utilization = 19.20%
+M N K =  8192  8192  8192, Elapsed time = 0.471047 s, Performance = 23.34 TOPS, Utilization = 16.52%
+M N K =  8448  8448  8448, Elapsed time = 0.511334 s, Performance = 23.58 TOPS, Utilization = 16.69%
+M N K =  8704  8704  8704, Elapsed time = 0.629771 s, Performance = 20.94 TOPS, Utilization = 14.82%
+M N K =  8960  8960  8960, Elapsed time = 0.659760 s, Performance = 21.81 TOPS, Utilization = 15.43%
+M N K =  9216  9216  9216, Elapsed time = 0.689354 s, Performance = 22.71 TOPS, Utilization = 16.07%
+M N K =  9472  9472  9472, Elapsed time = 0.710125 s, Performance = 23.93 TOPS, Utilization = 16.94%
+M N K =  9728  9728  9728, Elapsed time = 0.732946 s, Performance = 25.12 TOPS, Utilization = 17.78%
+M N K =  9984  9984  9984, Elapsed time = 0.760843 s, Performance = 26.16 TOPS, Utilization = 18.51%
+M N K = 10240 10240 10240, Elapsed time = 0.801237 s, Performance = 26.80 TOPS, Utilization = 18.97%
+M N K = 10496 10496 10496, Elapsed time = 0.899472 s, Performance = 25.71 TOPS, Utilization = 18.19%
+M N K = 10752 10752 10752, Elapsed time = 1.017229 s, Performance = 24.44 TOPS, Utilization = 17.29%
+M N K = 11008 11008 11008, Elapsed time = 1.053134 s, Performance = 25.33 TOPS, Utilization = 17.93%
+M N K = 11264 11264 11264, Elapsed time = 1.178912 s, Performance = 24.25 TOPS, Utilization = 17.16%
+M N K = 11520 11520 11520, Elapsed time = 1.284245 s, Performance = 23.81 TOPS, Utilization = 16.85%
+M N K = 11776 11776 11776, Elapsed time = 1.487750 s, Performance = 21.95 TOPS, Utilization = 15.54%
+M N K = 12032 12032 12032, Elapsed time = 1.529216 s, Performance = 22.78 TOPS, Utilization = 16.12%
+M N K = 12288 12288 12288, Elapsed time = 1.598119 s, Performance = 23.22 TOPS, Utilization = 16.43%
+M N K = 12544 12544 12544, Elapsed time = 1.602150 s, Performance = 24.64 TOPS, Utilization = 17.44%
+M N K = 12800 12800 12800, Elapsed time = 1.677584 s, Performance = 25.00 TOPS, Utilization = 17.69%
+M N K = 13056 13056 13056, Elapsed time = 1.912892 s, Performance = 23.27 TOPS, Utilization = 16.47%
+M N K = 13312 13312 13312, Elapsed time = 2.064012 s, Performance = 22.86 TOPS, Utilization = 16.18%
+M N K = 13568 13568 13568, Elapsed time = 2.115392 s, Performance = 23.61 TOPS, Utilization = 16.71%
+M N K = 13824 13824 13824, Elapsed time = 2.155263 s, Performance = 24.51 TOPS, Utilization = 17.35%
+M N K = 14080 14080 14080, Elapsed time = 2.217778 s, Performance = 25.17 TOPS, Utilization = 17.81%
+M N K = 14336 14336 14336, Elapsed time = 2.402469 s, Performance = 24.53 TOPS, Utilization = 17.36%
+M N K = 14592 14592 14592, Elapsed time = 2.590100 s, Performance = 23.99 TOPS, Utilization = 16.98%
+M N K = 14848 14848 14848, Elapsed time = 2.894119 s, Performance = 22.62 TOPS, Utilization = 16.01%
+M N K = 15104 15104 15104, Elapsed time = 2.993607 s, Performance = 23.02 TOPS, Utilization = 16.29%
+M N K = 15360 15360 15360, Elapsed time = 3.042317 s, Performance = 23.82 TOPS, Utilization = 16.86%
+M N K = 15616 15616 15616, Elapsed time = 3.322259 s, Performance = 22.92 TOPS, Utilization = 16.22%
+M N K = 15872 15872 15872, Elapsed time = 3.630262 s, Performance = 22.03 TOPS, Utilization = 15.59%
+M N K = 16128 16128 16128, Elapsed time = 3.725137 s, Performance = 22.52 TOPS, Utilization = 15.94%
+M N K = 16384 16384 16384, Elapsed time = 4.276410 s, Performance = 20.57 TOPS, Utilization = 14.56%
+make unlockfreq
+make[1]: Entering directory '/home/wangchongxi/amx-gemm-handwritten/4-amx-gemm-l2-tiling-multi-thread'
+for i in 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 120 121 122 123 124 125 126 127 128 129 130 131 132 133 134 135 136 137 138 139 140 141 142 143 144 145 146 147 148 149 150 151 152 153 154 155 156 157 158 159 160 161 162 163 164 165 166 167 168 169 170 171 172 173 174 175 176 177 178 179 180 181 182 183 184 185 186 187 188 189 190 191 192 193 194 195 196 197 198 199 200 201 202 203 204 205 206 207 208 209 210 211 212 213 214 215 216 217 218 219 220 221 222 223 224 225 226 227 228 229 230 231 232 233 234 235 236 237 238 239; do \
+	echo ondemand | sudo tee /sys/devices/system/cpu/cpu$i/cpufreq/scaling_governor > /dev/null; \
+done
+make[1]: Leaving directory '/home/wangchongxi/amx-gemm-handwritten/4-amx-gemm-l2-tiling-multi-thread'
+gcc -Ofast -march=native -fno-strict-aliasing -fopenmp -DCORES_M=10 -DCORES_N=6 -DIS_TEST_MNK=1 -DIS_TEST_K=0 -DTEST_M=2048 -DTEST_N=2048 amx-gemm.c -o amx-gemm 
+objdump -d amx-gemm > amx-gemm.s
+make lockfreq
+make[1]: Entering directory '/home/wangchongxi/amx-gemm-handwritten/4-amx-gemm-l2-tiling-multi-thread'
+for i in 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 120 121 122 123 124 125 126 127 128 129 130 131 132 133 134 135 136 137 138 139 140 141 142 143 144 145 146 147 148 149 150 151 152 153 154 155 156 157 158 159 160 161 162 163 164 165 166 167 168 169 170 171 172 173 174 175 176 177 178 179 180 181 182 183 184 185 186 187 188 189 190 191 192 193 194 195 196 197 198 199 200 201 202 203 204 205 206 207 208 209 210 211 212 213 214 215 216 217 218 219 220 221 222 223 224 225 226 227 228 229 230 231 232 233 234 235 236 237 238 239; do \
+	echo userspace | sudo tee /sys/devices/system/cpu/cpu$i/cpufreq/scaling_governor > /dev/null; \
+	echo 2300000  | sudo tee /sys/devices/system/cpu/cpu$i/cpufreq/scaling_setspeed > /dev/null; \
+done
+make[1]: Leaving directory '/home/wangchongxi/amx-gemm-handwritten/4-amx-gemm-l2-tiling-multi-thread'
+./amx-gemm
+
+ TILE DATA USE SET - OK 
+
+Test passed: M N K =  2880  2432   832
+Test passed: M N K =   512  3072  3328
+Test passed: M N K =  1856  1472  1536
+Test passed: M N K =  3616  1920  3904
+Test passed: M N K =  2144  1568  3200
+Test passed: M N K =   320  2560  2688
+Test passed: M N K =   832   544  2112
+Test passed: M N K =  2464  4032   512
+Test passed: M N K =   448  2592  3136
+Test passed: M N K =  2656  2144   896
+Test 60 CPU Cores (10 Cores x 6 Cores), for M = N = K
+M N K =   256   256   256, Elapsed time = 0.000481 s, Performance = 0.70 TOPS, Utilization = 0.25%
+M N K =   512   512   512, Elapsed time = 0.001087 s, Performance = 2.47 TOPS, Utilization = 0.87%
+M N K =   768   768   768, Elapsed time = 0.001858 s, Performance = 4.88 TOPS, Utilization = 1.73%
+M N K =  1024  1024  1024, Elapsed time = 0.002726 s, Performance = 7.88 TOPS, Utilization = 2.79%
+M N K =  1280  1280  1280, Elapsed time = 0.003520 s, Performance = 11.92 TOPS, Utilization = 4.22%
+M N K =  1536  1536  1536, Elapsed time = 0.004181 s, Performance = 17.34 TOPS, Utilization = 6.13%
+M N K =  1792  1792  1792, Elapsed time = 0.005190 s, Performance = 22.17 TOPS, Utilization = 7.85%
+M N K =  2048  2048  2048, Elapsed time = 0.011992 s, Performance = 14.33 TOPS, Utilization = 5.07%
+M N K =  2304  2304  2304, Elapsed time = 0.013578 s, Performance = 18.01 TOPS, Utilization = 6.37%
+M N K =  2560  2560  2560, Elapsed time = 0.014737 s, Performance = 22.77 TOPS, Utilization = 8.06%
+M N K =  2816  2816  2816, Elapsed time = 0.016386 s, Performance = 27.26 TOPS, Utilization = 9.64%
+M N K =  3072  3072  3072, Elapsed time = 0.021154 s, Performance = 27.41 TOPS, Utilization = 9.70%
+M N K =  3328  3328  3328, Elapsed time = 0.023350 s, Performance = 31.57 TOPS, Utilization = 11.17%
+M N K =  3584  3584  3584, Elapsed time = 0.020948 s, Performance = 43.95 TOPS, Utilization = 15.55%
+M N K =  3840  3840  3840, Elapsed time = 0.022525 s, Performance = 50.27 TOPS, Utilization = 17.79%
+M N K =  4096  4096  4096, Elapsed time = 0.024249 s, Performance = 56.68 TOPS, Utilization = 20.05%
+M N K =  4352  4352  4352, Elapsed time = 0.037699 s, Performance = 43.73 TOPS, Utilization = 15.47%
+M N K =  4608  4608  4608, Elapsed time = 0.052740 s, Performance = 37.10 TOPS, Utilization = 13.13%
+M N K =  4864  4864  4864, Elapsed time = 0.057121 s, Performance = 40.29 TOPS, Utilization = 14.26%
+M N K =  5120  5120  5120, Elapsed time = 0.060576 s, Performance = 44.31 TOPS, Utilization = 15.68%
+M N K =  5376  5376  5376, Elapsed time = 0.064847 s, Performance = 47.92 TOPS, Utilization = 16.96%
+M N K =  5632  5632  5632, Elapsed time = 0.069359 s, Performance = 51.51 TOPS, Utilization = 18.23%
+M N K =  5888  5888  5888, Elapsed time = 0.074638 s, Performance = 54.70 TOPS, Utilization = 19.35%
+M N K =  6144  6144  6144, Elapsed time = 0.079300 s, Performance = 58.49 TOPS, Utilization = 20.70%
+M N K =  6400  6400  6400, Elapsed time = 0.088448 s, Performance = 59.28 TOPS, Utilization = 20.97%
+M N K =  6656  6656  6656, Elapsed time = 0.115865 s, Performance = 50.90 TOPS, Utilization = 18.01%
+M N K =  6912  6912  6912, Elapsed time = 0.139710 s, Performance = 47.27 TOPS, Utilization = 16.73%
+M N K =  7168  7168  7168, Elapsed time = 0.190652 s, Performance = 38.64 TOPS, Utilization = 13.67%
+M N K =  7424  7424  7424, Elapsed time = 0.241625 s, Performance = 33.87 TOPS, Utilization = 11.98%
+M N K =  7680  7680  7680, Elapsed time = 0.296671 s, Performance = 30.54 TOPS, Utilization = 10.81%
+M N K =  7936  7936  7936, Elapsed time = 0.313637 s, Performance = 31.87 TOPS, Utilization = 11.28%
+M N K =  8192  8192  8192, Elapsed time = 0.334561 s, Performance = 32.86 TOPS, Utilization = 11.63%
+M N K =  8448  8448  8448, Elapsed time = 0.348973 s, Performance = 34.55 TOPS, Utilization = 12.23%
+M N K =  8704  8704  8704, Elapsed time = 0.356455 s, Performance = 37.00 TOPS, Utilization = 13.09%
+M N K =  8960  8960  8960, Elapsed time = 0.372293 s, Performance = 38.64 TOPS, Utilization = 13.67%
+M N K =  9216  9216  9216, Elapsed time = 0.387423 s, Performance = 40.41 TOPS, Utilization = 14.30%
+M N K =  9472  9472  9472, Elapsed time = 0.407559 s, Performance = 41.70 TOPS, Utilization = 14.76%
+M N K =  9728  9728  9728, Elapsed time = 0.425430 s, Performance = 43.28 TOPS, Utilization = 15.31%
+M N K =  9984  9984  9984, Elapsed time = 0.445099 s, Performance = 44.72 TOPS, Utilization = 15.82%
+M N K = 10240 10240 10240, Elapsed time = 0.469426 s, Performance = 45.75 TOPS, Utilization = 16.19%
+M N K = 10496 10496 10496, Elapsed time = 0.538931 s, Performance = 42.91 TOPS, Utilization = 15.18%
+M N K = 10752 10752 10752, Elapsed time = 0.609996 s, Performance = 40.75 TOPS, Utilization = 14.42%
+M N K = 11008 11008 11008, Elapsed time = 0.634763 s, Performance = 42.03 TOPS, Utilization = 14.87%
+M N K = 11264 11264 11264, Elapsed time = 0.644814 s, Performance = 44.33 TOPS, Utilization = 15.68%
+M N K = 11520 11520 11520, Elapsed time = 0.670757 s, Performance = 45.59 TOPS, Utilization = 16.13%
+M N K = 11776 11776 11776, Elapsed time = 0.702711 s, Performance = 46.48 TOPS, Utilization = 16.45%
+M N K = 12032 12032 12032, Elapsed time = 0.870229 s, Performance = 40.03 TOPS, Utilization = 14.16%
+M N K = 12288 12288 12288, Elapsed time = 1.073245 s, Performance = 34.58 TOPS, Utilization = 12.23%
+M N K = 12544 12544 12544, Elapsed time = 1.084054 s, Performance = 36.42 TOPS, Utilization = 12.88%
+M N K = 12800 12800 12800, Elapsed time = 1.113197 s, Performance = 37.68 TOPS, Utilization = 13.33%
+M N K = 13056 13056 13056, Elapsed time = 1.165621 s, Performance = 38.19 TOPS, Utilization = 13.51%
+M N K = 13312 13312 13312, Elapsed time = 1.189044 s, Performance = 39.68 TOPS, Utilization = 14.04%
+M N K = 13568 13568 13568, Elapsed time = 1.331336 s, Performance = 37.52 TOPS, Utilization = 13.28%
+M N K = 13824 13824 13824, Elapsed time = 1.473588 s, Performance = 35.86 TOPS, Utilization = 12.69%
+M N K = 14080 14080 14080, Elapsed time = 1.517440 s, Performance = 36.79 TOPS, Utilization = 13.02%
+M N K = 14336 14336 14336, Elapsed time = 1.576289 s, Performance = 37.38 TOPS, Utilization = 13.23%
+M N K = 14592 14592 14592, Elapsed time = 1.612690 s, Performance = 38.53 TOPS, Utilization = 13.63%
+M N K = 14848 14848 14848, Elapsed time = 1.103871 s, Performance = 59.31 TOPS, Utilization = 20.98%
+M N K = 15104 15104 15104, Elapsed time = 1.413672 s, Performance = 48.75 TOPS, Utilization = 17.25%
+M N K = 15360 15360 15360, Elapsed time = 1.648195 s, Performance = 43.97 TOPS, Utilization = 15.56%
+M N K = 15616 15616 15616, Elapsed time = 1.700010 s, Performance = 44.80 TOPS, Utilization = 15.85%
+M N K = 15872 15872 15872, Elapsed time = 1.757397 s, Performance = 45.50 TOPS, Utilization = 16.10%
+M N K = 16128 16128 16128, Elapsed time = 1.801755 s, Performance = 46.57 TOPS, Utilization = 16.48%
+M N K = 16384 16384 16384, Elapsed time = 2.203212 s, Performance = 39.92 TOPS, Utilization = 14.13%
+make unlockfreq
+make[1]: Entering directory '/home/wangchongxi/amx-gemm-handwritten/4-amx-gemm-l2-tiling-multi-thread'
+for i in 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 120 121 122 123 124 125 126 127 128 129 130 131 132 133 134 135 136 137 138 139 140 141 142 143 144 145 146 147 148 149 150 151 152 153 154 155 156 157 158 159 160 161 162 163 164 165 166 167 168 169 170 171 172 173 174 175 176 177 178 179 180 181 182 183 184 185 186 187 188 189 190 191 192 193 194 195 196 197 198 199 200 201 202 203 204 205 206 207 208 209 210 211 212 213 214 215 216 217 218 219 220 221 222 223 224 225 226 227 228 229 230 231 232 233 234 235 236 237 238 239; do \
+	echo ondemand | sudo tee /sys/devices/system/cpu/cpu$i/cpufreq/scaling_governor > /dev/null; \
+done
+make[1]: Leaving directory '/home/wangchongxi/amx-gemm-handwritten/4-amx-gemm-l2-tiling-multi-thread'
+gcc -Ofast -march=native -fno-strict-aliasing -fopenmp -DCORES_M=12 -DCORES_N=10 -DIS_TEST_MNK=1 -DIS_TEST_K=0 -DTEST_M=2048 -DTEST_N=2048 amx-gemm.c -o amx-gemm 
+objdump -d amx-gemm > amx-gemm.s
+make lockfreq
+make[1]: Entering directory '/home/wangchongxi/amx-gemm-handwritten/4-amx-gemm-l2-tiling-multi-thread'
+for i in 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 120 121 122 123 124 125 126 127 128 129 130 131 132 133 134 135 136 137 138 139 140 141 142 143 144 145 146 147 148 149 150 151 152 153 154 155 156 157 158 159 160 161 162 163 164 165 166 167 168 169 170 171 172 173 174 175 176 177 178 179 180 181 182 183 184 185 186 187 188 189 190 191 192 193 194 195 196 197 198 199 200 201 202 203 204 205 206 207 208 209 210 211 212 213 214 215 216 217 218 219 220 221 222 223 224 225 226 227 228 229 230 231 232 233 234 235 236 237 238 239; do \
+	echo userspace | sudo tee /sys/devices/system/cpu/cpu$i/cpufreq/scaling_governor > /dev/null; \
+	echo 2300000  | sudo tee /sys/devices/system/cpu/cpu$i/cpufreq/scaling_setspeed > /dev/null; \
+done
+make[1]: Leaving directory '/home/wangchongxi/amx-gemm-handwritten/4-amx-gemm-l2-tiling-multi-thread'
+./amx-gemm
+
+ TILE DATA USE SET - OK 
+
+Test passed: M N K =  1440  1344  1728
+Test passed: M N K =   384  4000  1472
+Test passed: M N K =  3840  1696  3776
+Test passed: M N K =  3808  2816  1536
+Test passed: M N K =   448   960   640
+Test passed: M N K =  3872  1984  1344
+Test passed: M N K =  3296  3264  1792
+Test passed: M N K =   576   320  1088
+Test passed: M N K =  1056  3392  2944
+Test passed: M N K =  1536   704  3776
+Test 120 CPU Cores (12 Cores x 10 Cores), for M = N = K
+M N K =   256   256   256, Elapsed time = 0.001045 s, Performance = 0.32 TOPS, Utilization = 0.06%
+M N K =   512   512   512, Elapsed time = 0.001781 s, Performance = 1.51 TOPS, Utilization = 0.27%
+M N K =   768   768   768, Elapsed time = 0.002508 s, Performance = 3.61 TOPS, Utilization = 0.64%
+M N K =  1024  1024  1024, Elapsed time = 0.003301 s, Performance = 6.51 TOPS, Utilization = 1.15%
+M N K =  1280  1280  1280, Elapsed time = 0.004084 s, Performance = 10.27 TOPS, Utilization = 1.82%
+M N K =  1536  1536  1536, Elapsed time = 0.004719 s, Performance = 15.36 TOPS, Utilization = 2.72%
+M N K =  1792  1792  1792, Elapsed time = 0.006214 s, Performance = 18.52 TOPS, Utilization = 3.28%
+M N K =  2048  2048  2048, Elapsed time = 0.012792 s, Performance = 13.43 TOPS, Utilization = 2.38%
+M N K =  2304  2304  2304, Elapsed time = 0.014429 s, Performance = 16.95 TOPS, Utilization = 3.00%
+M N K =  2560  2560  2560, Elapsed time = 0.015767 s, Performance = 21.28 TOPS, Utilization = 3.76%
+M N K =  2816  2816  2816, Elapsed time = 0.017402 s, Performance = 25.66 TOPS, Utilization = 4.54%
+M N K =  3072  3072  3072, Elapsed time = 0.019006 s, Performance = 30.51 TOPS, Utilization = 5.40%
+M N K =  3328  3328  3328, Elapsed time = 0.020787 s, Performance = 35.46 TOPS, Utilization = 6.27%
+M N K =  3584  3584  3584, Elapsed time = 0.022164 s, Performance = 41.54 TOPS, Utilization = 7.35%
+M N K =  3840  3840  3840, Elapsed time = 0.024491 s, Performance = 46.24 TOPS, Utilization = 8.18%
+M N K =  4096  4096  4096, Elapsed time = 0.026071 s, Performance = 52.72 TOPS, Utilization = 9.33%
+M N K =  4352  4352  4352, Elapsed time = 0.037947 s, Performance = 43.44 TOPS, Utilization = 7.69%
+M N K =  4608  4608  4608, Elapsed time = 0.033812 s, Performance = 57.88 TOPS, Utilization = 10.24%
+M N K =  4864  4864  4864, Elapsed time = 0.031597 s, Performance = 72.84 TOPS, Utilization = 12.89%
+M N K =  5120  5120  5120, Elapsed time = 0.033172 s, Performance = 80.92 TOPS, Utilization = 14.32%
+M N K =  5376  5376  5376, Elapsed time = 0.035119 s, Performance = 88.48 TOPS, Utilization = 15.65%
+M N K =  5632  5632  5632, Elapsed time = 0.063259 s, Performance = 56.48 TOPS, Utilization = 9.99%
+M N K =  5888  5888  5888, Elapsed time = 0.067562 s, Performance = 60.43 TOPS, Utilization = 10.69%
+M N K =  6144  6144  6144, Elapsed time = 0.071313 s, Performance = 65.04 TOPS, Utilization = 11.51%
+M N K =  6400  6400  6400, Elapsed time = 0.074454 s, Performance = 70.42 TOPS, Utilization = 12.46%
+M N K =  6656  6656  6656, Elapsed time = 0.078993 s, Performance = 74.66 TOPS, Utilization = 13.21%
+M N K =  6912  6912  6912, Elapsed time = 0.092749 s, Performance = 71.21 TOPS, Utilization = 12.60%
+M N K =  7168  7168  7168, Elapsed time = 0.168003 s, Performance = 43.84 TOPS, Utilization = 7.76%
+M N K =  7424  7424  7424, Elapsed time = 0.177912 s, Performance = 46.00 TOPS, Utilization = 8.14%
+M N K =  7680  7680  7680, Elapsed time = 0.192740 s, Performance = 47.00 TOPS, Utilization = 8.32%
+M N K =  7936  7936  7936, Elapsed time = 0.208505 s, Performance = 47.94 TOPS, Utilization = 8.48%
+M N K =  8192  8192  8192, Elapsed time = 0.220822 s, Performance = 49.79 TOPS, Utilization = 8.81%
+M N K =  8448  8448  8448, Elapsed time = 0.227245 s, Performance = 53.06 TOPS, Utilization = 9.39%
+M N K =  8704  8704  8704, Elapsed time = 0.239526 s, Performance = 55.06 TOPS, Utilization = 9.74%
+M N K =  8960  8960  8960, Elapsed time = 0.258135 s, Performance = 55.73 TOPS, Utilization = 9.86%
+M N K =  9216  9216  9216, Elapsed time = 0.269981 s, Performance = 57.99 TOPS, Utilization = 10.26%
+M N K =  9472  9472  9472, Elapsed time = 0.283237 s, Performance = 60.01 TOPS, Utilization = 10.62%
+M N K =  9728  9728  9728, Elapsed time = 0.291009 s, Performance = 63.27 TOPS, Utilization = 11.19%
+M N K =  9984  9984  9984, Elapsed time = 0.307573 s, Performance = 64.71 TOPS, Utilization = 11.45%
+M N K = 10240 10240 10240, Elapsed time = 0.321141 s, Performance = 66.87 TOPS, Utilization = 11.83%
+M N K = 10496 10496 10496, Elapsed time = 0.334345 s, Performance = 69.17 TOPS, Utilization = 12.24%
+M N K = 10752 10752 10752, Elapsed time = 0.351284 s, Performance = 70.77 TOPS, Utilization = 12.52%
+M N K = 11008 11008 11008, Elapsed time = 0.381437 s, Performance = 69.94 TOPS, Utilization = 12.37%
+M N K = 11264 11264 11264, Elapsed time = 0.431681 s, Performance = 66.21 TOPS, Utilization = 11.71%
+M N K = 11520 11520 11520, Elapsed time = 0.447252 s, Performance = 68.37 TOPS, Utilization = 12.09%
+M N K = 11776 11776 11776, Elapsed time = 0.496847 s, Performance = 65.74 TOPS, Utilization = 11.63%
+M N K = 12032 12032 12032, Elapsed time = 0.510801 s, Performance = 68.20 TOPS, Utilization = 12.07%
+M N K = 12288 12288 12288, Elapsed time = 0.612397 s, Performance = 60.60 TOPS, Utilization = 10.72%
+M N K = 12544 12544 12544, Elapsed time = 0.613306 s, Performance = 64.37 TOPS, Utilization = 11.39%
+M N K = 12800 12800 12800, Elapsed time = 0.650818 s, Performance = 64.45 TOPS, Utilization = 11.40%
+M N K = 13056 13056 13056, Elapsed time = 0.797263 s, Performance = 55.83 TOPS, Utilization = 9.88%
+M N K = 13312 13312 13312, Elapsed time = 0.926219 s, Performance = 50.94 TOPS, Utilization = 9.01%
+M N K = 13568 13568 13568, Elapsed time = 0.958328 s, Performance = 52.13 TOPS, Utilization = 9.22%
+M N K = 13824 13824 13824, Elapsed time = 0.995585 s, Performance = 53.07 TOPS, Utilization = 9.39%
+M N K = 14080 14080 14080, Elapsed time = 1.032676 s, Performance = 54.06 TOPS, Utilization = 9.56%
+M N K = 14336 14336 14336, Elapsed time = 1.068323 s, Performance = 55.16 TOPS, Utilization = 9.76%
+M N K = 14592 14592 14592, Elapsed time = 1.098228 s, Performance = 56.58 TOPS, Utilization = 10.01%
+M N K = 14848 14848 14848, Elapsed time = 1.127903 s, Performance = 58.04 TOPS, Utilization = 10.27%
+M N K = 15104 15104 15104, Elapsed time = 1.170363 s, Performance = 58.88 TOPS, Utilization = 10.42%
+M N K = 15360 15360 15360, Elapsed time = 1.194076 s, Performance = 60.70 TOPS, Utilization = 10.74%
+M N K = 15616 15616 15616, Elapsed time = 1.237074 s, Performance = 61.57 TOPS, Utilization = 10.89%
+M N K = 15872 15872 15872, Elapsed time = 1.266378 s, Performance = 63.15 TOPS, Utilization = 11.17%
+M N K = 16128 16128 16128, Elapsed time = 1.314536 s, Performance = 63.83 TOPS, Utilization = 11.29%
+M N K = 16384 16384 16384, Elapsed time = 1.607794 s, Performance = 54.71 TOPS, Utilization = 9.68%
+make unlockfreq
+make[1]: Entering directory '/home/wangchongxi/amx-gemm-handwritten/4-amx-gemm-l2-tiling-multi-thread'
+for i in 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 120 121 122 123 124 125 126 127 128 129 130 131 132 133 134 135 136 137 138 139 140 141 142 143 144 145 146 147 148 149 150 151 152 153 154 155 156 157 158 159 160 161 162 163 164 165 166 167 168 169 170 171 172 173 174 175 176 177 178 179 180 181 182 183 184 185 186 187 188 189 190 191 192 193 194 195 196 197 198 199 200 201 202 203 204 205 206 207 208 209 210 211 212 213 214 215 216 217 218 219 220 221 222 223 224 225 226 227 228 229 230 231 232 233 234 235 236 237 238 239; do \
+	echo ondemand | sudo tee /sys/devices/system/cpu/cpu$i/cpufreq/scaling_governor > /dev/null; \
+done
+make[1]: Leaving directory '/home/wangchongxi/amx-gemm-handwritten/4-amx-gemm-l2-tiling-multi-thread'
+gcc -Ofast -march=native -fno-strict-aliasing -fopenmp -DCORES_M=6 -DCORES_N=5 -DIS_TEST_MNK=0 -DIS_TEST_K=1 -DTEST_M=3072 -DTEST_N=2560 amx-gemm.c -o amx-gemm 
+objdump -d amx-gemm > amx-gemm.s
+make lockfreq
+make[1]: Entering directory '/home/wangchongxi/amx-gemm-handwritten/4-amx-gemm-l2-tiling-multi-thread'
+for i in 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 120 121 122 123 124 125 126 127 128 129 130 131 132 133 134 135 136 137 138 139 140 141 142 143 144 145 146 147 148 149 150 151 152 153 154 155 156 157 158 159 160 161 162 163 164 165 166 167 168 169 170 171 172 173 174 175 176 177 178 179 180 181 182 183 184 185 186 187 188 189 190 191 192 193 194 195 196 197 198 199 200 201 202 203 204 205 206 207 208 209 210 211 212 213 214 215 216 217 218 219 220 221 222 223 224 225 226 227 228 229 230 231 232 233 234 235 236 237 238 239; do \
+	echo userspace | sudo tee /sys/devices/system/cpu/cpu$i/cpufreq/scaling_governor > /dev/null; \
+	echo 2300000  | sudo tee /sys/devices/system/cpu/cpu$i/cpufreq/scaling_setspeed > /dev/null; \
+done
+make[1]: Leaving directory '/home/wangchongxi/amx-gemm-handwritten/4-amx-gemm-l2-tiling-multi-thread'
+./amx-gemm
+
+ TILE DATA USE SET - OK 
+
+Test passed: M N K =  1024  3200  1984
+Test passed: M N K =   480  2240   128
+Test passed: M N K =  2752   928  1088
+Test passed: M N K =   480   672  3648
+Test passed: M N K =  1152  3488  3712
+Test passed: M N K =  1856   288  1920
+Test passed: M N K =  2880  3712  2048
+Test passed: M N K =  2976   800  1728
+Test passed: M N K =  3488  2528  3136
+Test passed: M N K =  2272  2880  2688
+Test 30 CPU Cores (6 Cores x 5 Cores), for M N = 3072 2560
+M N K =  3072  2560   256, Elapsed time = 0.001718 s, Performance = 23.44 TOPS, Utilization = 16.58%
+M N K =  3072  2560   512, Elapsed time = 0.002770 s, Performance = 29.07 TOPS, Utilization = 20.57%
+M N K =  3072  2560   768, Elapsed time = 0.004283 s, Performance = 28.21 TOPS, Utilization = 19.96%
+M N K =  3072  2560  1024, Elapsed time = 0.005712 s, Performance = 28.20 TOPS, Utilization = 19.96%
+M N K =  3072  2560  1280, Elapsed time = 0.007269 s, Performance = 27.69 TOPS, Utilization = 19.60%
+M N K =  3072  2560  1536, Elapsed time = 0.008796 s, Performance = 27.47 TOPS, Utilization = 19.44%
+M N K =  3072  2560  1792, Elapsed time = 0.010131 s, Performance = 27.82 TOPS, Utilization = 19.69%
+M N K =  3072  2560  2048, Elapsed time = 0.011738 s, Performance = 27.44 TOPS, Utilization = 19.42%
+M N K =  3072  2560  2304, Elapsed time = 0.013310 s, Performance = 27.23 TOPS, Utilization = 19.27%
+M N K =  3072  2560  2560, Elapsed time = 0.014674 s, Performance = 27.44 TOPS, Utilization = 19.42%
+M N K =  3072  2560  2816, Elapsed time = 0.016039 s, Performance = 27.61 TOPS, Utilization = 19.54%
+M N K =  3072  2560  3072, Elapsed time = 0.017309 s, Performance = 27.92 TOPS, Utilization = 19.75%
+M N K =  3072  2560  3328, Elapsed time = 0.018719 s, Performance = 27.96 TOPS, Utilization = 19.79%
+M N K =  3072  2560  3584, Elapsed time = 0.020214 s, Performance = 27.89 TOPS, Utilization = 19.73%
+M N K =  3072  2560  3840, Elapsed time = 0.021729 s, Performance = 27.80 TOPS, Utilization = 19.67%
+M N K =  3072  2560  4096, Elapsed time = 0.023281 s, Performance = 27.67 TOPS, Utilization = 19.58%
+M N K =  3072  2560  4352, Elapsed time = 0.024690 s, Performance = 27.72 TOPS, Utilization = 19.62%
+M N K =  3072  2560  4608, Elapsed time = 0.026617 s, Performance = 27.23 TOPS, Utilization = 19.27%
+M N K =  3072  2560  4864, Elapsed time = 0.027704 s, Performance = 27.62 TOPS, Utilization = 19.54%
+M N K =  3072  2560  5120, Elapsed time = 0.029200 s, Performance = 27.58 TOPS, Utilization = 19.52%
+M N K =  3072  2560  5376, Elapsed time = 0.030794 s, Performance = 27.46 TOPS, Utilization = 19.43%
+M N K =  3072  2560  5632, Elapsed time = 0.031773 s, Performance = 27.88 TOPS, Utilization = 19.73%
+M N K =  3072  2560  5888, Elapsed time = 0.033627 s, Performance = 27.54 TOPS, Utilization = 19.49%
+M N K =  3072  2560  6144, Elapsed time = 0.035038 s, Performance = 27.58 TOPS, Utilization = 19.52%
+M N K =  3072  2560  6400, Elapsed time = 0.036370 s, Performance = 27.68 TOPS, Utilization = 19.59%
+M N K =  3072  2560  6656, Elapsed time = 0.038137 s, Performance = 27.45 TOPS, Utilization = 19.43%
+M N K =  3072  2560  6912, Elapsed time = 0.039545 s, Performance = 27.49 TOPS, Utilization = 19.45%
+M N K =  3072  2560  7168, Elapsed time = 0.041064 s, Performance = 27.46 TOPS, Utilization = 19.43%
+M N K =  3072  2560  7424, Elapsed time = 0.042397 s, Performance = 27.54 TOPS, Utilization = 19.49%
+M N K =  3072  2560  7680, Elapsed time = 0.043372 s, Performance = 27.85 TOPS, Utilization = 19.71%
+M N K =  3072  2560  7936, Elapsed time = 0.045162 s, Performance = 27.64 TOPS, Utilization = 19.56%
+M N K =  3072  2560  8192, Elapsed time = 0.046727 s, Performance = 27.57 TOPS, Utilization = 19.51%
+M N K =  3072  2560  8448, Elapsed time = 0.048206 s, Performance = 27.56 TOPS, Utilization = 19.51%
+M N K =  3072  2560  8704, Elapsed time = 0.049575 s, Performance = 27.62 TOPS, Utilization = 19.54%
+M N K =  3072  2560  8960, Elapsed time = 0.051079 s, Performance = 27.59 TOPS, Utilization = 19.52%
+M N K =  3072  2560  9216, Elapsed time = 0.052430 s, Performance = 27.65 TOPS, Utilization = 19.56%
+M N K =  3072  2560  9472, Elapsed time = 0.053918 s, Performance = 27.63 TOPS, Utilization = 19.55%
+M N K =  3072  2560  9728, Elapsed time = 0.054803 s, Performance = 27.92 TOPS, Utilization = 19.76%
+M N K =  3072  2560  9984, Elapsed time = 0.056828 s, Performance = 27.63 TOPS, Utilization = 19.55%
+M N K =  3072  2560 10240, Elapsed time = 0.057893 s, Performance = 27.82 TOPS, Utilization = 19.69%
+M N K =  3072  2560 10496, Elapsed time = 0.059133 s, Performance = 27.92 TOPS, Utilization = 19.76%
+M N K =  3072  2560 10752, Elapsed time = 0.061473 s, Performance = 27.51 TOPS, Utilization = 19.47%
+M N K =  3072  2560 11008, Elapsed time = 0.062287 s, Performance = 27.80 TOPS, Utilization = 19.67%
+M N K =  3072  2560 11264, Elapsed time = 0.063563 s, Performance = 27.87 TOPS, Utilization = 19.72%
+M N K =  3072  2560 11520, Elapsed time = 0.065164 s, Performance = 27.81 TOPS, Utilization = 19.68%
+M N K =  3072  2560 11776, Elapsed time = 0.066328 s, Performance = 27.92 TOPS, Utilization = 19.76%
+M N K =  3072  2560 12032, Elapsed time = 0.068341 s, Performance = 27.69 TOPS, Utilization = 19.60%
+M N K =  3072  2560 12288, Elapsed time = 0.069041 s, Performance = 27.99 TOPS, Utilization = 19.81%
+M N K =  3072  2560 12544, Elapsed time = 0.071218 s, Performance = 27.70 TOPS, Utilization = 19.60%
+M N K =  3072  2560 12800, Elapsed time = 0.072476 s, Performance = 27.78 TOPS, Utilization = 19.66%
+M N K =  3072  2560 13056, Elapsed time = 0.075781 s, Performance = 27.10 TOPS, Utilization = 19.18%
+M N K =  3072  2560 13312, Elapsed time = 0.074895 s, Performance = 27.96 TOPS, Utilization = 19.78%
+M N K =  3072  2560 13568, Elapsed time = 0.076517 s, Performance = 27.89 TOPS, Utilization = 19.74%
+M N K =  3072  2560 13824, Elapsed time = 0.077457 s, Performance = 28.07 TOPS, Utilization = 19.86%
+M N K =  3072  2560 14080, Elapsed time = 0.079205 s, Performance = 27.96 TOPS, Utilization = 19.79%
+M N K =  3072  2560 14336, Elapsed time = 0.080458 s, Performance = 28.03 TOPS, Utilization = 19.83%
+M N K =  3072  2560 14592, Elapsed time = 0.082328 s, Performance = 27.88 TOPS, Utilization = 19.73%
+M N K =  3072  2560 14848, Elapsed time = 0.083403 s, Performance = 28.00 TOPS, Utilization = 19.82%
+M N K =  3072  2560 15104, Elapsed time = 0.085309 s, Performance = 27.85 TOPS, Utilization = 19.71%
+M N K =  3072  2560 15360, Elapsed time = 0.086555 s, Performance = 27.91 TOPS, Utilization = 19.75%
+M N K =  3072  2560 15616, Elapsed time = 0.087909 s, Performance = 27.94 TOPS, Utilization = 19.77%
+M N K =  3072  2560 15872, Elapsed time = 0.089274 s, Performance = 27.96 TOPS, Utilization = 19.79%
+M N K =  3072  2560 16128, Elapsed time = 0.092620 s, Performance = 27.39 TOPS, Utilization = 19.38%
+M N K =  3072  2560 16384, Elapsed time = 0.095142 s, Performance = 27.09 TOPS, Utilization = 19.17%
+make unlockfreq
+make[1]: Entering directory '/home/wangchongxi/amx-gemm-handwritten/4-amx-gemm-l2-tiling-multi-thread'
+for i in 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 120 121 122 123 124 125 126 127 128 129 130 131 132 133 134 135 136 137 138 139 140 141 142 143 144 145 146 147 148 149 150 151 152 153 154 155 156 157 158 159 160 161 162 163 164 165 166 167 168 169 170 171 172 173 174 175 176 177 178 179 180 181 182 183 184 185 186 187 188 189 190 191 192 193 194 195 196 197 198 199 200 201 202 203 204 205 206 207 208 209 210 211 212 213 214 215 216 217 218 219 220 221 222 223 224 225 226 227 228 229 230 231 232 233 234 235 236 237 238 239; do \
+	echo ondemand | sudo tee /sys/devices/system/cpu/cpu$i/cpufreq/scaling_governor > /dev/null; \
+done
+make[1]: Leaving directory '/home/wangchongxi/amx-gemm-handwritten/4-amx-gemm-l2-tiling-multi-thread'
+gcc -Ofast -march=native -fno-strict-aliasing -fopenmp -DCORES_M=10 -DCORES_N=6 -DIS_TEST_MNK=0 -DIS_TEST_K=1 -DTEST_M=5120 -DTEST_N=3072 amx-gemm.c -o amx-gemm 
+objdump -d amx-gemm > amx-gemm.s
+make lockfreq
+make[1]: Entering directory '/home/wangchongxi/amx-gemm-handwritten/4-amx-gemm-l2-tiling-multi-thread'
+for i in 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 120 121 122 123 124 125 126 127 128 129 130 131 132 133 134 135 136 137 138 139 140 141 142 143 144 145 146 147 148 149 150 151 152 153 154 155 156 157 158 159 160 161 162 163 164 165 166 167 168 169 170 171 172 173 174 175 176 177 178 179 180 181 182 183 184 185 186 187 188 189 190 191 192 193 194 195 196 197 198 199 200 201 202 203 204 205 206 207 208 209 210 211 212 213 214 215 216 217 218 219 220 221 222 223 224 225 226 227 228 229 230 231 232 233 234 235 236 237 238 239; do \
+	echo userspace | sudo tee /sys/devices/system/cpu/cpu$i/cpufreq/scaling_governor > /dev/null; \
+	echo 2300000  | sudo tee /sys/devices/system/cpu/cpu$i/cpufreq/scaling_setspeed > /dev/null; \
+done
+make[1]: Leaving directory '/home/wangchongxi/amx-gemm-handwritten/4-amx-gemm-l2-tiling-multi-thread'
+./amx-gemm
+
+ TILE DATA USE SET - OK 
+
+Test passed: M N K =  2144  3456  3520
+Test passed: M N K =  3488  3232   704
+Test passed: M N K =   960  3424   896
+Test passed: M N K =  1632  3584  1280
+Test passed: M N K =  2848   352  2752
+Test passed: M N K =  1280  1248   768
+Test passed: M N K =   512   448  3136
+Test passed: M N K =  1824  3968  3776
+Test passed: M N K =  3936    64  3776
+Test passed: M N K =  2528  2368   960
+Test 60 CPU Cores (10 Cores x 6 Cores), for M N = 5120 3072
+M N K =  5120  3072   256, Elapsed time = 0.002050 s, Performance = 39.29 TOPS, Utilization = 13.90%
+M N K =  5120  3072   512, Elapsed time = 0.003217 s, Performance = 50.07 TOPS, Utilization = 17.72%
+M N K =  5120  3072   768, Elapsed time = 0.005114 s, Performance = 47.24 TOPS, Utilization = 16.72%
+M N K =  5120  3072  1024, Elapsed time = 0.006341 s, Performance = 50.80 TOPS, Utilization = 17.98%
+M N K =  5120  3072  1280, Elapsed time = 0.008237 s, Performance = 48.88 TOPS, Utilization = 17.30%
+M N K =  5120  3072  1536, Elapsed time = 0.009764 s, Performance = 49.49 TOPS, Utilization = 17.51%
+M N K =  5120  3072  1792, Elapsed time = 0.011522 s, Performance = 48.93 TOPS, Utilization = 17.31%
+M N K =  5120  3072  2048, Elapsed time = 0.013014 s, Performance = 49.51 TOPS, Utilization = 17.52%
+M N K =  5120  3072  2304, Elapsed time = 0.014645 s, Performance = 49.49 TOPS, Utilization = 17.51%
+M N K =  5120  3072  2560, Elapsed time = 0.016178 s, Performance = 49.78 TOPS, Utilization = 17.61%
+M N K =  5120  3072  2816, Elapsed time = 0.018218 s, Performance = 48.62 TOPS, Utilization = 17.20%
+M N K =  5120  3072  3072, Elapsed time = 0.019552 s, Performance = 49.43 TOPS, Utilization = 17.49%
+M N K =  5120  3072  3328, Elapsed time = 0.021077 s, Performance = 49.67 TOPS, Utilization = 17.57%
+M N K =  5120  3072  3584, Elapsed time = 0.023154 s, Performance = 48.69 TOPS, Utilization = 17.23%
+M N K =  5120  3072  3840, Elapsed time = 0.024931 s, Performance = 48.45 TOPS, Utilization = 17.14%
+M N K =  5120  3072  4096, Elapsed time = 0.027543 s, Performance = 46.78 TOPS, Utilization = 16.55%
+M N K =  5120  3072  4352, Elapsed time = 0.028185 s, Performance = 48.57 TOPS, Utilization = 17.19%
+M N K =  5120  3072  4608, Elapsed time = 0.029634 s, Performance = 48.91 TOPS, Utilization = 17.31%
+M N K =  5120  3072  4864, Elapsed time = 0.031348 s, Performance = 48.81 TOPS, Utilization = 17.27%
+M N K =  5120  3072  5120, Elapsed time = 0.032693 s, Performance = 49.26 TOPS, Utilization = 17.43%
+M N K =  5120  3072  5376, Elapsed time = 0.034397 s, Performance = 49.17 TOPS, Utilization = 17.40%
+M N K =  5120  3072  5632, Elapsed time = 0.035488 s, Performance = 49.92 TOPS, Utilization = 17.66%
+M N K =  5120  3072  5888, Elapsed time = 0.037695 s, Performance = 49.14 TOPS, Utilization = 17.39%
+M N K =  5120  3072  6144, Elapsed time = 0.039004 s, Performance = 49.55 TOPS, Utilization = 17.53%
+M N K =  5120  3072  6400, Elapsed time = 0.041036 s, Performance = 49.06 TOPS, Utilization = 17.36%
+M N K =  5120  3072  6656, Elapsed time = 0.052908 s, Performance = 39.57 TOPS, Utilization = 14.00%
+M N K =  5120  3072  6912, Elapsed time = 0.044124 s, Performance = 49.28 TOPS, Utilization = 17.44%
+M N K =  5120  3072  7168, Elapsed time = 0.043688 s, Performance = 51.61 TOPS, Utilization = 18.26%
+M N K =  5120  3072  7424, Elapsed time = 0.047471 s, Performance = 49.20 TOPS, Utilization = 17.41%
+M N K =  5120  3072  7680, Elapsed time = 0.048875 s, Performance = 49.43 TOPS, Utilization = 17.49%
+M N K =  5120  3072  7936, Elapsed time = 0.050585 s, Performance = 49.35 TOPS, Utilization = 17.46%
+M N K =  5120  3072  8192, Elapsed time = 0.052421 s, Performance = 49.16 TOPS, Utilization = 17.39%
+M N K =  5120  3072  8448, Elapsed time = 0.053337 s, Performance = 49.82 TOPS, Utilization = 17.63%
+M N K =  5120  3072  8704, Elapsed time = 0.054981 s, Performance = 49.80 TOPS, Utilization = 17.62%
+M N K =  5120  3072  8960, Elapsed time = 0.056465 s, Performance = 49.92 TOPS, Utilization = 17.66%
+M N K =  5120  3072  9216, Elapsed time = 0.065670 s, Performance = 44.15 TOPS, Utilization = 15.62%
+M N K =  5120  3072  9472, Elapsed time = 0.060604 s, Performance = 49.17 TOPS, Utilization = 17.40%
+M N K =  5120  3072  9728, Elapsed time = 0.061612 s, Performance = 49.67 TOPS, Utilization = 17.57%
+M N K =  5120  3072  9984, Elapsed time = 0.063113 s, Performance = 49.76 TOPS, Utilization = 17.61%
+M N K =  5120  3072 10240, Elapsed time = 0.064842 s, Performance = 49.68 TOPS, Utilization = 17.58%
+M N K =  5120  3072 10496, Elapsed time = 0.066530 s, Performance = 49.63 TOPS, Utilization = 17.56%
+M N K =  5120  3072 10752, Elapsed time = 0.068489 s, Performance = 49.38 TOPS, Utilization = 17.47%
+M N K =  5120  3072 11008, Elapsed time = 0.070522 s, Performance = 49.10 TOPS, Utilization = 17.37%
+M N K =  5120  3072 11264, Elapsed time = 0.070813 s, Performance = 50.04 TOPS, Utilization = 17.70%
+M N K =  5120  3072 11520, Elapsed time = 0.073197 s, Performance = 49.51 TOPS, Utilization = 17.52%
+M N K =  5120  3072 11776, Elapsed time = 0.074365 s, Performance = 49.81 TOPS, Utilization = 17.63%
+M N K =  5120  3072 12032, Elapsed time = 0.076052 s, Performance = 49.77 TOPS, Utilization = 17.61%
+M N K =  5120  3072 12288, Elapsed time = 0.078733 s, Performance = 49.10 TOPS, Utilization = 17.37%
+M N K =  5120  3072 12544, Elapsed time = 0.079616 s, Performance = 49.56 TOPS, Utilization = 17.54%
+M N K =  5120  3072 12800, Elapsed time = 0.082654 s, Performance = 48.72 TOPS, Utilization = 17.24%
+M N K =  5120  3072 13056, Elapsed time = 0.084554 s, Performance = 48.57 TOPS, Utilization = 17.19%
+M N K =  5120  3072 13312, Elapsed time = 0.083813 s, Performance = 49.96 TOPS, Utilization = 17.68%
+M N K =  5120  3072 13568, Elapsed time = 0.086998 s, Performance = 49.06 TOPS, Utilization = 17.36%
+M N K =  5120  3072 13824, Elapsed time = 0.087900 s, Performance = 49.47 TOPS, Utilization = 17.50%
+M N K =  5120  3072 14080, Elapsed time = 0.090028 s, Performance = 49.20 TOPS, Utilization = 17.41%
+M N K =  5120  3072 14336, Elapsed time = 0.091244 s, Performance = 49.42 TOPS, Utilization = 17.49%
+M N K =  5120  3072 14592, Elapsed time = 0.093591 s, Performance = 49.05 TOPS, Utilization = 17.35%
+M N K =  5120  3072 14848, Elapsed time = 0.094958 s, Performance = 49.19 TOPS, Utilization = 17.40%
+M N K =  5120  3072 15104, Elapsed time = 0.097150 s, Performance = 48.91 TOPS, Utilization = 17.30%
+M N K =  5120  3072 15360, Elapsed time = 0.098095 s, Performance = 49.26 TOPS, Utilization = 17.43%
+M N K =  5120  3072 15616, Elapsed time = 0.100276 s, Performance = 48.99 TOPS, Utilization = 17.33%
+M N K =  5120  3072 15872, Elapsed time = 0.102030 s, Performance = 48.94 TOPS, Utilization = 17.31%
+M N K =  5120  3072 16128, Elapsed time = 0.104703 s, Performance = 48.46 TOPS, Utilization = 17.14%
+M N K =  5120  3072 16384, Elapsed time = 0.108894 s, Performance = 47.33 TOPS, Utilization = 16.75%
+make unlockfreq
+make[1]: Entering directory '/home/wangchongxi/amx-gemm-handwritten/4-amx-gemm-l2-tiling-multi-thread'
+for i in 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 120 121 122 123 124 125 126 127 128 129 130 131 132 133 134 135 136 137 138 139 140 141 142 143 144 145 146 147 148 149 150 151 152 153 154 155 156 157 158 159 160 161 162 163 164 165 166 167 168 169 170 171 172 173 174 175 176 177 178 179 180 181 182 183 184 185 186 187 188 189 190 191 192 193 194 195 196 197 198 199 200 201 202 203 204 205 206 207 208 209 210 211 212 213 214 215 216 217 218 219 220 221 222 223 224 225 226 227 228 229 230 231 232 233 234 235 236 237 238 239; do \
+	echo ondemand | sudo tee /sys/devices/system/cpu/cpu$i/cpufreq/scaling_governor > /dev/null; \
+done
+make[1]: Leaving directory '/home/wangchongxi/amx-gemm-handwritten/4-amx-gemm-l2-tiling-multi-thread'
+gcc -Ofast -march=native -fno-strict-aliasing -fopenmp -DCORES_M=12 -DCORES_N=10 -DIS_TEST_MNK=0 -DIS_TEST_K=1 -DTEST_M=6144 -DTEST_N=5120 amx-gemm.c -o amx-gemm 
+objdump -d amx-gemm > amx-gemm.s
+make lockfreq
+make[1]: Entering directory '/home/wangchongxi/amx-gemm-handwritten/4-amx-gemm-l2-tiling-multi-thread'
+for i in 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 120 121 122 123 124 125 126 127 128 129 130 131 132 133 134 135 136 137 138 139 140 141 142 143 144 145 146 147 148 149 150 151 152 153 154 155 156 157 158 159 160 161 162 163 164 165 166 167 168 169 170 171 172 173 174 175 176 177 178 179 180 181 182 183 184 185 186 187 188 189 190 191 192 193 194 195 196 197 198 199 200 201 202 203 204 205 206 207 208 209 210 211 212 213 214 215 216 217 218 219 220 221 222 223 224 225 226 227 228 229 230 231 232 233 234 235 236 237 238 239; do \
+	echo userspace | sudo tee /sys/devices/system/cpu/cpu$i/cpufreq/scaling_governor > /dev/null; \
+	echo 2300000  | sudo tee /sys/devices/system/cpu/cpu$i/cpufreq/scaling_setspeed > /dev/null; \
+done
+make[1]: Leaving directory '/home/wangchongxi/amx-gemm-handwritten/4-amx-gemm-l2-tiling-multi-thread'
+./amx-gemm
+
+ TILE DATA USE SET - OK 
+
+Test passed: M N K =  2304  2144  3072
+Test passed: M N K =   544  4032  1920
+Test passed: M N K =  3776  1152  2880
+Test passed: M N K =    96  3296  3584
+Test passed: M N K =  2176  2336  2112
+Test passed: M N K =  3392   512  2240
+Test passed: M N K =  3552  2624  1792
+Test passed: M N K =  3584   896  1600
+Test passed: M N K =  1952  1376  2624
+Test passed: M N K =  1056  3072  1472
+Test 120 CPU Cores (12 Cores x 10 Cores), for M N = 6144 5120
+M N K =  6144  5120   256, Elapsed time = 0.003011 s, Performance = 53.49 TOPS, Utilization = 9.46%
+M N K =  6144  5120   512, Elapsed time = 0.004104 s, Performance = 78.48 TOPS, Utilization = 13.88%
+M N K =  6144  5120   768, Elapsed time = 0.005994 s, Performance = 80.61 TOPS, Utilization = 14.26%
+M N K =  6144  5120  1024, Elapsed time = 0.007400 s, Performance = 87.07 TOPS, Utilization = 15.40%
+M N K =  6144  5120  1280, Elapsed time = 0.009299 s, Performance = 86.60 TOPS, Utilization = 15.32%
+M N K =  6144  5120  1536, Elapsed time = 0.010749 s, Performance = 89.90 TOPS, Utilization = 15.91%
+M N K =  6144  5120  1792, Elapsed time = 0.012370 s, Performance = 91.15 TOPS, Utilization = 16.12%
+M N K =  6144  5120  2048, Elapsed time = 0.013874 s, Performance = 92.87 TOPS, Utilization = 16.43%
+M N K =  6144  5120  2304, Elapsed time = 0.015773 s, Performance = 91.90 TOPS, Utilization = 16.26%
+M N K =  6144  5120  2560, Elapsed time = 0.017109 s, Performance = 94.14 TOPS, Utilization = 16.65%
+M N K =  6144  5120  2816, Elapsed time = 0.018914 s, Performance = 93.67 TOPS, Utilization = 16.57%
+M N K =  6144  5120  3072, Elapsed time = 0.020209 s, Performance = 95.64 TOPS, Utilization = 16.92%
+M N K =  6144  5120  3328, Elapsed time = 0.022118 s, Performance = 94.67 TOPS, Utilization = 16.75%
+M N K =  6144  5120  3584, Elapsed time = 0.023960 s, Performance = 94.11 TOPS, Utilization = 16.65%
+M N K =  6144  5120  3840, Elapsed time = 0.025460 s, Performance = 94.89 TOPS, Utilization = 16.79%
+M N K =  6144  5120  4096, Elapsed time = 0.027657 s, Performance = 93.18 TOPS, Utilization = 16.48%
+M N K =  6144  5120  4352, Elapsed time = 0.028723 s, Performance = 95.33 TOPS, Utilization = 16.86%
+M N K =  6144  5120  4608, Elapsed time = 0.030065 s, Performance = 96.43 TOPS, Utilization = 17.06%
+M N K =  6144  5120  4864, Elapsed time = 0.031499 s, Performance = 97.15 TOPS, Utilization = 17.19%
+M N K =  6144  5120  5120, Elapsed time = 0.032976 s, Performance = 97.69 TOPS, Utilization = 17.28%
+M N K =  6144  5120  5376, Elapsed time = 0.035125 s, Performance = 96.29 TOPS, Utilization = 17.04%
+M N K =  6144  5120  5632, Elapsed time = 0.038437 s, Performance = 92.19 TOPS, Utilization = 16.31%
+M N K =  6144  5120  5888, Elapsed time = 0.038400 s, Performance = 96.47 TOPS, Utilization = 17.07%
+M N K =  6144  5120  6144, Elapsed time = 0.038221 s, Performance = 101.13 TOPS, Utilization = 17.89%
+M N K =  6144  5120  6400, Elapsed time = 0.041423 s, Performance = 97.21 TOPS, Utilization = 17.20%
+M N K =  6144  5120  6656, Elapsed time = 0.043044 s, Performance = 97.29 TOPS, Utilization = 17.21%
+M N K =  6144  5120  6912, Elapsed time = 0.044364 s, Performance = 98.02 TOPS, Utilization = 17.34%
+M N K =  6144  5120  7168, Elapsed time = 0.046169 s, Performance = 97.68 TOPS, Utilization = 17.28%
+M N K =  6144  5120  7424, Elapsed time = 0.055540 s, Performance = 84.10 TOPS, Utilization = 14.88%
+M N K =  6144  5120  7680, Elapsed time = 0.052211 s, Performance = 92.54 TOPS, Utilization = 16.37%
+M N K =  6144  5120  7936, Elapsed time = 0.051134 s, Performance = 97.64 TOPS, Utilization = 17.27%
+M N K =  6144  5120  8192, Elapsed time = 0.053248 s, Performance = 96.79 TOPS, Utilization = 17.12%
+M N K =  6144  5120  8448, Elapsed time = 0.054266 s, Performance = 97.94 TOPS, Utilization = 17.33%
+M N K =  6144  5120  8704, Elapsed time = 0.055566 s, Performance = 98.55 TOPS, Utilization = 17.44%
+M N K =  6144  5120  8960, Elapsed time = 0.066769 s, Performance = 84.43 TOPS, Utilization = 14.94%
+M N K =  6144  5120  9216, Elapsed time = 0.059523 s, Performance = 97.41 TOPS, Utilization = 17.23%
+M N K =  6144  5120  9472, Elapsed time = 0.062797 s, Performance = 94.90 TOPS, Utilization = 16.79%
+M N K =  6144  5120  9728, Elapsed time = 0.066441 s, Performance = 92.12 TOPS, Utilization = 16.30%
+M N K =  6144  5120  9984, Elapsed time = 0.063869 s, Performance = 98.35 TOPS, Utilization = 17.40%
+M N K =  6144  5120 10240, Elapsed time = 0.065531 s, Performance = 98.31 TOPS, Utilization = 17.39%
+M N K =  6144  5120 10496, Elapsed time = 0.067230 s, Performance = 98.22 TOPS, Utilization = 17.38%
+M N K =  6144  5120 10752, Elapsed time = 0.069083 s, Performance = 97.92 TOPS, Utilization = 17.32%
+M N K =  6144  5120 11008, Elapsed time = 0.070932 s, Performance = 97.64 TOPS, Utilization = 17.27%
+M N K =  6144  5120 11264, Elapsed time = 0.072277 s, Performance = 98.05 TOPS, Utilization = 17.35%
+M N K =  6144  5120 11520, Elapsed time = 0.078250 s, Performance = 92.62 TOPS, Utilization = 16.39%
+M N K =  6144  5120 11776, Elapsed time = 0.078233 s, Performance = 94.70 TOPS, Utilization = 16.75%
+M N K =  6144  5120 12032, Elapsed time = 0.077008 s, Performance = 98.30 TOPS, Utilization = 17.39%
+M N K =  6144  5120 12288, Elapsed time = 0.078935 s, Performance = 97.94 TOPS, Utilization = 17.33%
+M N K =  6144  5120 12544, Elapsed time = 0.081015 s, Performance = 97.41 TOPS, Utilization = 17.23%
+M N K =  6144  5120 12800, Elapsed time = 0.082279 s, Performance = 97.88 TOPS, Utilization = 17.32%
+M N K =  6144  5120 13056, Elapsed time = 0.085559 s, Performance = 96.01 TOPS, Utilization = 16.98%
+M N K =  6144  5120 13312, Elapsed time = 0.090674 s, Performance = 92.37 TOPS, Utilization = 16.34%
+M N K =  6144  5120 13568, Elapsed time = 0.087527 s, Performance = 97.53 TOPS, Utilization = 17.25%
+M N K =  6144  5120 13824, Elapsed time = 0.088714 s, Performance = 98.04 TOPS, Utilization = 17.34%
+M N K =  6144  5120 14080, Elapsed time = 0.091078 s, Performance = 97.26 TOPS, Utilization = 17.21%
+M N K =  6144  5120 14336, Elapsed time = 0.092806 s, Performance = 97.19 TOPS, Utilization = 17.19%
+M N K =  6144  5120 14592, Elapsed time = 0.093973 s, Performance = 97.69 TOPS, Utilization = 17.28%
+M N K =  6144  5120 14848, Elapsed time = 0.096243 s, Performance = 97.06 TOPS, Utilization = 17.17%
+M N K =  6144  5120 15104, Elapsed time = 0.098587 s, Performance = 96.39 TOPS, Utilization = 17.05%
+M N K =  6144  5120 15360, Elapsed time = 0.099637 s, Performance = 96.99 TOPS, Utilization = 17.16%
+M N K =  6144  5120 15616, Elapsed time = 0.102600 s, Performance = 95.76 TOPS, Utilization = 16.94%
+M N K =  6144  5120 15872, Elapsed time = 0.103907 s, Performance = 96.10 TOPS, Utilization = 17.00%
+M N K =  6144  5120 16128, Elapsed time = 0.106652 s, Performance = 95.14 TOPS, Utilization = 16.83%
+M N K =  6144  5120 16384, Elapsed time = 0.118170 s, Performance = 87.23 TOPS, Utilization = 15.43%
+make unlockfreq
+make[1]: Entering directory '/home/wangchongxi/amx-gemm-handwritten/4-amx-gemm-l2-tiling-multi-thread'
+for i in 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 120 121 122 123 124 125 126 127 128 129 130 131 132 133 134 135 136 137 138 139 140 141 142 143 144 145 146 147 148 149 150 151 152 153 154 155 156 157 158 159 160 161 162 163 164 165 166 167 168 169 170 171 172 173 174 175 176 177 178 179 180 181 182 183 184 185 186 187 188 189 190 191 192 193 194 195 196 197 198 199 200 201 202 203 204 205 206 207 208 209 210 211 212 213 214 215 216 217 218 219 220 221 222 223 224 225 226 227 228 229 230 231 232 233 234 235 236 237 238 239; do \
+	echo ondemand | sudo tee /sys/devices/system/cpu/cpu$i/cpufreq/scaling_governor > /dev/null; \
+done
+make[1]: Leaving directory '/home/wangchongxi/amx-gemm-handwritten/4-amx-gemm-l2-tiling-multi-thread'
