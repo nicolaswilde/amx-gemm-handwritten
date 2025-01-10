@@ -1,0 +1,132 @@
+
+dnnl_dump_cpu_jit_uni_reorder_kernel_f32.5.bin:     file format binary
+
+
+Disassembly of section .data:
+
+0000000000000000 <.data>:
+   0:	55                   	push   %rbp
+   1:	48 89 e5             	mov    %rsp,%rbp
+   4:	53                   	push   %rbx
+   5:	41 54                	push   %r12
+   7:	41 55                	push   %r13
+   9:	41 56                	push   %r14
+   b:	41 57                	push   %r15
+   d:	bd 00 04 00 00       	mov    $0x400,%ebp
+  12:	48 8b 37             	mov    (%rdi),%rsi
+  15:	48 8b 57 08          	mov    0x8(%rdi),%rdx
+  19:	c4 41 08 57 f6       	vxorps %xmm14,%xmm14,%xmm14
+  1e:	4d 31 c0             	xor    %r8,%r8
+  21:	4d 31 c9             	xor    %r9,%r9
+  24:	41 bf 00 0c 00 00    	mov    $0xc00,%r15d
+  2a:	b8 00 00 fe 42       	mov    $0x42fe0000,%eax
+  2f:	62 e1 fd 08 6e e8    	vmovq  %rax,%xmm21
+  35:	62 a2 7d 48 18 ed    	vbroadcastss %xmm21,%zmm21
+  3b:	62 b1 7c 48 10 04 06 	vmovups (%rsi,%r8,1),%zmm0
+  42:	62 b1 7c 48 5d c5    	vminps %zmm21,%zmm0,%zmm0
+  48:	62 f1 7d 48 5b c0    	vcvtps2dq %zmm0,%zmm0
+  4e:	62 b2 7e 48 21 04 0a 	vpmovsdb %zmm0,(%rdx,%r9,1)
+  55:	62 b1 7c 48 10 4c 06 	vmovups 0x40(%rsi,%r8,1),%zmm1
+  5c:	01 
+  5d:	62 b1 74 48 5d cd    	vminps %zmm21,%zmm1,%zmm1
+  63:	62 f1 7d 48 5b c9    	vcvtps2dq %zmm1,%zmm1
+  69:	62 b2 7e 48 21 4c 0a 	vpmovsdb %zmm1,0x10(%rdx,%r9,1)
+  70:	01 
+  71:	62 b1 7c 48 10 54 06 	vmovups 0x80(%rsi,%r8,1),%zmm2
+  78:	02 
+  79:	62 b1 6c 48 5d d5    	vminps %zmm21,%zmm2,%zmm2
+  7f:	62 f1 7d 48 5b d2    	vcvtps2dq %zmm2,%zmm2
+  85:	62 b2 7e 48 21 54 0a 	vpmovsdb %zmm2,0x20(%rdx,%r9,1)
+  8c:	02 
+  8d:	62 b1 7c 48 10 5c 06 	vmovups 0xc0(%rsi,%r8,1),%zmm3
+  94:	03 
+  95:	62 b1 64 48 5d dd    	vminps %zmm21,%zmm3,%zmm3
+  9b:	62 f1 7d 48 5b db    	vcvtps2dq %zmm3,%zmm3
+  a1:	62 b2 7e 48 21 5c 0a 	vpmovsdb %zmm3,0x30(%rdx,%r9,1)
+  a8:	03 
+  a9:	62 b1 7c 48 10 64 06 	vmovups 0x100(%rsi,%r8,1),%zmm4
+  b0:	04 
+  b1:	62 b1 5c 48 5d e5    	vminps %zmm21,%zmm4,%zmm4
+  b7:	62 f1 7d 48 5b e4    	vcvtps2dq %zmm4,%zmm4
+  bd:	62 b2 7e 48 21 64 0a 	vpmovsdb %zmm4,0x40(%rdx,%r9,1)
+  c4:	04 
+  c5:	62 b1 7c 48 10 6c 06 	vmovups 0x140(%rsi,%r8,1),%zmm5
+  cc:	05 
+  cd:	62 b1 54 48 5d ed    	vminps %zmm21,%zmm5,%zmm5
+  d3:	62 f1 7d 48 5b ed    	vcvtps2dq %zmm5,%zmm5
+  d9:	62 b2 7e 48 21 6c 0a 	vpmovsdb %zmm5,0x50(%rdx,%r9,1)
+  e0:	05 
+  e1:	62 b1 7c 48 10 74 06 	vmovups 0x180(%rsi,%r8,1),%zmm6
+  e8:	06 
+  e9:	62 b1 4c 48 5d f5    	vminps %zmm21,%zmm6,%zmm6
+  ef:	62 f1 7d 48 5b f6    	vcvtps2dq %zmm6,%zmm6
+  f5:	62 b2 7e 48 21 74 0a 	vpmovsdb %zmm6,0x60(%rdx,%r9,1)
+  fc:	06 
+  fd:	62 b1 7c 48 10 7c 06 	vmovups 0x1c0(%rsi,%r8,1),%zmm7
+ 104:	07 
+ 105:	62 b1 44 48 5d fd    	vminps %zmm21,%zmm7,%zmm7
+ 10b:	62 f1 7d 48 5b ff    	vcvtps2dq %zmm7,%zmm7
+ 111:	62 b2 7e 48 21 7c 0a 	vpmovsdb %zmm7,0x70(%rdx,%r9,1)
+ 118:	07 
+ 119:	62 31 7c 48 10 44 06 	vmovups 0x200(%rsi,%r8,1),%zmm8
+ 120:	08 
+ 121:	62 31 3c 48 5d c5    	vminps %zmm21,%zmm8,%zmm8
+ 127:	62 51 7d 48 5b c0    	vcvtps2dq %zmm8,%zmm8
+ 12d:	62 32 7e 48 21 44 0a 	vpmovsdb %zmm8,0x80(%rdx,%r9,1)
+ 134:	08 
+ 135:	62 31 7c 48 10 4c 06 	vmovups 0x240(%rsi,%r8,1),%zmm9
+ 13c:	09 
+ 13d:	62 31 34 48 5d cd    	vminps %zmm21,%zmm9,%zmm9
+ 143:	62 51 7d 48 5b c9    	vcvtps2dq %zmm9,%zmm9
+ 149:	62 32 7e 48 21 4c 0a 	vpmovsdb %zmm9,0x90(%rdx,%r9,1)
+ 150:	09 
+ 151:	62 31 7c 48 10 54 06 	vmovups 0x280(%rsi,%r8,1),%zmm10
+ 158:	0a 
+ 159:	62 31 2c 48 5d d5    	vminps %zmm21,%zmm10,%zmm10
+ 15f:	62 51 7d 48 5b d2    	vcvtps2dq %zmm10,%zmm10
+ 165:	62 32 7e 48 21 54 0a 	vpmovsdb %zmm10,0xa0(%rdx,%r9,1)
+ 16c:	0a 
+ 16d:	62 31 7c 48 10 5c 06 	vmovups 0x2c0(%rsi,%r8,1),%zmm11
+ 174:	0b 
+ 175:	62 31 24 48 5d dd    	vminps %zmm21,%zmm11,%zmm11
+ 17b:	62 51 7d 48 5b db    	vcvtps2dq %zmm11,%zmm11
+ 181:	62 32 7e 48 21 5c 0a 	vpmovsdb %zmm11,0xb0(%rdx,%r9,1)
+ 188:	0b 
+ 189:	62 31 7c 48 10 64 06 	vmovups 0x300(%rsi,%r8,1),%zmm12
+ 190:	0c 
+ 191:	62 31 1c 48 5d e5    	vminps %zmm21,%zmm12,%zmm12
+ 197:	62 51 7d 48 5b e4    	vcvtps2dq %zmm12,%zmm12
+ 19d:	62 32 7e 48 21 64 0a 	vpmovsdb %zmm12,0xc0(%rdx,%r9,1)
+ 1a4:	0c 
+ 1a5:	62 31 7c 48 10 6c 06 	vmovups 0x340(%rsi,%r8,1),%zmm13
+ 1ac:	0d 
+ 1ad:	62 31 14 48 5d ed    	vminps %zmm21,%zmm13,%zmm13
+ 1b3:	62 51 7d 48 5b ed    	vcvtps2dq %zmm13,%zmm13
+ 1b9:	62 32 7e 48 21 6c 0a 	vpmovsdb %zmm13,0xd0(%rdx,%r9,1)
+ 1c0:	0d 
+ 1c1:	62 31 7c 48 10 74 06 	vmovups 0x380(%rsi,%r8,1),%zmm14
+ 1c8:	0e 
+ 1c9:	62 31 0c 48 5d f5    	vminps %zmm21,%zmm14,%zmm14
+ 1cf:	62 51 7d 48 5b f6    	vcvtps2dq %zmm14,%zmm14
+ 1d5:	62 32 7e 48 21 74 0a 	vpmovsdb %zmm14,0xe0(%rdx,%r9,1)
+ 1dc:	0e 
+ 1dd:	62 31 7c 48 10 7c 06 	vmovups 0x3c0(%rsi,%r8,1),%zmm15
+ 1e4:	0f 
+ 1e5:	62 31 04 48 5d fd    	vminps %zmm21,%zmm15,%zmm15
+ 1eb:	62 51 7d 48 5b ff    	vcvtps2dq %zmm15,%zmm15
+ 1f1:	62 32 7e 48 21 7c 0a 	vpmovsdb %zmm15,0xf0(%rdx,%r9,1)
+ 1f8:	0f 
+ 1f9:	49 81 c0 00 04 00 00 	add    $0x400,%r8
+ 200:	49 81 c1 00 01 00 00 	add    $0x100,%r9
+ 207:	49 ff cf             	dec    %r15
+ 20a:	0f 85 1a fe ff ff    	jne    0x2a
+ 210:	49 81 e8 00 00 30 00 	sub    $0x300000,%r8
+ 217:	49 81 e9 00 00 0c 00 	sub    $0xc0000,%r9
+ 21e:	41 5f                	pop    %r15
+ 220:	41 5e                	pop    %r14
+ 222:	41 5d                	pop    %r13
+ 224:	41 5c                	pop    %r12
+ 226:	5b                   	pop    %rbx
+ 227:	5d                   	pop    %rbp
+ 228:	c5 f8 77             	vzeroupper
+ 22b:	c3                   	ret

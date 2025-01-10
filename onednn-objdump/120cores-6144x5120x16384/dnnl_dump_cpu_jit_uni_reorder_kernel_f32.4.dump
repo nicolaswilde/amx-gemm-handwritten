@@ -1,0 +1,923 @@
+
+dnnl_dump_cpu_jit_uni_reorder_kernel_f32.4.bin:     file format binary
+
+
+Disassembly of section .data:
+
+0000000000000000 <.data>:
+       0:	55                   	push   %rbp
+       1:	48 89 e5             	mov    %rsp,%rbp
+       4:	53                   	push   %rbx
+       5:	41 54                	push   %r12
+       7:	41 55                	push   %r13
+       9:	41 56                	push   %r14
+       b:	41 57                	push   %r15
+       d:	bd 00 04 00 00       	mov    $0x400,%ebp
+      12:	48 8b 37             	mov    (%rdi),%rsi
+      15:	48 8b 57 08          	mov    0x8(%rdi),%rdx
+      19:	c4 41 08 57 f6       	vxorps %xmm14,%xmm14,%xmm14
+      1e:	4d 31 c0             	xor    %r8,%r8
+      21:	4d 31 c9             	xor    %r9,%r9
+      24:	c4 a3 79 22 04 06 00 	vpinsrd $0x0,(%rsi,%r8,1),%xmm0,%xmm0
+      2b:	c4 a3 79 22 84 06 00 	vpinsrd $0x1,0x5000(%rsi,%r8,1),%xmm0,%xmm0
+      32:	50 00 00 01 
+      36:	c4 a3 79 22 84 06 00 	vpinsrd $0x2,0xa000(%rsi,%r8,1),%xmm0,%xmm0
+      3d:	a0 00 00 02 
+      41:	c4 a3 79 22 84 06 00 	vpinsrd $0x3,0xf000(%rsi,%r8,1),%xmm0,%xmm0
+      48:	f0 00 00 03 
+      4c:	c4 a3 59 22 64 06 04 	vpinsrd $0x0,0x4(%rsi,%r8,1),%xmm4,%xmm4
+      53:	00 
+      54:	c4 a3 59 22 a4 06 04 	vpinsrd $0x1,0x5004(%rsi,%r8,1),%xmm4,%xmm4
+      5b:	50 00 00 01 
+      5f:	c4 a3 59 22 a4 06 04 	vpinsrd $0x2,0xa004(%rsi,%r8,1),%xmm4,%xmm4
+      66:	a0 00 00 02 
+      6a:	c4 a3 59 22 a4 06 04 	vpinsrd $0x3,0xf004(%rsi,%r8,1),%xmm4,%xmm4
+      71:	f0 00 00 03 
+      75:	b8 00 00 fe 42       	mov    $0x42fe0000,%eax
+      7a:	c4 61 f9 6e e0       	vmovq  %rax,%xmm12
+      7f:	c4 41 18 c6 e4 00    	vshufps $0x0,%xmm12,%xmm12,%xmm12
+      85:	c4 c1 78 5d c4       	vminps %xmm12,%xmm0,%xmm0
+      8a:	c5 f9 5b c0          	vcvtps2dq %xmm0,%xmm0
+      8e:	c4 c1 58 5d e4       	vminps %xmm12,%xmm4,%xmm4
+      93:	c5 f9 5b e4          	vcvtps2dq %xmm4,%xmm4
+      97:	62 f2 7e 08 21 c0    	vpmovsdb %xmm0,%xmm0
+      9d:	c4 a1 7a 11 04 0a    	vmovss %xmm0,(%rdx,%r9,1)
+      a3:	62 f2 7e 08 21 e4    	vpmovsdb %xmm4,%xmm4
+      a9:	c4 a1 7a 11 64 0a 04 	vmovss %xmm4,0x4(%rdx,%r9,1)
+      b0:	c4 a3 79 22 44 06 08 	vpinsrd $0x0,0x8(%rsi,%r8,1),%xmm0,%xmm0
+      b7:	00 
+      b8:	c4 a3 79 22 84 06 08 	vpinsrd $0x1,0x5008(%rsi,%r8,1),%xmm0,%xmm0
+      bf:	50 00 00 01 
+      c3:	c4 a3 79 22 84 06 08 	vpinsrd $0x2,0xa008(%rsi,%r8,1),%xmm0,%xmm0
+      ca:	a0 00 00 02 
+      ce:	c4 a3 79 22 84 06 08 	vpinsrd $0x3,0xf008(%rsi,%r8,1),%xmm0,%xmm0
+      d5:	f0 00 00 03 
+      d9:	c4 a3 59 22 64 06 0c 	vpinsrd $0x0,0xc(%rsi,%r8,1),%xmm4,%xmm4
+      e0:	00 
+      e1:	c4 a3 59 22 a4 06 0c 	vpinsrd $0x1,0x500c(%rsi,%r8,1),%xmm4,%xmm4
+      e8:	50 00 00 01 
+      ec:	c4 a3 59 22 a4 06 0c 	vpinsrd $0x2,0xa00c(%rsi,%r8,1),%xmm4,%xmm4
+      f3:	a0 00 00 02 
+      f7:	c4 a3 59 22 a4 06 0c 	vpinsrd $0x3,0xf00c(%rsi,%r8,1),%xmm4,%xmm4
+      fe:	f0 00 00 03 
+     102:	b8 00 00 fe 42       	mov    $0x42fe0000,%eax
+     107:	c4 61 f9 6e e0       	vmovq  %rax,%xmm12
+     10c:	c4 41 18 c6 e4 00    	vshufps $0x0,%xmm12,%xmm12,%xmm12
+     112:	c4 c1 78 5d c4       	vminps %xmm12,%xmm0,%xmm0
+     117:	c5 f9 5b c0          	vcvtps2dq %xmm0,%xmm0
+     11b:	c4 c1 58 5d e4       	vminps %xmm12,%xmm4,%xmm4
+     120:	c5 f9 5b e4          	vcvtps2dq %xmm4,%xmm4
+     124:	62 f2 7e 08 21 c0    	vpmovsdb %xmm0,%xmm0
+     12a:	c4 a1 7a 11 44 0a 08 	vmovss %xmm0,0x8(%rdx,%r9,1)
+     131:	62 f2 7e 08 21 e4    	vpmovsdb %xmm4,%xmm4
+     137:	c4 a1 7a 11 64 0a 0c 	vmovss %xmm4,0xc(%rdx,%r9,1)
+     13e:	c4 a3 79 22 44 06 10 	vpinsrd $0x0,0x10(%rsi,%r8,1),%xmm0,%xmm0
+     145:	00 
+     146:	c4 a3 79 22 84 06 10 	vpinsrd $0x1,0x5010(%rsi,%r8,1),%xmm0,%xmm0
+     14d:	50 00 00 01 
+     151:	c4 a3 79 22 84 06 10 	vpinsrd $0x2,0xa010(%rsi,%r8,1),%xmm0,%xmm0
+     158:	a0 00 00 02 
+     15c:	c4 a3 79 22 84 06 10 	vpinsrd $0x3,0xf010(%rsi,%r8,1),%xmm0,%xmm0
+     163:	f0 00 00 03 
+     167:	c4 a3 59 22 64 06 14 	vpinsrd $0x0,0x14(%rsi,%r8,1),%xmm4,%xmm4
+     16e:	00 
+     16f:	c4 a3 59 22 a4 06 14 	vpinsrd $0x1,0x5014(%rsi,%r8,1),%xmm4,%xmm4
+     176:	50 00 00 01 
+     17a:	c4 a3 59 22 a4 06 14 	vpinsrd $0x2,0xa014(%rsi,%r8,1),%xmm4,%xmm4
+     181:	a0 00 00 02 
+     185:	c4 a3 59 22 a4 06 14 	vpinsrd $0x3,0xf014(%rsi,%r8,1),%xmm4,%xmm4
+     18c:	f0 00 00 03 
+     190:	b8 00 00 fe 42       	mov    $0x42fe0000,%eax
+     195:	c4 61 f9 6e e0       	vmovq  %rax,%xmm12
+     19a:	c4 41 18 c6 e4 00    	vshufps $0x0,%xmm12,%xmm12,%xmm12
+     1a0:	c4 c1 78 5d c4       	vminps %xmm12,%xmm0,%xmm0
+     1a5:	c5 f9 5b c0          	vcvtps2dq %xmm0,%xmm0
+     1a9:	c4 c1 58 5d e4       	vminps %xmm12,%xmm4,%xmm4
+     1ae:	c5 f9 5b e4          	vcvtps2dq %xmm4,%xmm4
+     1b2:	62 f2 7e 08 21 c0    	vpmovsdb %xmm0,%xmm0
+     1b8:	c4 a1 7a 11 44 0a 10 	vmovss %xmm0,0x10(%rdx,%r9,1)
+     1bf:	62 f2 7e 08 21 e4    	vpmovsdb %xmm4,%xmm4
+     1c5:	c4 a1 7a 11 64 0a 14 	vmovss %xmm4,0x14(%rdx,%r9,1)
+     1cc:	c4 a3 79 22 44 06 18 	vpinsrd $0x0,0x18(%rsi,%r8,1),%xmm0,%xmm0
+     1d3:	00 
+     1d4:	c4 a3 79 22 84 06 18 	vpinsrd $0x1,0x5018(%rsi,%r8,1),%xmm0,%xmm0
+     1db:	50 00 00 01 
+     1df:	c4 a3 79 22 84 06 18 	vpinsrd $0x2,0xa018(%rsi,%r8,1),%xmm0,%xmm0
+     1e6:	a0 00 00 02 
+     1ea:	c4 a3 79 22 84 06 18 	vpinsrd $0x3,0xf018(%rsi,%r8,1),%xmm0,%xmm0
+     1f1:	f0 00 00 03 
+     1f5:	c4 a3 59 22 64 06 1c 	vpinsrd $0x0,0x1c(%rsi,%r8,1),%xmm4,%xmm4
+     1fc:	00 
+     1fd:	c4 a3 59 22 a4 06 1c 	vpinsrd $0x1,0x501c(%rsi,%r8,1),%xmm4,%xmm4
+     204:	50 00 00 01 
+     208:	c4 a3 59 22 a4 06 1c 	vpinsrd $0x2,0xa01c(%rsi,%r8,1),%xmm4,%xmm4
+     20f:	a0 00 00 02 
+     213:	c4 a3 59 22 a4 06 1c 	vpinsrd $0x3,0xf01c(%rsi,%r8,1),%xmm4,%xmm4
+     21a:	f0 00 00 03 
+     21e:	b8 00 00 fe 42       	mov    $0x42fe0000,%eax
+     223:	c4 61 f9 6e e0       	vmovq  %rax,%xmm12
+     228:	c4 41 18 c6 e4 00    	vshufps $0x0,%xmm12,%xmm12,%xmm12
+     22e:	c4 c1 78 5d c4       	vminps %xmm12,%xmm0,%xmm0
+     233:	c5 f9 5b c0          	vcvtps2dq %xmm0,%xmm0
+     237:	c4 c1 58 5d e4       	vminps %xmm12,%xmm4,%xmm4
+     23c:	c5 f9 5b e4          	vcvtps2dq %xmm4,%xmm4
+     240:	62 f2 7e 08 21 c0    	vpmovsdb %xmm0,%xmm0
+     246:	c4 a1 7a 11 44 0a 18 	vmovss %xmm0,0x18(%rdx,%r9,1)
+     24d:	62 f2 7e 08 21 e4    	vpmovsdb %xmm4,%xmm4
+     253:	c4 a1 7a 11 64 0a 1c 	vmovss %xmm4,0x1c(%rdx,%r9,1)
+     25a:	c4 a3 79 22 44 06 20 	vpinsrd $0x0,0x20(%rsi,%r8,1),%xmm0,%xmm0
+     261:	00 
+     262:	c4 a3 79 22 84 06 20 	vpinsrd $0x1,0x5020(%rsi,%r8,1),%xmm0,%xmm0
+     269:	50 00 00 01 
+     26d:	c4 a3 79 22 84 06 20 	vpinsrd $0x2,0xa020(%rsi,%r8,1),%xmm0,%xmm0
+     274:	a0 00 00 02 
+     278:	c4 a3 79 22 84 06 20 	vpinsrd $0x3,0xf020(%rsi,%r8,1),%xmm0,%xmm0
+     27f:	f0 00 00 03 
+     283:	c4 a3 59 22 64 06 24 	vpinsrd $0x0,0x24(%rsi,%r8,1),%xmm4,%xmm4
+     28a:	00 
+     28b:	c4 a3 59 22 a4 06 24 	vpinsrd $0x1,0x5024(%rsi,%r8,1),%xmm4,%xmm4
+     292:	50 00 00 01 
+     296:	c4 a3 59 22 a4 06 24 	vpinsrd $0x2,0xa024(%rsi,%r8,1),%xmm4,%xmm4
+     29d:	a0 00 00 02 
+     2a1:	c4 a3 59 22 a4 06 24 	vpinsrd $0x3,0xf024(%rsi,%r8,1),%xmm4,%xmm4
+     2a8:	f0 00 00 03 
+     2ac:	b8 00 00 fe 42       	mov    $0x42fe0000,%eax
+     2b1:	c4 61 f9 6e e0       	vmovq  %rax,%xmm12
+     2b6:	c4 41 18 c6 e4 00    	vshufps $0x0,%xmm12,%xmm12,%xmm12
+     2bc:	c4 c1 78 5d c4       	vminps %xmm12,%xmm0,%xmm0
+     2c1:	c5 f9 5b c0          	vcvtps2dq %xmm0,%xmm0
+     2c5:	c4 c1 58 5d e4       	vminps %xmm12,%xmm4,%xmm4
+     2ca:	c5 f9 5b e4          	vcvtps2dq %xmm4,%xmm4
+     2ce:	62 f2 7e 08 21 c0    	vpmovsdb %xmm0,%xmm0
+     2d4:	c4 a1 7a 11 44 0a 20 	vmovss %xmm0,0x20(%rdx,%r9,1)
+     2db:	62 f2 7e 08 21 e4    	vpmovsdb %xmm4,%xmm4
+     2e1:	c4 a1 7a 11 64 0a 24 	vmovss %xmm4,0x24(%rdx,%r9,1)
+     2e8:	c4 a3 79 22 44 06 28 	vpinsrd $0x0,0x28(%rsi,%r8,1),%xmm0,%xmm0
+     2ef:	00 
+     2f0:	c4 a3 79 22 84 06 28 	vpinsrd $0x1,0x5028(%rsi,%r8,1),%xmm0,%xmm0
+     2f7:	50 00 00 01 
+     2fb:	c4 a3 79 22 84 06 28 	vpinsrd $0x2,0xa028(%rsi,%r8,1),%xmm0,%xmm0
+     302:	a0 00 00 02 
+     306:	c4 a3 79 22 84 06 28 	vpinsrd $0x3,0xf028(%rsi,%r8,1),%xmm0,%xmm0
+     30d:	f0 00 00 03 
+     311:	c4 a3 59 22 64 06 2c 	vpinsrd $0x0,0x2c(%rsi,%r8,1),%xmm4,%xmm4
+     318:	00 
+     319:	c4 a3 59 22 a4 06 2c 	vpinsrd $0x1,0x502c(%rsi,%r8,1),%xmm4,%xmm4
+     320:	50 00 00 01 
+     324:	c4 a3 59 22 a4 06 2c 	vpinsrd $0x2,0xa02c(%rsi,%r8,1),%xmm4,%xmm4
+     32b:	a0 00 00 02 
+     32f:	c4 a3 59 22 a4 06 2c 	vpinsrd $0x3,0xf02c(%rsi,%r8,1),%xmm4,%xmm4
+     336:	f0 00 00 03 
+     33a:	b8 00 00 fe 42       	mov    $0x42fe0000,%eax
+     33f:	c4 61 f9 6e e0       	vmovq  %rax,%xmm12
+     344:	c4 41 18 c6 e4 00    	vshufps $0x0,%xmm12,%xmm12,%xmm12
+     34a:	c4 c1 78 5d c4       	vminps %xmm12,%xmm0,%xmm0
+     34f:	c5 f9 5b c0          	vcvtps2dq %xmm0,%xmm0
+     353:	c4 c1 58 5d e4       	vminps %xmm12,%xmm4,%xmm4
+     358:	c5 f9 5b e4          	vcvtps2dq %xmm4,%xmm4
+     35c:	62 f2 7e 08 21 c0    	vpmovsdb %xmm0,%xmm0
+     362:	c4 a1 7a 11 44 0a 28 	vmovss %xmm0,0x28(%rdx,%r9,1)
+     369:	62 f2 7e 08 21 e4    	vpmovsdb %xmm4,%xmm4
+     36f:	c4 a1 7a 11 64 0a 2c 	vmovss %xmm4,0x2c(%rdx,%r9,1)
+     376:	c4 a3 79 22 44 06 30 	vpinsrd $0x0,0x30(%rsi,%r8,1),%xmm0,%xmm0
+     37d:	00 
+     37e:	c4 a3 79 22 84 06 30 	vpinsrd $0x1,0x5030(%rsi,%r8,1),%xmm0,%xmm0
+     385:	50 00 00 01 
+     389:	c4 a3 79 22 84 06 30 	vpinsrd $0x2,0xa030(%rsi,%r8,1),%xmm0,%xmm0
+     390:	a0 00 00 02 
+     394:	c4 a3 79 22 84 06 30 	vpinsrd $0x3,0xf030(%rsi,%r8,1),%xmm0,%xmm0
+     39b:	f0 00 00 03 
+     39f:	c4 a3 59 22 64 06 34 	vpinsrd $0x0,0x34(%rsi,%r8,1),%xmm4,%xmm4
+     3a6:	00 
+     3a7:	c4 a3 59 22 a4 06 34 	vpinsrd $0x1,0x5034(%rsi,%r8,1),%xmm4,%xmm4
+     3ae:	50 00 00 01 
+     3b2:	c4 a3 59 22 a4 06 34 	vpinsrd $0x2,0xa034(%rsi,%r8,1),%xmm4,%xmm4
+     3b9:	a0 00 00 02 
+     3bd:	c4 a3 59 22 a4 06 34 	vpinsrd $0x3,0xf034(%rsi,%r8,1),%xmm4,%xmm4
+     3c4:	f0 00 00 03 
+     3c8:	b8 00 00 fe 42       	mov    $0x42fe0000,%eax
+     3cd:	c4 61 f9 6e e0       	vmovq  %rax,%xmm12
+     3d2:	c4 41 18 c6 e4 00    	vshufps $0x0,%xmm12,%xmm12,%xmm12
+     3d8:	c4 c1 78 5d c4       	vminps %xmm12,%xmm0,%xmm0
+     3dd:	c5 f9 5b c0          	vcvtps2dq %xmm0,%xmm0
+     3e1:	c4 c1 58 5d e4       	vminps %xmm12,%xmm4,%xmm4
+     3e6:	c5 f9 5b e4          	vcvtps2dq %xmm4,%xmm4
+     3ea:	62 f2 7e 08 21 c0    	vpmovsdb %xmm0,%xmm0
+     3f0:	c4 a1 7a 11 44 0a 30 	vmovss %xmm0,0x30(%rdx,%r9,1)
+     3f7:	62 f2 7e 08 21 e4    	vpmovsdb %xmm4,%xmm4
+     3fd:	c4 a1 7a 11 64 0a 34 	vmovss %xmm4,0x34(%rdx,%r9,1)
+     404:	c4 a3 79 22 44 06 38 	vpinsrd $0x0,0x38(%rsi,%r8,1),%xmm0,%xmm0
+     40b:	00 
+     40c:	c4 a3 79 22 84 06 38 	vpinsrd $0x1,0x5038(%rsi,%r8,1),%xmm0,%xmm0
+     413:	50 00 00 01 
+     417:	c4 a3 79 22 84 06 38 	vpinsrd $0x2,0xa038(%rsi,%r8,1),%xmm0,%xmm0
+     41e:	a0 00 00 02 
+     422:	c4 a3 79 22 84 06 38 	vpinsrd $0x3,0xf038(%rsi,%r8,1),%xmm0,%xmm0
+     429:	f0 00 00 03 
+     42d:	c4 a3 59 22 64 06 3c 	vpinsrd $0x0,0x3c(%rsi,%r8,1),%xmm4,%xmm4
+     434:	00 
+     435:	c4 a3 59 22 a4 06 3c 	vpinsrd $0x1,0x503c(%rsi,%r8,1),%xmm4,%xmm4
+     43c:	50 00 00 01 
+     440:	c4 a3 59 22 a4 06 3c 	vpinsrd $0x2,0xa03c(%rsi,%r8,1),%xmm4,%xmm4
+     447:	a0 00 00 02 
+     44b:	c4 a3 59 22 a4 06 3c 	vpinsrd $0x3,0xf03c(%rsi,%r8,1),%xmm4,%xmm4
+     452:	f0 00 00 03 
+     456:	b8 00 00 fe 42       	mov    $0x42fe0000,%eax
+     45b:	c4 61 f9 6e e0       	vmovq  %rax,%xmm12
+     460:	c4 41 18 c6 e4 00    	vshufps $0x0,%xmm12,%xmm12,%xmm12
+     466:	c4 c1 78 5d c4       	vminps %xmm12,%xmm0,%xmm0
+     46b:	c5 f9 5b c0          	vcvtps2dq %xmm0,%xmm0
+     46f:	c4 c1 58 5d e4       	vminps %xmm12,%xmm4,%xmm4
+     474:	c5 f9 5b e4          	vcvtps2dq %xmm4,%xmm4
+     478:	62 f2 7e 08 21 c0    	vpmovsdb %xmm0,%xmm0
+     47e:	c4 a1 7a 11 44 0a 38 	vmovss %xmm0,0x38(%rdx,%r9,1)
+     485:	62 f2 7e 08 21 e4    	vpmovsdb %xmm4,%xmm4
+     48b:	c4 a1 7a 11 64 0a 3c 	vmovss %xmm4,0x3c(%rdx,%r9,1)
+     492:	c4 a3 79 22 44 06 40 	vpinsrd $0x0,0x40(%rsi,%r8,1),%xmm0,%xmm0
+     499:	00 
+     49a:	c4 a3 79 22 84 06 40 	vpinsrd $0x1,0x5040(%rsi,%r8,1),%xmm0,%xmm0
+     4a1:	50 00 00 01 
+     4a5:	c4 a3 79 22 84 06 40 	vpinsrd $0x2,0xa040(%rsi,%r8,1),%xmm0,%xmm0
+     4ac:	a0 00 00 02 
+     4b0:	c4 a3 79 22 84 06 40 	vpinsrd $0x3,0xf040(%rsi,%r8,1),%xmm0,%xmm0
+     4b7:	f0 00 00 03 
+     4bb:	c4 a3 59 22 64 06 44 	vpinsrd $0x0,0x44(%rsi,%r8,1),%xmm4,%xmm4
+     4c2:	00 
+     4c3:	c4 a3 59 22 a4 06 44 	vpinsrd $0x1,0x5044(%rsi,%r8,1),%xmm4,%xmm4
+     4ca:	50 00 00 01 
+     4ce:	c4 a3 59 22 a4 06 44 	vpinsrd $0x2,0xa044(%rsi,%r8,1),%xmm4,%xmm4
+     4d5:	a0 00 00 02 
+     4d9:	c4 a3 59 22 a4 06 44 	vpinsrd $0x3,0xf044(%rsi,%r8,1),%xmm4,%xmm4
+     4e0:	f0 00 00 03 
+     4e4:	b8 00 00 fe 42       	mov    $0x42fe0000,%eax
+     4e9:	c4 61 f9 6e e0       	vmovq  %rax,%xmm12
+     4ee:	c4 41 18 c6 e4 00    	vshufps $0x0,%xmm12,%xmm12,%xmm12
+     4f4:	c4 c1 78 5d c4       	vminps %xmm12,%xmm0,%xmm0
+     4f9:	c5 f9 5b c0          	vcvtps2dq %xmm0,%xmm0
+     4fd:	c4 c1 58 5d e4       	vminps %xmm12,%xmm4,%xmm4
+     502:	c5 f9 5b e4          	vcvtps2dq %xmm4,%xmm4
+     506:	62 f2 7e 08 21 c0    	vpmovsdb %xmm0,%xmm0
+     50c:	c4 a1 7a 11 44 0a 40 	vmovss %xmm0,0x40(%rdx,%r9,1)
+     513:	62 f2 7e 08 21 e4    	vpmovsdb %xmm4,%xmm4
+     519:	c4 a1 7a 11 64 0a 44 	vmovss %xmm4,0x44(%rdx,%r9,1)
+     520:	c4 a3 79 22 44 06 48 	vpinsrd $0x0,0x48(%rsi,%r8,1),%xmm0,%xmm0
+     527:	00 
+     528:	c4 a3 79 22 84 06 48 	vpinsrd $0x1,0x5048(%rsi,%r8,1),%xmm0,%xmm0
+     52f:	50 00 00 01 
+     533:	c4 a3 79 22 84 06 48 	vpinsrd $0x2,0xa048(%rsi,%r8,1),%xmm0,%xmm0
+     53a:	a0 00 00 02 
+     53e:	c4 a3 79 22 84 06 48 	vpinsrd $0x3,0xf048(%rsi,%r8,1),%xmm0,%xmm0
+     545:	f0 00 00 03 
+     549:	c4 a3 59 22 64 06 4c 	vpinsrd $0x0,0x4c(%rsi,%r8,1),%xmm4,%xmm4
+     550:	00 
+     551:	c4 a3 59 22 a4 06 4c 	vpinsrd $0x1,0x504c(%rsi,%r8,1),%xmm4,%xmm4
+     558:	50 00 00 01 
+     55c:	c4 a3 59 22 a4 06 4c 	vpinsrd $0x2,0xa04c(%rsi,%r8,1),%xmm4,%xmm4
+     563:	a0 00 00 02 
+     567:	c4 a3 59 22 a4 06 4c 	vpinsrd $0x3,0xf04c(%rsi,%r8,1),%xmm4,%xmm4
+     56e:	f0 00 00 03 
+     572:	b8 00 00 fe 42       	mov    $0x42fe0000,%eax
+     577:	c4 61 f9 6e e0       	vmovq  %rax,%xmm12
+     57c:	c4 41 18 c6 e4 00    	vshufps $0x0,%xmm12,%xmm12,%xmm12
+     582:	c4 c1 78 5d c4       	vminps %xmm12,%xmm0,%xmm0
+     587:	c5 f9 5b c0          	vcvtps2dq %xmm0,%xmm0
+     58b:	c4 c1 58 5d e4       	vminps %xmm12,%xmm4,%xmm4
+     590:	c5 f9 5b e4          	vcvtps2dq %xmm4,%xmm4
+     594:	62 f2 7e 08 21 c0    	vpmovsdb %xmm0,%xmm0
+     59a:	c4 a1 7a 11 44 0a 48 	vmovss %xmm0,0x48(%rdx,%r9,1)
+     5a1:	62 f2 7e 08 21 e4    	vpmovsdb %xmm4,%xmm4
+     5a7:	c4 a1 7a 11 64 0a 4c 	vmovss %xmm4,0x4c(%rdx,%r9,1)
+     5ae:	c4 a3 79 22 44 06 50 	vpinsrd $0x0,0x50(%rsi,%r8,1),%xmm0,%xmm0
+     5b5:	00 
+     5b6:	c4 a3 79 22 84 06 50 	vpinsrd $0x1,0x5050(%rsi,%r8,1),%xmm0,%xmm0
+     5bd:	50 00 00 01 
+     5c1:	c4 a3 79 22 84 06 50 	vpinsrd $0x2,0xa050(%rsi,%r8,1),%xmm0,%xmm0
+     5c8:	a0 00 00 02 
+     5cc:	c4 a3 79 22 84 06 50 	vpinsrd $0x3,0xf050(%rsi,%r8,1),%xmm0,%xmm0
+     5d3:	f0 00 00 03 
+     5d7:	c4 a3 59 22 64 06 54 	vpinsrd $0x0,0x54(%rsi,%r8,1),%xmm4,%xmm4
+     5de:	00 
+     5df:	c4 a3 59 22 a4 06 54 	vpinsrd $0x1,0x5054(%rsi,%r8,1),%xmm4,%xmm4
+     5e6:	50 00 00 01 
+     5ea:	c4 a3 59 22 a4 06 54 	vpinsrd $0x2,0xa054(%rsi,%r8,1),%xmm4,%xmm4
+     5f1:	a0 00 00 02 
+     5f5:	c4 a3 59 22 a4 06 54 	vpinsrd $0x3,0xf054(%rsi,%r8,1),%xmm4,%xmm4
+     5fc:	f0 00 00 03 
+     600:	b8 00 00 fe 42       	mov    $0x42fe0000,%eax
+     605:	c4 61 f9 6e e0       	vmovq  %rax,%xmm12
+     60a:	c4 41 18 c6 e4 00    	vshufps $0x0,%xmm12,%xmm12,%xmm12
+     610:	c4 c1 78 5d c4       	vminps %xmm12,%xmm0,%xmm0
+     615:	c5 f9 5b c0          	vcvtps2dq %xmm0,%xmm0
+     619:	c4 c1 58 5d e4       	vminps %xmm12,%xmm4,%xmm4
+     61e:	c5 f9 5b e4          	vcvtps2dq %xmm4,%xmm4
+     622:	62 f2 7e 08 21 c0    	vpmovsdb %xmm0,%xmm0
+     628:	c4 a1 7a 11 44 0a 50 	vmovss %xmm0,0x50(%rdx,%r9,1)
+     62f:	62 f2 7e 08 21 e4    	vpmovsdb %xmm4,%xmm4
+     635:	c4 a1 7a 11 64 0a 54 	vmovss %xmm4,0x54(%rdx,%r9,1)
+     63c:	c4 a3 79 22 44 06 58 	vpinsrd $0x0,0x58(%rsi,%r8,1),%xmm0,%xmm0
+     643:	00 
+     644:	c4 a3 79 22 84 06 58 	vpinsrd $0x1,0x5058(%rsi,%r8,1),%xmm0,%xmm0
+     64b:	50 00 00 01 
+     64f:	c4 a3 79 22 84 06 58 	vpinsrd $0x2,0xa058(%rsi,%r8,1),%xmm0,%xmm0
+     656:	a0 00 00 02 
+     65a:	c4 a3 79 22 84 06 58 	vpinsrd $0x3,0xf058(%rsi,%r8,1),%xmm0,%xmm0
+     661:	f0 00 00 03 
+     665:	c4 a3 59 22 64 06 5c 	vpinsrd $0x0,0x5c(%rsi,%r8,1),%xmm4,%xmm4
+     66c:	00 
+     66d:	c4 a3 59 22 a4 06 5c 	vpinsrd $0x1,0x505c(%rsi,%r8,1),%xmm4,%xmm4
+     674:	50 00 00 01 
+     678:	c4 a3 59 22 a4 06 5c 	vpinsrd $0x2,0xa05c(%rsi,%r8,1),%xmm4,%xmm4
+     67f:	a0 00 00 02 
+     683:	c4 a3 59 22 a4 06 5c 	vpinsrd $0x3,0xf05c(%rsi,%r8,1),%xmm4,%xmm4
+     68a:	f0 00 00 03 
+     68e:	b8 00 00 fe 42       	mov    $0x42fe0000,%eax
+     693:	c4 61 f9 6e e0       	vmovq  %rax,%xmm12
+     698:	c4 41 18 c6 e4 00    	vshufps $0x0,%xmm12,%xmm12,%xmm12
+     69e:	c4 c1 78 5d c4       	vminps %xmm12,%xmm0,%xmm0
+     6a3:	c5 f9 5b c0          	vcvtps2dq %xmm0,%xmm0
+     6a7:	c4 c1 58 5d e4       	vminps %xmm12,%xmm4,%xmm4
+     6ac:	c5 f9 5b e4          	vcvtps2dq %xmm4,%xmm4
+     6b0:	62 f2 7e 08 21 c0    	vpmovsdb %xmm0,%xmm0
+     6b6:	c4 a1 7a 11 44 0a 58 	vmovss %xmm0,0x58(%rdx,%r9,1)
+     6bd:	62 f2 7e 08 21 e4    	vpmovsdb %xmm4,%xmm4
+     6c3:	c4 a1 7a 11 64 0a 5c 	vmovss %xmm4,0x5c(%rdx,%r9,1)
+     6ca:	c4 a3 79 22 44 06 60 	vpinsrd $0x0,0x60(%rsi,%r8,1),%xmm0,%xmm0
+     6d1:	00 
+     6d2:	c4 a3 79 22 84 06 60 	vpinsrd $0x1,0x5060(%rsi,%r8,1),%xmm0,%xmm0
+     6d9:	50 00 00 01 
+     6dd:	c4 a3 79 22 84 06 60 	vpinsrd $0x2,0xa060(%rsi,%r8,1),%xmm0,%xmm0
+     6e4:	a0 00 00 02 
+     6e8:	c4 a3 79 22 84 06 60 	vpinsrd $0x3,0xf060(%rsi,%r8,1),%xmm0,%xmm0
+     6ef:	f0 00 00 03 
+     6f3:	c4 a3 59 22 64 06 64 	vpinsrd $0x0,0x64(%rsi,%r8,1),%xmm4,%xmm4
+     6fa:	00 
+     6fb:	c4 a3 59 22 a4 06 64 	vpinsrd $0x1,0x5064(%rsi,%r8,1),%xmm4,%xmm4
+     702:	50 00 00 01 
+     706:	c4 a3 59 22 a4 06 64 	vpinsrd $0x2,0xa064(%rsi,%r8,1),%xmm4,%xmm4
+     70d:	a0 00 00 02 
+     711:	c4 a3 59 22 a4 06 64 	vpinsrd $0x3,0xf064(%rsi,%r8,1),%xmm4,%xmm4
+     718:	f0 00 00 03 
+     71c:	b8 00 00 fe 42       	mov    $0x42fe0000,%eax
+     721:	c4 61 f9 6e e0       	vmovq  %rax,%xmm12
+     726:	c4 41 18 c6 e4 00    	vshufps $0x0,%xmm12,%xmm12,%xmm12
+     72c:	c4 c1 78 5d c4       	vminps %xmm12,%xmm0,%xmm0
+     731:	c5 f9 5b c0          	vcvtps2dq %xmm0,%xmm0
+     735:	c4 c1 58 5d e4       	vminps %xmm12,%xmm4,%xmm4
+     73a:	c5 f9 5b e4          	vcvtps2dq %xmm4,%xmm4
+     73e:	62 f2 7e 08 21 c0    	vpmovsdb %xmm0,%xmm0
+     744:	c4 a1 7a 11 44 0a 60 	vmovss %xmm0,0x60(%rdx,%r9,1)
+     74b:	62 f2 7e 08 21 e4    	vpmovsdb %xmm4,%xmm4
+     751:	c4 a1 7a 11 64 0a 64 	vmovss %xmm4,0x64(%rdx,%r9,1)
+     758:	c4 a3 79 22 44 06 68 	vpinsrd $0x0,0x68(%rsi,%r8,1),%xmm0,%xmm0
+     75f:	00 
+     760:	c4 a3 79 22 84 06 68 	vpinsrd $0x1,0x5068(%rsi,%r8,1),%xmm0,%xmm0
+     767:	50 00 00 01 
+     76b:	c4 a3 79 22 84 06 68 	vpinsrd $0x2,0xa068(%rsi,%r8,1),%xmm0,%xmm0
+     772:	a0 00 00 02 
+     776:	c4 a3 79 22 84 06 68 	vpinsrd $0x3,0xf068(%rsi,%r8,1),%xmm0,%xmm0
+     77d:	f0 00 00 03 
+     781:	c4 a3 59 22 64 06 6c 	vpinsrd $0x0,0x6c(%rsi,%r8,1),%xmm4,%xmm4
+     788:	00 
+     789:	c4 a3 59 22 a4 06 6c 	vpinsrd $0x1,0x506c(%rsi,%r8,1),%xmm4,%xmm4
+     790:	50 00 00 01 
+     794:	c4 a3 59 22 a4 06 6c 	vpinsrd $0x2,0xa06c(%rsi,%r8,1),%xmm4,%xmm4
+     79b:	a0 00 00 02 
+     79f:	c4 a3 59 22 a4 06 6c 	vpinsrd $0x3,0xf06c(%rsi,%r8,1),%xmm4,%xmm4
+     7a6:	f0 00 00 03 
+     7aa:	b8 00 00 fe 42       	mov    $0x42fe0000,%eax
+     7af:	c4 61 f9 6e e0       	vmovq  %rax,%xmm12
+     7b4:	c4 41 18 c6 e4 00    	vshufps $0x0,%xmm12,%xmm12,%xmm12
+     7ba:	c4 c1 78 5d c4       	vminps %xmm12,%xmm0,%xmm0
+     7bf:	c5 f9 5b c0          	vcvtps2dq %xmm0,%xmm0
+     7c3:	c4 c1 58 5d e4       	vminps %xmm12,%xmm4,%xmm4
+     7c8:	c5 f9 5b e4          	vcvtps2dq %xmm4,%xmm4
+     7cc:	62 f2 7e 08 21 c0    	vpmovsdb %xmm0,%xmm0
+     7d2:	c4 a1 7a 11 44 0a 68 	vmovss %xmm0,0x68(%rdx,%r9,1)
+     7d9:	62 f2 7e 08 21 e4    	vpmovsdb %xmm4,%xmm4
+     7df:	c4 a1 7a 11 64 0a 6c 	vmovss %xmm4,0x6c(%rdx,%r9,1)
+     7e6:	c4 a3 79 22 44 06 70 	vpinsrd $0x0,0x70(%rsi,%r8,1),%xmm0,%xmm0
+     7ed:	00 
+     7ee:	c4 a3 79 22 84 06 70 	vpinsrd $0x1,0x5070(%rsi,%r8,1),%xmm0,%xmm0
+     7f5:	50 00 00 01 
+     7f9:	c4 a3 79 22 84 06 70 	vpinsrd $0x2,0xa070(%rsi,%r8,1),%xmm0,%xmm0
+     800:	a0 00 00 02 
+     804:	c4 a3 79 22 84 06 70 	vpinsrd $0x3,0xf070(%rsi,%r8,1),%xmm0,%xmm0
+     80b:	f0 00 00 03 
+     80f:	c4 a3 59 22 64 06 74 	vpinsrd $0x0,0x74(%rsi,%r8,1),%xmm4,%xmm4
+     816:	00 
+     817:	c4 a3 59 22 a4 06 74 	vpinsrd $0x1,0x5074(%rsi,%r8,1),%xmm4,%xmm4
+     81e:	50 00 00 01 
+     822:	c4 a3 59 22 a4 06 74 	vpinsrd $0x2,0xa074(%rsi,%r8,1),%xmm4,%xmm4
+     829:	a0 00 00 02 
+     82d:	c4 a3 59 22 a4 06 74 	vpinsrd $0x3,0xf074(%rsi,%r8,1),%xmm4,%xmm4
+     834:	f0 00 00 03 
+     838:	b8 00 00 fe 42       	mov    $0x42fe0000,%eax
+     83d:	c4 61 f9 6e e0       	vmovq  %rax,%xmm12
+     842:	c4 41 18 c6 e4 00    	vshufps $0x0,%xmm12,%xmm12,%xmm12
+     848:	c4 c1 78 5d c4       	vminps %xmm12,%xmm0,%xmm0
+     84d:	c5 f9 5b c0          	vcvtps2dq %xmm0,%xmm0
+     851:	c4 c1 58 5d e4       	vminps %xmm12,%xmm4,%xmm4
+     856:	c5 f9 5b e4          	vcvtps2dq %xmm4,%xmm4
+     85a:	62 f2 7e 08 21 c0    	vpmovsdb %xmm0,%xmm0
+     860:	c4 a1 7a 11 44 0a 70 	vmovss %xmm0,0x70(%rdx,%r9,1)
+     867:	62 f2 7e 08 21 e4    	vpmovsdb %xmm4,%xmm4
+     86d:	c4 a1 7a 11 64 0a 74 	vmovss %xmm4,0x74(%rdx,%r9,1)
+     874:	c4 a3 79 22 44 06 78 	vpinsrd $0x0,0x78(%rsi,%r8,1),%xmm0,%xmm0
+     87b:	00 
+     87c:	c4 a3 79 22 84 06 78 	vpinsrd $0x1,0x5078(%rsi,%r8,1),%xmm0,%xmm0
+     883:	50 00 00 01 
+     887:	c4 a3 79 22 84 06 78 	vpinsrd $0x2,0xa078(%rsi,%r8,1),%xmm0,%xmm0
+     88e:	a0 00 00 02 
+     892:	c4 a3 79 22 84 06 78 	vpinsrd $0x3,0xf078(%rsi,%r8,1),%xmm0,%xmm0
+     899:	f0 00 00 03 
+     89d:	c4 a3 59 22 64 06 7c 	vpinsrd $0x0,0x7c(%rsi,%r8,1),%xmm4,%xmm4
+     8a4:	00 
+     8a5:	c4 a3 59 22 a4 06 7c 	vpinsrd $0x1,0x507c(%rsi,%r8,1),%xmm4,%xmm4
+     8ac:	50 00 00 01 
+     8b0:	c4 a3 59 22 a4 06 7c 	vpinsrd $0x2,0xa07c(%rsi,%r8,1),%xmm4,%xmm4
+     8b7:	a0 00 00 02 
+     8bb:	c4 a3 59 22 a4 06 7c 	vpinsrd $0x3,0xf07c(%rsi,%r8,1),%xmm4,%xmm4
+     8c2:	f0 00 00 03 
+     8c6:	b8 00 00 fe 42       	mov    $0x42fe0000,%eax
+     8cb:	c4 61 f9 6e e0       	vmovq  %rax,%xmm12
+     8d0:	c4 41 18 c6 e4 00    	vshufps $0x0,%xmm12,%xmm12,%xmm12
+     8d6:	c4 c1 78 5d c4       	vminps %xmm12,%xmm0,%xmm0
+     8db:	c5 f9 5b c0          	vcvtps2dq %xmm0,%xmm0
+     8df:	c4 c1 58 5d e4       	vminps %xmm12,%xmm4,%xmm4
+     8e4:	c5 f9 5b e4          	vcvtps2dq %xmm4,%xmm4
+     8e8:	62 f2 7e 08 21 c0    	vpmovsdb %xmm0,%xmm0
+     8ee:	c4 a1 7a 11 44 0a 78 	vmovss %xmm0,0x78(%rdx,%r9,1)
+     8f5:	62 f2 7e 08 21 e4    	vpmovsdb %xmm4,%xmm4
+     8fb:	c4 a1 7a 11 64 0a 7c 	vmovss %xmm4,0x7c(%rdx,%r9,1)
+     902:	c4 a3 79 22 84 06 80 	vpinsrd $0x0,0x80(%rsi,%r8,1),%xmm0,%xmm0
+     909:	00 00 00 00 
+     90d:	c4 a3 79 22 84 06 80 	vpinsrd $0x1,0x5080(%rsi,%r8,1),%xmm0,%xmm0
+     914:	50 00 00 01 
+     918:	c4 a3 79 22 84 06 80 	vpinsrd $0x2,0xa080(%rsi,%r8,1),%xmm0,%xmm0
+     91f:	a0 00 00 02 
+     923:	c4 a3 79 22 84 06 80 	vpinsrd $0x3,0xf080(%rsi,%r8,1),%xmm0,%xmm0
+     92a:	f0 00 00 03 
+     92e:	c4 a3 59 22 a4 06 84 	vpinsrd $0x0,0x84(%rsi,%r8,1),%xmm4,%xmm4
+     935:	00 00 00 00 
+     939:	c4 a3 59 22 a4 06 84 	vpinsrd $0x1,0x5084(%rsi,%r8,1),%xmm4,%xmm4
+     940:	50 00 00 01 
+     944:	c4 a3 59 22 a4 06 84 	vpinsrd $0x2,0xa084(%rsi,%r8,1),%xmm4,%xmm4
+     94b:	a0 00 00 02 
+     94f:	c4 a3 59 22 a4 06 84 	vpinsrd $0x3,0xf084(%rsi,%r8,1),%xmm4,%xmm4
+     956:	f0 00 00 03 
+     95a:	b8 00 00 fe 42       	mov    $0x42fe0000,%eax
+     95f:	c4 61 f9 6e e0       	vmovq  %rax,%xmm12
+     964:	c4 41 18 c6 e4 00    	vshufps $0x0,%xmm12,%xmm12,%xmm12
+     96a:	c4 c1 78 5d c4       	vminps %xmm12,%xmm0,%xmm0
+     96f:	c5 f9 5b c0          	vcvtps2dq %xmm0,%xmm0
+     973:	c4 c1 58 5d e4       	vminps %xmm12,%xmm4,%xmm4
+     978:	c5 f9 5b e4          	vcvtps2dq %xmm4,%xmm4
+     97c:	62 f2 7e 08 21 c0    	vpmovsdb %xmm0,%xmm0
+     982:	c4 a1 7a 11 84 0a 80 	vmovss %xmm0,0x80(%rdx,%r9,1)
+     989:	00 00 00 
+     98c:	62 f2 7e 08 21 e4    	vpmovsdb %xmm4,%xmm4
+     992:	c4 a1 7a 11 a4 0a 84 	vmovss %xmm4,0x84(%rdx,%r9,1)
+     999:	00 00 00 
+     99c:	c4 a3 79 22 84 06 88 	vpinsrd $0x0,0x88(%rsi,%r8,1),%xmm0,%xmm0
+     9a3:	00 00 00 00 
+     9a7:	c4 a3 79 22 84 06 88 	vpinsrd $0x1,0x5088(%rsi,%r8,1),%xmm0,%xmm0
+     9ae:	50 00 00 01 
+     9b2:	c4 a3 79 22 84 06 88 	vpinsrd $0x2,0xa088(%rsi,%r8,1),%xmm0,%xmm0
+     9b9:	a0 00 00 02 
+     9bd:	c4 a3 79 22 84 06 88 	vpinsrd $0x3,0xf088(%rsi,%r8,1),%xmm0,%xmm0
+     9c4:	f0 00 00 03 
+     9c8:	c4 a3 59 22 a4 06 8c 	vpinsrd $0x0,0x8c(%rsi,%r8,1),%xmm4,%xmm4
+     9cf:	00 00 00 00 
+     9d3:	c4 a3 59 22 a4 06 8c 	vpinsrd $0x1,0x508c(%rsi,%r8,1),%xmm4,%xmm4
+     9da:	50 00 00 01 
+     9de:	c4 a3 59 22 a4 06 8c 	vpinsrd $0x2,0xa08c(%rsi,%r8,1),%xmm4,%xmm4
+     9e5:	a0 00 00 02 
+     9e9:	c4 a3 59 22 a4 06 8c 	vpinsrd $0x3,0xf08c(%rsi,%r8,1),%xmm4,%xmm4
+     9f0:	f0 00 00 03 
+     9f4:	b8 00 00 fe 42       	mov    $0x42fe0000,%eax
+     9f9:	c4 61 f9 6e e0       	vmovq  %rax,%xmm12
+     9fe:	c4 41 18 c6 e4 00    	vshufps $0x0,%xmm12,%xmm12,%xmm12
+     a04:	c4 c1 78 5d c4       	vminps %xmm12,%xmm0,%xmm0
+     a09:	c5 f9 5b c0          	vcvtps2dq %xmm0,%xmm0
+     a0d:	c4 c1 58 5d e4       	vminps %xmm12,%xmm4,%xmm4
+     a12:	c5 f9 5b e4          	vcvtps2dq %xmm4,%xmm4
+     a16:	62 f2 7e 08 21 c0    	vpmovsdb %xmm0,%xmm0
+     a1c:	c4 a1 7a 11 84 0a 88 	vmovss %xmm0,0x88(%rdx,%r9,1)
+     a23:	00 00 00 
+     a26:	62 f2 7e 08 21 e4    	vpmovsdb %xmm4,%xmm4
+     a2c:	c4 a1 7a 11 a4 0a 8c 	vmovss %xmm4,0x8c(%rdx,%r9,1)
+     a33:	00 00 00 
+     a36:	c4 a3 79 22 84 06 90 	vpinsrd $0x0,0x90(%rsi,%r8,1),%xmm0,%xmm0
+     a3d:	00 00 00 00 
+     a41:	c4 a3 79 22 84 06 90 	vpinsrd $0x1,0x5090(%rsi,%r8,1),%xmm0,%xmm0
+     a48:	50 00 00 01 
+     a4c:	c4 a3 79 22 84 06 90 	vpinsrd $0x2,0xa090(%rsi,%r8,1),%xmm0,%xmm0
+     a53:	a0 00 00 02 
+     a57:	c4 a3 79 22 84 06 90 	vpinsrd $0x3,0xf090(%rsi,%r8,1),%xmm0,%xmm0
+     a5e:	f0 00 00 03 
+     a62:	c4 a3 59 22 a4 06 94 	vpinsrd $0x0,0x94(%rsi,%r8,1),%xmm4,%xmm4
+     a69:	00 00 00 00 
+     a6d:	c4 a3 59 22 a4 06 94 	vpinsrd $0x1,0x5094(%rsi,%r8,1),%xmm4,%xmm4
+     a74:	50 00 00 01 
+     a78:	c4 a3 59 22 a4 06 94 	vpinsrd $0x2,0xa094(%rsi,%r8,1),%xmm4,%xmm4
+     a7f:	a0 00 00 02 
+     a83:	c4 a3 59 22 a4 06 94 	vpinsrd $0x3,0xf094(%rsi,%r8,1),%xmm4,%xmm4
+     a8a:	f0 00 00 03 
+     a8e:	b8 00 00 fe 42       	mov    $0x42fe0000,%eax
+     a93:	c4 61 f9 6e e0       	vmovq  %rax,%xmm12
+     a98:	c4 41 18 c6 e4 00    	vshufps $0x0,%xmm12,%xmm12,%xmm12
+     a9e:	c4 c1 78 5d c4       	vminps %xmm12,%xmm0,%xmm0
+     aa3:	c5 f9 5b c0          	vcvtps2dq %xmm0,%xmm0
+     aa7:	c4 c1 58 5d e4       	vminps %xmm12,%xmm4,%xmm4
+     aac:	c5 f9 5b e4          	vcvtps2dq %xmm4,%xmm4
+     ab0:	62 f2 7e 08 21 c0    	vpmovsdb %xmm0,%xmm0
+     ab6:	c4 a1 7a 11 84 0a 90 	vmovss %xmm0,0x90(%rdx,%r9,1)
+     abd:	00 00 00 
+     ac0:	62 f2 7e 08 21 e4    	vpmovsdb %xmm4,%xmm4
+     ac6:	c4 a1 7a 11 a4 0a 94 	vmovss %xmm4,0x94(%rdx,%r9,1)
+     acd:	00 00 00 
+     ad0:	c4 a3 79 22 84 06 98 	vpinsrd $0x0,0x98(%rsi,%r8,1),%xmm0,%xmm0
+     ad7:	00 00 00 00 
+     adb:	c4 a3 79 22 84 06 98 	vpinsrd $0x1,0x5098(%rsi,%r8,1),%xmm0,%xmm0
+     ae2:	50 00 00 01 
+     ae6:	c4 a3 79 22 84 06 98 	vpinsrd $0x2,0xa098(%rsi,%r8,1),%xmm0,%xmm0
+     aed:	a0 00 00 02 
+     af1:	c4 a3 79 22 84 06 98 	vpinsrd $0x3,0xf098(%rsi,%r8,1),%xmm0,%xmm0
+     af8:	f0 00 00 03 
+     afc:	c4 a3 59 22 a4 06 9c 	vpinsrd $0x0,0x9c(%rsi,%r8,1),%xmm4,%xmm4
+     b03:	00 00 00 00 
+     b07:	c4 a3 59 22 a4 06 9c 	vpinsrd $0x1,0x509c(%rsi,%r8,1),%xmm4,%xmm4
+     b0e:	50 00 00 01 
+     b12:	c4 a3 59 22 a4 06 9c 	vpinsrd $0x2,0xa09c(%rsi,%r8,1),%xmm4,%xmm4
+     b19:	a0 00 00 02 
+     b1d:	c4 a3 59 22 a4 06 9c 	vpinsrd $0x3,0xf09c(%rsi,%r8,1),%xmm4,%xmm4
+     b24:	f0 00 00 03 
+     b28:	b8 00 00 fe 42       	mov    $0x42fe0000,%eax
+     b2d:	c4 61 f9 6e e0       	vmovq  %rax,%xmm12
+     b32:	c4 41 18 c6 e4 00    	vshufps $0x0,%xmm12,%xmm12,%xmm12
+     b38:	c4 c1 78 5d c4       	vminps %xmm12,%xmm0,%xmm0
+     b3d:	c5 f9 5b c0          	vcvtps2dq %xmm0,%xmm0
+     b41:	c4 c1 58 5d e4       	vminps %xmm12,%xmm4,%xmm4
+     b46:	c5 f9 5b e4          	vcvtps2dq %xmm4,%xmm4
+     b4a:	62 f2 7e 08 21 c0    	vpmovsdb %xmm0,%xmm0
+     b50:	c4 a1 7a 11 84 0a 98 	vmovss %xmm0,0x98(%rdx,%r9,1)
+     b57:	00 00 00 
+     b5a:	62 f2 7e 08 21 e4    	vpmovsdb %xmm4,%xmm4
+     b60:	c4 a1 7a 11 a4 0a 9c 	vmovss %xmm4,0x9c(%rdx,%r9,1)
+     b67:	00 00 00 
+     b6a:	c4 a3 79 22 84 06 a0 	vpinsrd $0x0,0xa0(%rsi,%r8,1),%xmm0,%xmm0
+     b71:	00 00 00 00 
+     b75:	c4 a3 79 22 84 06 a0 	vpinsrd $0x1,0x50a0(%rsi,%r8,1),%xmm0,%xmm0
+     b7c:	50 00 00 01 
+     b80:	c4 a3 79 22 84 06 a0 	vpinsrd $0x2,0xa0a0(%rsi,%r8,1),%xmm0,%xmm0
+     b87:	a0 00 00 02 
+     b8b:	c4 a3 79 22 84 06 a0 	vpinsrd $0x3,0xf0a0(%rsi,%r8,1),%xmm0,%xmm0
+     b92:	f0 00 00 03 
+     b96:	c4 a3 59 22 a4 06 a4 	vpinsrd $0x0,0xa4(%rsi,%r8,1),%xmm4,%xmm4
+     b9d:	00 00 00 00 
+     ba1:	c4 a3 59 22 a4 06 a4 	vpinsrd $0x1,0x50a4(%rsi,%r8,1),%xmm4,%xmm4
+     ba8:	50 00 00 01 
+     bac:	c4 a3 59 22 a4 06 a4 	vpinsrd $0x2,0xa0a4(%rsi,%r8,1),%xmm4,%xmm4
+     bb3:	a0 00 00 02 
+     bb7:	c4 a3 59 22 a4 06 a4 	vpinsrd $0x3,0xf0a4(%rsi,%r8,1),%xmm4,%xmm4
+     bbe:	f0 00 00 03 
+     bc2:	b8 00 00 fe 42       	mov    $0x42fe0000,%eax
+     bc7:	c4 61 f9 6e e0       	vmovq  %rax,%xmm12
+     bcc:	c4 41 18 c6 e4 00    	vshufps $0x0,%xmm12,%xmm12,%xmm12
+     bd2:	c4 c1 78 5d c4       	vminps %xmm12,%xmm0,%xmm0
+     bd7:	c5 f9 5b c0          	vcvtps2dq %xmm0,%xmm0
+     bdb:	c4 c1 58 5d e4       	vminps %xmm12,%xmm4,%xmm4
+     be0:	c5 f9 5b e4          	vcvtps2dq %xmm4,%xmm4
+     be4:	62 f2 7e 08 21 c0    	vpmovsdb %xmm0,%xmm0
+     bea:	c4 a1 7a 11 84 0a a0 	vmovss %xmm0,0xa0(%rdx,%r9,1)
+     bf1:	00 00 00 
+     bf4:	62 f2 7e 08 21 e4    	vpmovsdb %xmm4,%xmm4
+     bfa:	c4 a1 7a 11 a4 0a a4 	vmovss %xmm4,0xa4(%rdx,%r9,1)
+     c01:	00 00 00 
+     c04:	c4 a3 79 22 84 06 a8 	vpinsrd $0x0,0xa8(%rsi,%r8,1),%xmm0,%xmm0
+     c0b:	00 00 00 00 
+     c0f:	c4 a3 79 22 84 06 a8 	vpinsrd $0x1,0x50a8(%rsi,%r8,1),%xmm0,%xmm0
+     c16:	50 00 00 01 
+     c1a:	c4 a3 79 22 84 06 a8 	vpinsrd $0x2,0xa0a8(%rsi,%r8,1),%xmm0,%xmm0
+     c21:	a0 00 00 02 
+     c25:	c4 a3 79 22 84 06 a8 	vpinsrd $0x3,0xf0a8(%rsi,%r8,1),%xmm0,%xmm0
+     c2c:	f0 00 00 03 
+     c30:	c4 a3 59 22 a4 06 ac 	vpinsrd $0x0,0xac(%rsi,%r8,1),%xmm4,%xmm4
+     c37:	00 00 00 00 
+     c3b:	c4 a3 59 22 a4 06 ac 	vpinsrd $0x1,0x50ac(%rsi,%r8,1),%xmm4,%xmm4
+     c42:	50 00 00 01 
+     c46:	c4 a3 59 22 a4 06 ac 	vpinsrd $0x2,0xa0ac(%rsi,%r8,1),%xmm4,%xmm4
+     c4d:	a0 00 00 02 
+     c51:	c4 a3 59 22 a4 06 ac 	vpinsrd $0x3,0xf0ac(%rsi,%r8,1),%xmm4,%xmm4
+     c58:	f0 00 00 03 
+     c5c:	b8 00 00 fe 42       	mov    $0x42fe0000,%eax
+     c61:	c4 61 f9 6e e0       	vmovq  %rax,%xmm12
+     c66:	c4 41 18 c6 e4 00    	vshufps $0x0,%xmm12,%xmm12,%xmm12
+     c6c:	c4 c1 78 5d c4       	vminps %xmm12,%xmm0,%xmm0
+     c71:	c5 f9 5b c0          	vcvtps2dq %xmm0,%xmm0
+     c75:	c4 c1 58 5d e4       	vminps %xmm12,%xmm4,%xmm4
+     c7a:	c5 f9 5b e4          	vcvtps2dq %xmm4,%xmm4
+     c7e:	62 f2 7e 08 21 c0    	vpmovsdb %xmm0,%xmm0
+     c84:	c4 a1 7a 11 84 0a a8 	vmovss %xmm0,0xa8(%rdx,%r9,1)
+     c8b:	00 00 00 
+     c8e:	62 f2 7e 08 21 e4    	vpmovsdb %xmm4,%xmm4
+     c94:	c4 a1 7a 11 a4 0a ac 	vmovss %xmm4,0xac(%rdx,%r9,1)
+     c9b:	00 00 00 
+     c9e:	c4 a3 79 22 84 06 b0 	vpinsrd $0x0,0xb0(%rsi,%r8,1),%xmm0,%xmm0
+     ca5:	00 00 00 00 
+     ca9:	c4 a3 79 22 84 06 b0 	vpinsrd $0x1,0x50b0(%rsi,%r8,1),%xmm0,%xmm0
+     cb0:	50 00 00 01 
+     cb4:	c4 a3 79 22 84 06 b0 	vpinsrd $0x2,0xa0b0(%rsi,%r8,1),%xmm0,%xmm0
+     cbb:	a0 00 00 02 
+     cbf:	c4 a3 79 22 84 06 b0 	vpinsrd $0x3,0xf0b0(%rsi,%r8,1),%xmm0,%xmm0
+     cc6:	f0 00 00 03 
+     cca:	c4 a3 59 22 a4 06 b4 	vpinsrd $0x0,0xb4(%rsi,%r8,1),%xmm4,%xmm4
+     cd1:	00 00 00 00 
+     cd5:	c4 a3 59 22 a4 06 b4 	vpinsrd $0x1,0x50b4(%rsi,%r8,1),%xmm4,%xmm4
+     cdc:	50 00 00 01 
+     ce0:	c4 a3 59 22 a4 06 b4 	vpinsrd $0x2,0xa0b4(%rsi,%r8,1),%xmm4,%xmm4
+     ce7:	a0 00 00 02 
+     ceb:	c4 a3 59 22 a4 06 b4 	vpinsrd $0x3,0xf0b4(%rsi,%r8,1),%xmm4,%xmm4
+     cf2:	f0 00 00 03 
+     cf6:	b8 00 00 fe 42       	mov    $0x42fe0000,%eax
+     cfb:	c4 61 f9 6e e0       	vmovq  %rax,%xmm12
+     d00:	c4 41 18 c6 e4 00    	vshufps $0x0,%xmm12,%xmm12,%xmm12
+     d06:	c4 c1 78 5d c4       	vminps %xmm12,%xmm0,%xmm0
+     d0b:	c5 f9 5b c0          	vcvtps2dq %xmm0,%xmm0
+     d0f:	c4 c1 58 5d e4       	vminps %xmm12,%xmm4,%xmm4
+     d14:	c5 f9 5b e4          	vcvtps2dq %xmm4,%xmm4
+     d18:	62 f2 7e 08 21 c0    	vpmovsdb %xmm0,%xmm0
+     d1e:	c4 a1 7a 11 84 0a b0 	vmovss %xmm0,0xb0(%rdx,%r9,1)
+     d25:	00 00 00 
+     d28:	62 f2 7e 08 21 e4    	vpmovsdb %xmm4,%xmm4
+     d2e:	c4 a1 7a 11 a4 0a b4 	vmovss %xmm4,0xb4(%rdx,%r9,1)
+     d35:	00 00 00 
+     d38:	c4 a3 79 22 84 06 b8 	vpinsrd $0x0,0xb8(%rsi,%r8,1),%xmm0,%xmm0
+     d3f:	00 00 00 00 
+     d43:	c4 a3 79 22 84 06 b8 	vpinsrd $0x1,0x50b8(%rsi,%r8,1),%xmm0,%xmm0
+     d4a:	50 00 00 01 
+     d4e:	c4 a3 79 22 84 06 b8 	vpinsrd $0x2,0xa0b8(%rsi,%r8,1),%xmm0,%xmm0
+     d55:	a0 00 00 02 
+     d59:	c4 a3 79 22 84 06 b8 	vpinsrd $0x3,0xf0b8(%rsi,%r8,1),%xmm0,%xmm0
+     d60:	f0 00 00 03 
+     d64:	c4 a3 59 22 a4 06 bc 	vpinsrd $0x0,0xbc(%rsi,%r8,1),%xmm4,%xmm4
+     d6b:	00 00 00 00 
+     d6f:	c4 a3 59 22 a4 06 bc 	vpinsrd $0x1,0x50bc(%rsi,%r8,1),%xmm4,%xmm4
+     d76:	50 00 00 01 
+     d7a:	c4 a3 59 22 a4 06 bc 	vpinsrd $0x2,0xa0bc(%rsi,%r8,1),%xmm4,%xmm4
+     d81:	a0 00 00 02 
+     d85:	c4 a3 59 22 a4 06 bc 	vpinsrd $0x3,0xf0bc(%rsi,%r8,1),%xmm4,%xmm4
+     d8c:	f0 00 00 03 
+     d90:	b8 00 00 fe 42       	mov    $0x42fe0000,%eax
+     d95:	c4 61 f9 6e e0       	vmovq  %rax,%xmm12
+     d9a:	c4 41 18 c6 e4 00    	vshufps $0x0,%xmm12,%xmm12,%xmm12
+     da0:	c4 c1 78 5d c4       	vminps %xmm12,%xmm0,%xmm0
+     da5:	c5 f9 5b c0          	vcvtps2dq %xmm0,%xmm0
+     da9:	c4 c1 58 5d e4       	vminps %xmm12,%xmm4,%xmm4
+     dae:	c5 f9 5b e4          	vcvtps2dq %xmm4,%xmm4
+     db2:	62 f2 7e 08 21 c0    	vpmovsdb %xmm0,%xmm0
+     db8:	c4 a1 7a 11 84 0a b8 	vmovss %xmm0,0xb8(%rdx,%r9,1)
+     dbf:	00 00 00 
+     dc2:	62 f2 7e 08 21 e4    	vpmovsdb %xmm4,%xmm4
+     dc8:	c4 a1 7a 11 a4 0a bc 	vmovss %xmm4,0xbc(%rdx,%r9,1)
+     dcf:	00 00 00 
+     dd2:	c4 a3 79 22 84 06 c0 	vpinsrd $0x0,0xc0(%rsi,%r8,1),%xmm0,%xmm0
+     dd9:	00 00 00 00 
+     ddd:	c4 a3 79 22 84 06 c0 	vpinsrd $0x1,0x50c0(%rsi,%r8,1),%xmm0,%xmm0
+     de4:	50 00 00 01 
+     de8:	c4 a3 79 22 84 06 c0 	vpinsrd $0x2,0xa0c0(%rsi,%r8,1),%xmm0,%xmm0
+     def:	a0 00 00 02 
+     df3:	c4 a3 79 22 84 06 c0 	vpinsrd $0x3,0xf0c0(%rsi,%r8,1),%xmm0,%xmm0
+     dfa:	f0 00 00 03 
+     dfe:	c4 a3 59 22 a4 06 c4 	vpinsrd $0x0,0xc4(%rsi,%r8,1),%xmm4,%xmm4
+     e05:	00 00 00 00 
+     e09:	c4 a3 59 22 a4 06 c4 	vpinsrd $0x1,0x50c4(%rsi,%r8,1),%xmm4,%xmm4
+     e10:	50 00 00 01 
+     e14:	c4 a3 59 22 a4 06 c4 	vpinsrd $0x2,0xa0c4(%rsi,%r8,1),%xmm4,%xmm4
+     e1b:	a0 00 00 02 
+     e1f:	c4 a3 59 22 a4 06 c4 	vpinsrd $0x3,0xf0c4(%rsi,%r8,1),%xmm4,%xmm4
+     e26:	f0 00 00 03 
+     e2a:	b8 00 00 fe 42       	mov    $0x42fe0000,%eax
+     e2f:	c4 61 f9 6e e0       	vmovq  %rax,%xmm12
+     e34:	c4 41 18 c6 e4 00    	vshufps $0x0,%xmm12,%xmm12,%xmm12
+     e3a:	c4 c1 78 5d c4       	vminps %xmm12,%xmm0,%xmm0
+     e3f:	c5 f9 5b c0          	vcvtps2dq %xmm0,%xmm0
+     e43:	c4 c1 58 5d e4       	vminps %xmm12,%xmm4,%xmm4
+     e48:	c5 f9 5b e4          	vcvtps2dq %xmm4,%xmm4
+     e4c:	62 f2 7e 08 21 c0    	vpmovsdb %xmm0,%xmm0
+     e52:	c4 a1 7a 11 84 0a c0 	vmovss %xmm0,0xc0(%rdx,%r9,1)
+     e59:	00 00 00 
+     e5c:	62 f2 7e 08 21 e4    	vpmovsdb %xmm4,%xmm4
+     e62:	c4 a1 7a 11 a4 0a c4 	vmovss %xmm4,0xc4(%rdx,%r9,1)
+     e69:	00 00 00 
+     e6c:	c4 a3 79 22 84 06 c8 	vpinsrd $0x0,0xc8(%rsi,%r8,1),%xmm0,%xmm0
+     e73:	00 00 00 00 
+     e77:	c4 a3 79 22 84 06 c8 	vpinsrd $0x1,0x50c8(%rsi,%r8,1),%xmm0,%xmm0
+     e7e:	50 00 00 01 
+     e82:	c4 a3 79 22 84 06 c8 	vpinsrd $0x2,0xa0c8(%rsi,%r8,1),%xmm0,%xmm0
+     e89:	a0 00 00 02 
+     e8d:	c4 a3 79 22 84 06 c8 	vpinsrd $0x3,0xf0c8(%rsi,%r8,1),%xmm0,%xmm0
+     e94:	f0 00 00 03 
+     e98:	c4 a3 59 22 a4 06 cc 	vpinsrd $0x0,0xcc(%rsi,%r8,1),%xmm4,%xmm4
+     e9f:	00 00 00 00 
+     ea3:	c4 a3 59 22 a4 06 cc 	vpinsrd $0x1,0x50cc(%rsi,%r8,1),%xmm4,%xmm4
+     eaa:	50 00 00 01 
+     eae:	c4 a3 59 22 a4 06 cc 	vpinsrd $0x2,0xa0cc(%rsi,%r8,1),%xmm4,%xmm4
+     eb5:	a0 00 00 02 
+     eb9:	c4 a3 59 22 a4 06 cc 	vpinsrd $0x3,0xf0cc(%rsi,%r8,1),%xmm4,%xmm4
+     ec0:	f0 00 00 03 
+     ec4:	b8 00 00 fe 42       	mov    $0x42fe0000,%eax
+     ec9:	c4 61 f9 6e e0       	vmovq  %rax,%xmm12
+     ece:	c4 41 18 c6 e4 00    	vshufps $0x0,%xmm12,%xmm12,%xmm12
+     ed4:	c4 c1 78 5d c4       	vminps %xmm12,%xmm0,%xmm0
+     ed9:	c5 f9 5b c0          	vcvtps2dq %xmm0,%xmm0
+     edd:	c4 c1 58 5d e4       	vminps %xmm12,%xmm4,%xmm4
+     ee2:	c5 f9 5b e4          	vcvtps2dq %xmm4,%xmm4
+     ee6:	62 f2 7e 08 21 c0    	vpmovsdb %xmm0,%xmm0
+     eec:	c4 a1 7a 11 84 0a c8 	vmovss %xmm0,0xc8(%rdx,%r9,1)
+     ef3:	00 00 00 
+     ef6:	62 f2 7e 08 21 e4    	vpmovsdb %xmm4,%xmm4
+     efc:	c4 a1 7a 11 a4 0a cc 	vmovss %xmm4,0xcc(%rdx,%r9,1)
+     f03:	00 00 00 
+     f06:	c4 a3 79 22 84 06 d0 	vpinsrd $0x0,0xd0(%rsi,%r8,1),%xmm0,%xmm0
+     f0d:	00 00 00 00 
+     f11:	c4 a3 79 22 84 06 d0 	vpinsrd $0x1,0x50d0(%rsi,%r8,1),%xmm0,%xmm0
+     f18:	50 00 00 01 
+     f1c:	c4 a3 79 22 84 06 d0 	vpinsrd $0x2,0xa0d0(%rsi,%r8,1),%xmm0,%xmm0
+     f23:	a0 00 00 02 
+     f27:	c4 a3 79 22 84 06 d0 	vpinsrd $0x3,0xf0d0(%rsi,%r8,1),%xmm0,%xmm0
+     f2e:	f0 00 00 03 
+     f32:	c4 a3 59 22 a4 06 d4 	vpinsrd $0x0,0xd4(%rsi,%r8,1),%xmm4,%xmm4
+     f39:	00 00 00 00 
+     f3d:	c4 a3 59 22 a4 06 d4 	vpinsrd $0x1,0x50d4(%rsi,%r8,1),%xmm4,%xmm4
+     f44:	50 00 00 01 
+     f48:	c4 a3 59 22 a4 06 d4 	vpinsrd $0x2,0xa0d4(%rsi,%r8,1),%xmm4,%xmm4
+     f4f:	a0 00 00 02 
+     f53:	c4 a3 59 22 a4 06 d4 	vpinsrd $0x3,0xf0d4(%rsi,%r8,1),%xmm4,%xmm4
+     f5a:	f0 00 00 03 
+     f5e:	b8 00 00 fe 42       	mov    $0x42fe0000,%eax
+     f63:	c4 61 f9 6e e0       	vmovq  %rax,%xmm12
+     f68:	c4 41 18 c6 e4 00    	vshufps $0x0,%xmm12,%xmm12,%xmm12
+     f6e:	c4 c1 78 5d c4       	vminps %xmm12,%xmm0,%xmm0
+     f73:	c5 f9 5b c0          	vcvtps2dq %xmm0,%xmm0
+     f77:	c4 c1 58 5d e4       	vminps %xmm12,%xmm4,%xmm4
+     f7c:	c5 f9 5b e4          	vcvtps2dq %xmm4,%xmm4
+     f80:	62 f2 7e 08 21 c0    	vpmovsdb %xmm0,%xmm0
+     f86:	c4 a1 7a 11 84 0a d0 	vmovss %xmm0,0xd0(%rdx,%r9,1)
+     f8d:	00 00 00 
+     f90:	62 f2 7e 08 21 e4    	vpmovsdb %xmm4,%xmm4
+     f96:	c4 a1 7a 11 a4 0a d4 	vmovss %xmm4,0xd4(%rdx,%r9,1)
+     f9d:	00 00 00 
+     fa0:	c4 a3 79 22 84 06 d8 	vpinsrd $0x0,0xd8(%rsi,%r8,1),%xmm0,%xmm0
+     fa7:	00 00 00 00 
+     fab:	c4 a3 79 22 84 06 d8 	vpinsrd $0x1,0x50d8(%rsi,%r8,1),%xmm0,%xmm0
+     fb2:	50 00 00 01 
+     fb6:	c4 a3 79 22 84 06 d8 	vpinsrd $0x2,0xa0d8(%rsi,%r8,1),%xmm0,%xmm0
+     fbd:	a0 00 00 02 
+     fc1:	c4 a3 79 22 84 06 d8 	vpinsrd $0x3,0xf0d8(%rsi,%r8,1),%xmm0,%xmm0
+     fc8:	f0 00 00 03 
+     fcc:	c4 a3 59 22 a4 06 dc 	vpinsrd $0x0,0xdc(%rsi,%r8,1),%xmm4,%xmm4
+     fd3:	00 00 00 00 
+     fd7:	c4 a3 59 22 a4 06 dc 	vpinsrd $0x1,0x50dc(%rsi,%r8,1),%xmm4,%xmm4
+     fde:	50 00 00 01 
+     fe2:	c4 a3 59 22 a4 06 dc 	vpinsrd $0x2,0xa0dc(%rsi,%r8,1),%xmm4,%xmm4
+     fe9:	a0 00 00 02 
+     fed:	c4 a3 59 22 a4 06 dc 	vpinsrd $0x3,0xf0dc(%rsi,%r8,1),%xmm4,%xmm4
+     ff4:	f0 00 00 03 
+     ff8:	b8 00 00 fe 42       	mov    $0x42fe0000,%eax
+     ffd:	c4 61 f9 6e e0       	vmovq  %rax,%xmm12
+    1002:	c4 41 18 c6 e4 00    	vshufps $0x0,%xmm12,%xmm12,%xmm12
+    1008:	c4 c1 78 5d c4       	vminps %xmm12,%xmm0,%xmm0
+    100d:	c5 f9 5b c0          	vcvtps2dq %xmm0,%xmm0
+    1011:	c4 c1 58 5d e4       	vminps %xmm12,%xmm4,%xmm4
+    1016:	c5 f9 5b e4          	vcvtps2dq %xmm4,%xmm4
+    101a:	62 f2 7e 08 21 c0    	vpmovsdb %xmm0,%xmm0
+    1020:	c4 a1 7a 11 84 0a d8 	vmovss %xmm0,0xd8(%rdx,%r9,1)
+    1027:	00 00 00 
+    102a:	62 f2 7e 08 21 e4    	vpmovsdb %xmm4,%xmm4
+    1030:	c4 a1 7a 11 a4 0a dc 	vmovss %xmm4,0xdc(%rdx,%r9,1)
+    1037:	00 00 00 
+    103a:	c4 a3 79 22 84 06 e0 	vpinsrd $0x0,0xe0(%rsi,%r8,1),%xmm0,%xmm0
+    1041:	00 00 00 00 
+    1045:	c4 a3 79 22 84 06 e0 	vpinsrd $0x1,0x50e0(%rsi,%r8,1),%xmm0,%xmm0
+    104c:	50 00 00 01 
+    1050:	c4 a3 79 22 84 06 e0 	vpinsrd $0x2,0xa0e0(%rsi,%r8,1),%xmm0,%xmm0
+    1057:	a0 00 00 02 
+    105b:	c4 a3 79 22 84 06 e0 	vpinsrd $0x3,0xf0e0(%rsi,%r8,1),%xmm0,%xmm0
+    1062:	f0 00 00 03 
+    1066:	c4 a3 59 22 a4 06 e4 	vpinsrd $0x0,0xe4(%rsi,%r8,1),%xmm4,%xmm4
+    106d:	00 00 00 00 
+    1071:	c4 a3 59 22 a4 06 e4 	vpinsrd $0x1,0x50e4(%rsi,%r8,1),%xmm4,%xmm4
+    1078:	50 00 00 01 
+    107c:	c4 a3 59 22 a4 06 e4 	vpinsrd $0x2,0xa0e4(%rsi,%r8,1),%xmm4,%xmm4
+    1083:	a0 00 00 02 
+    1087:	c4 a3 59 22 a4 06 e4 	vpinsrd $0x3,0xf0e4(%rsi,%r8,1),%xmm4,%xmm4
+    108e:	f0 00 00 03 
+    1092:	b8 00 00 fe 42       	mov    $0x42fe0000,%eax
+    1097:	c4 61 f9 6e e0       	vmovq  %rax,%xmm12
+    109c:	c4 41 18 c6 e4 00    	vshufps $0x0,%xmm12,%xmm12,%xmm12
+    10a2:	c4 c1 78 5d c4       	vminps %xmm12,%xmm0,%xmm0
+    10a7:	c5 f9 5b c0          	vcvtps2dq %xmm0,%xmm0
+    10ab:	c4 c1 58 5d e4       	vminps %xmm12,%xmm4,%xmm4
+    10b0:	c5 f9 5b e4          	vcvtps2dq %xmm4,%xmm4
+    10b4:	62 f2 7e 08 21 c0    	vpmovsdb %xmm0,%xmm0
+    10ba:	c4 a1 7a 11 84 0a e0 	vmovss %xmm0,0xe0(%rdx,%r9,1)
+    10c1:	00 00 00 
+    10c4:	62 f2 7e 08 21 e4    	vpmovsdb %xmm4,%xmm4
+    10ca:	c4 a1 7a 11 a4 0a e4 	vmovss %xmm4,0xe4(%rdx,%r9,1)
+    10d1:	00 00 00 
+    10d4:	c4 a3 79 22 84 06 e8 	vpinsrd $0x0,0xe8(%rsi,%r8,1),%xmm0,%xmm0
+    10db:	00 00 00 00 
+    10df:	c4 a3 79 22 84 06 e8 	vpinsrd $0x1,0x50e8(%rsi,%r8,1),%xmm0,%xmm0
+    10e6:	50 00 00 01 
+    10ea:	c4 a3 79 22 84 06 e8 	vpinsrd $0x2,0xa0e8(%rsi,%r8,1),%xmm0,%xmm0
+    10f1:	a0 00 00 02 
+    10f5:	c4 a3 79 22 84 06 e8 	vpinsrd $0x3,0xf0e8(%rsi,%r8,1),%xmm0,%xmm0
+    10fc:	f0 00 00 03 
+    1100:	c4 a3 59 22 a4 06 ec 	vpinsrd $0x0,0xec(%rsi,%r8,1),%xmm4,%xmm4
+    1107:	00 00 00 00 
+    110b:	c4 a3 59 22 a4 06 ec 	vpinsrd $0x1,0x50ec(%rsi,%r8,1),%xmm4,%xmm4
+    1112:	50 00 00 01 
+    1116:	c4 a3 59 22 a4 06 ec 	vpinsrd $0x2,0xa0ec(%rsi,%r8,1),%xmm4,%xmm4
+    111d:	a0 00 00 02 
+    1121:	c4 a3 59 22 a4 06 ec 	vpinsrd $0x3,0xf0ec(%rsi,%r8,1),%xmm4,%xmm4
+    1128:	f0 00 00 03 
+    112c:	b8 00 00 fe 42       	mov    $0x42fe0000,%eax
+    1131:	c4 61 f9 6e e0       	vmovq  %rax,%xmm12
+    1136:	c4 41 18 c6 e4 00    	vshufps $0x0,%xmm12,%xmm12,%xmm12
+    113c:	c4 c1 78 5d c4       	vminps %xmm12,%xmm0,%xmm0
+    1141:	c5 f9 5b c0          	vcvtps2dq %xmm0,%xmm0
+    1145:	c4 c1 58 5d e4       	vminps %xmm12,%xmm4,%xmm4
+    114a:	c5 f9 5b e4          	vcvtps2dq %xmm4,%xmm4
+    114e:	62 f2 7e 08 21 c0    	vpmovsdb %xmm0,%xmm0
+    1154:	c4 a1 7a 11 84 0a e8 	vmovss %xmm0,0xe8(%rdx,%r9,1)
+    115b:	00 00 00 
+    115e:	62 f2 7e 08 21 e4    	vpmovsdb %xmm4,%xmm4
+    1164:	c4 a1 7a 11 a4 0a ec 	vmovss %xmm4,0xec(%rdx,%r9,1)
+    116b:	00 00 00 
+    116e:	c4 a3 79 22 84 06 f0 	vpinsrd $0x0,0xf0(%rsi,%r8,1),%xmm0,%xmm0
+    1175:	00 00 00 00 
+    1179:	c4 a3 79 22 84 06 f0 	vpinsrd $0x1,0x50f0(%rsi,%r8,1),%xmm0,%xmm0
+    1180:	50 00 00 01 
+    1184:	c4 a3 79 22 84 06 f0 	vpinsrd $0x2,0xa0f0(%rsi,%r8,1),%xmm0,%xmm0
+    118b:	a0 00 00 02 
+    118f:	c4 a3 79 22 84 06 f0 	vpinsrd $0x3,0xf0f0(%rsi,%r8,1),%xmm0,%xmm0
+    1196:	f0 00 00 03 
+    119a:	c4 a3 59 22 a4 06 f4 	vpinsrd $0x0,0xf4(%rsi,%r8,1),%xmm4,%xmm4
+    11a1:	00 00 00 00 
+    11a5:	c4 a3 59 22 a4 06 f4 	vpinsrd $0x1,0x50f4(%rsi,%r8,1),%xmm4,%xmm4
+    11ac:	50 00 00 01 
+    11b0:	c4 a3 59 22 a4 06 f4 	vpinsrd $0x2,0xa0f4(%rsi,%r8,1),%xmm4,%xmm4
+    11b7:	a0 00 00 02 
+    11bb:	c4 a3 59 22 a4 06 f4 	vpinsrd $0x3,0xf0f4(%rsi,%r8,1),%xmm4,%xmm4
+    11c2:	f0 00 00 03 
+    11c6:	b8 00 00 fe 42       	mov    $0x42fe0000,%eax
+    11cb:	c4 61 f9 6e e0       	vmovq  %rax,%xmm12
+    11d0:	c4 41 18 c6 e4 00    	vshufps $0x0,%xmm12,%xmm12,%xmm12
+    11d6:	c4 c1 78 5d c4       	vminps %xmm12,%xmm0,%xmm0
+    11db:	c5 f9 5b c0          	vcvtps2dq %xmm0,%xmm0
+    11df:	c4 c1 58 5d e4       	vminps %xmm12,%xmm4,%xmm4
+    11e4:	c5 f9 5b e4          	vcvtps2dq %xmm4,%xmm4
+    11e8:	62 f2 7e 08 21 c0    	vpmovsdb %xmm0,%xmm0
+    11ee:	c4 a1 7a 11 84 0a f0 	vmovss %xmm0,0xf0(%rdx,%r9,1)
+    11f5:	00 00 00 
+    11f8:	62 f2 7e 08 21 e4    	vpmovsdb %xmm4,%xmm4
+    11fe:	c4 a1 7a 11 a4 0a f4 	vmovss %xmm4,0xf4(%rdx,%r9,1)
+    1205:	00 00 00 
+    1208:	c4 a3 79 22 84 06 f8 	vpinsrd $0x0,0xf8(%rsi,%r8,1),%xmm0,%xmm0
+    120f:	00 00 00 00 
+    1213:	c4 a3 79 22 84 06 f8 	vpinsrd $0x1,0x50f8(%rsi,%r8,1),%xmm0,%xmm0
+    121a:	50 00 00 01 
+    121e:	c4 a3 79 22 84 06 f8 	vpinsrd $0x2,0xa0f8(%rsi,%r8,1),%xmm0,%xmm0
+    1225:	a0 00 00 02 
+    1229:	c4 a3 79 22 84 06 f8 	vpinsrd $0x3,0xf0f8(%rsi,%r8,1),%xmm0,%xmm0
+    1230:	f0 00 00 03 
+    1234:	c4 a3 59 22 a4 06 fc 	vpinsrd $0x0,0xfc(%rsi,%r8,1),%xmm4,%xmm4
+    123b:	00 00 00 00 
+    123f:	c4 a3 59 22 a4 06 fc 	vpinsrd $0x1,0x50fc(%rsi,%r8,1),%xmm4,%xmm4
+    1246:	50 00 00 01 
+    124a:	c4 a3 59 22 a4 06 fc 	vpinsrd $0x2,0xa0fc(%rsi,%r8,1),%xmm4,%xmm4
+    1251:	a0 00 00 02 
+    1255:	c4 a3 59 22 a4 06 fc 	vpinsrd $0x3,0xf0fc(%rsi,%r8,1),%xmm4,%xmm4
+    125c:	f0 00 00 03 
+    1260:	b8 00 00 fe 42       	mov    $0x42fe0000,%eax
+    1265:	c4 61 f9 6e e0       	vmovq  %rax,%xmm12
+    126a:	c4 41 18 c6 e4 00    	vshufps $0x0,%xmm12,%xmm12,%xmm12
+    1270:	c4 c1 78 5d c4       	vminps %xmm12,%xmm0,%xmm0
+    1275:	c5 f9 5b c0          	vcvtps2dq %xmm0,%xmm0
+    1279:	c4 c1 58 5d e4       	vminps %xmm12,%xmm4,%xmm4
+    127e:	c5 f9 5b e4          	vcvtps2dq %xmm4,%xmm4
+    1282:	62 f2 7e 08 21 c0    	vpmovsdb %xmm0,%xmm0
+    1288:	c4 a1 7a 11 84 0a f8 	vmovss %xmm0,0xf8(%rdx,%r9,1)
+    128f:	00 00 00 
+    1292:	62 f2 7e 08 21 e4    	vpmovsdb %xmm4,%xmm4
+    1298:	c4 a1 7a 11 a4 0a fc 	vmovss %xmm4,0xfc(%rdx,%r9,1)
+    129f:	00 00 00 
+    12a2:	41 5f                	pop    %r15
+    12a4:	41 5e                	pop    %r14
+    12a6:	41 5d                	pop    %r13
+    12a8:	41 5c                	pop    %r12
+    12aa:	5b                   	pop    %rbx
+    12ab:	5d                   	pop    %rbp
+    12ac:	c5 f8 77             	vzeroupper
+    12af:	c3                   	ret

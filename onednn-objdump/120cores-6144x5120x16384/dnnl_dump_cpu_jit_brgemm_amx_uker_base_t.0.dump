@@ -1,0 +1,3128 @@
+
+dnnl_dump_cpu_jit_brgemm_amx_uker_base_t.0.bin:     file format binary
+
+
+Disassembly of section .data:
+
+0000000000000000 <.data>:
+       0:	55                   	push   %rbp
+       1:	48 89 e5             	mov    %rsp,%rbp
+       4:	53                   	push   %rbx
+       5:	41 54                	push   %r12
+       7:	41 55                	push   %r13
+       9:	41 56                	push   %r14
+       b:	41 57                	push   %r15
+       d:	bd 00 04 00 00       	mov    $0x400,%ebp
+      12:	48 83 ec 30          	sub    $0x30,%rsp
+      16:	48 c7 c3 ff ff ff ff 	mov    $0xffffffffffffffff,%rbx
+      1d:	c4 e1 fb 92 d3       	kmovq  %rbx,%k2
+      22:	bb 00 00 00 00       	mov    $0x0,%ebx
+      27:	c4 e1 fb 92 db       	kmovq  %rbx,%k3
+      2c:	48 8b 5f 50          	mov    0x50(%rdi),%rbx
+      30:	4c 8b 6f 10          	mov    0x10(%rdi),%r13
+      34:	4c 8b 47 38          	mov    0x38(%rdi),%r8
+      38:	41 be 00 40 00 00    	mov    $0x4000,%r14d
+      3e:	b9 00 01 00 00       	mov    $0x100,%ecx
+      43:	4c 8b 7f 18          	mov    0x18(%rdi),%r15
+      47:	4c 8b 67 28          	mov    0x28(%rdi),%r12
+      4b:	ba 00 50 00 00       	mov    $0x5000,%edx
+      50:	c4 c2 7b 4b 04 17    	tileloadd (%r15,%rdx,1),%tmm0
+      56:	c4 c2 7b 4b 4c 17 40 	tileloadd 0x40(%r15,%rdx,1),%tmm1
+      5d:	c4 c2 7b 4b 94 17 00 	tileloadd 0x50000(%r15,%rdx,1),%tmm2
+      64:	00 05 00 
+      67:	c4 c2 7b 4b 9c 17 40 	tileloadd 0x50040(%r15,%rdx,1),%tmm3
+      6e:	00 05 00 
+      71:	4d 8b 5d 00          	mov    0x0(%r13),%r11
+      75:	4d 8b 55 08          	mov    0x8(%r13),%r10
+      79:	ba 00 50 00 00       	mov    $0x5000,%edx
+      7e:	c4 82 7b 4b 24 33    	tileloadd (%r11,%r14,1),%tmm4
+      84:	c4 c2 79 4b 34 0a    	tileloaddt1 (%r10,%rcx,1),%tmm6
+      8a:	c4 c2 79 4b 7c 0a 40 	tileloaddt1 0x40(%r10,%rcx,1),%tmm7
+      91:	41 0f 0d 0c 24       	prefetchw (%r12)
+      96:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+      9b:	c4 82 7b 4b ac 33 00 	tileloadd 0x40000(%r11,%r14,1),%tmm5
+      a2:	00 04 00 
+      a5:	41 0f 0d 8c 24 00 50 	prefetchw 0x5000(%r12)
+      ac:	00 00 
+      ae:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+      b3:	41 0f 0d 8c 24 00 a0 	prefetchw 0xa000(%r12)
+      ba:	00 00 
+      bc:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+      c1:	41 0f 0d 8c 24 00 f0 	prefetchw 0xf000(%r12)
+      c8:	00 00 
+      ca:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+      cf:	4d 8b 5d 28          	mov    0x28(%r13),%r11
+      d3:	4d 8b 55 30          	mov    0x30(%r13),%r10
+      d7:	ba 00 50 00 00       	mov    $0x5000,%edx
+      dc:	c4 82 7b 4b 24 33    	tileloadd (%r11,%r14,1),%tmm4
+      e2:	c4 c2 79 4b 34 0a    	tileloaddt1 (%r10,%rcx,1),%tmm6
+      e8:	c4 c2 79 4b 7c 0a 40 	tileloaddt1 0x40(%r10,%rcx,1),%tmm7
+      ef:	41 0f 0d 8c 24 00 40 	prefetchw 0x14000(%r12)
+      f6:	01 00 
+      f8:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+      fd:	c4 82 7b 4b ac 33 00 	tileloadd 0x40000(%r11,%r14,1),%tmm5
+     104:	00 04 00 
+     107:	41 0f 0d 8c 24 00 90 	prefetchw 0x19000(%r12)
+     10e:	01 00 
+     110:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+     115:	41 0f 0d 8c 24 00 e0 	prefetchw 0x1e000(%r12)
+     11c:	01 00 
+     11e:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+     123:	41 0f 0d 8c 24 00 30 	prefetchw 0x23000(%r12)
+     12a:	02 00 
+     12c:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+     131:	4d 8b 5d 50          	mov    0x50(%r13),%r11
+     135:	4d 8b 55 58          	mov    0x58(%r13),%r10
+     139:	ba 00 50 00 00       	mov    $0x5000,%edx
+     13e:	c4 82 7b 4b 24 33    	tileloadd (%r11,%r14,1),%tmm4
+     144:	c4 c2 79 4b 34 0a    	tileloaddt1 (%r10,%rcx,1),%tmm6
+     14a:	c4 c2 79 4b 7c 0a 40 	tileloaddt1 0x40(%r10,%rcx,1),%tmm7
+     151:	41 0f 0d 8c 24 00 80 	prefetchw 0x28000(%r12)
+     158:	02 00 
+     15a:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+     15f:	c4 82 7b 4b ac 33 00 	tileloadd 0x40000(%r11,%r14,1),%tmm5
+     166:	00 04 00 
+     169:	41 0f 0d 8c 24 00 d0 	prefetchw 0x2d000(%r12)
+     170:	02 00 
+     172:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+     177:	41 0f 0d 8c 24 00 20 	prefetchw 0x32000(%r12)
+     17e:	03 00 
+     180:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+     185:	41 0f 0d 8c 24 00 70 	prefetchw 0x37000(%r12)
+     18c:	03 00 
+     18e:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+     193:	4d 8b 5d 78          	mov    0x78(%r13),%r11
+     197:	4d 8b 95 80 00 00 00 	mov    0x80(%r13),%r10
+     19e:	ba 00 50 00 00       	mov    $0x5000,%edx
+     1a3:	c4 82 7b 4b 24 33    	tileloadd (%r11,%r14,1),%tmm4
+     1a9:	c4 c2 79 4b 34 0a    	tileloaddt1 (%r10,%rcx,1),%tmm6
+     1af:	c4 c2 79 4b 7c 0a 40 	tileloaddt1 0x40(%r10,%rcx,1),%tmm7
+     1b6:	41 0f 0d 8c 24 00 c0 	prefetchw 0x3c000(%r12)
+     1bd:	03 00 
+     1bf:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+     1c4:	c4 82 7b 4b ac 33 00 	tileloadd 0x40000(%r11,%r14,1),%tmm5
+     1cb:	00 04 00 
+     1ce:	41 0f 0d 8c 24 00 10 	prefetchw 0x41000(%r12)
+     1d5:	04 00 
+     1d7:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+     1dc:	41 0f 0d 8c 24 00 60 	prefetchw 0x46000(%r12)
+     1e3:	04 00 
+     1e5:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+     1ea:	41 0f 0d 8c 24 00 b0 	prefetchw 0x4b000(%r12)
+     1f1:	04 00 
+     1f3:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+     1f8:	4d 8b 9d a0 00 00 00 	mov    0xa0(%r13),%r11
+     1ff:	4d 8b 95 a8 00 00 00 	mov    0xa8(%r13),%r10
+     206:	ba 00 50 00 00       	mov    $0x5000,%edx
+     20b:	c4 82 7b 4b 24 33    	tileloadd (%r11,%r14,1),%tmm4
+     211:	c4 c2 79 4b 34 0a    	tileloaddt1 (%r10,%rcx,1),%tmm6
+     217:	c4 c2 79 4b 7c 0a 40 	tileloaddt1 0x40(%r10,%rcx,1),%tmm7
+     21e:	41 0f 0d 4c 24 40    	prefetchw 0x40(%r12)
+     224:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+     229:	c4 82 7b 4b ac 33 00 	tileloadd 0x40000(%r11,%r14,1),%tmm5
+     230:	00 04 00 
+     233:	41 0f 0d 8c 24 40 50 	prefetchw 0x5040(%r12)
+     23a:	00 00 
+     23c:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+     241:	41 0f 0d 8c 24 40 a0 	prefetchw 0xa040(%r12)
+     248:	00 00 
+     24a:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+     24f:	41 0f 0d 8c 24 40 f0 	prefetchw 0xf040(%r12)
+     256:	00 00 
+     258:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+     25d:	4d 8b 9d c8 00 00 00 	mov    0xc8(%r13),%r11
+     264:	4d 8b 95 d0 00 00 00 	mov    0xd0(%r13),%r10
+     26b:	ba 00 50 00 00       	mov    $0x5000,%edx
+     270:	c4 82 7b 4b 24 33    	tileloadd (%r11,%r14,1),%tmm4
+     276:	c4 c2 79 4b 34 0a    	tileloaddt1 (%r10,%rcx,1),%tmm6
+     27c:	c4 c2 79 4b 7c 0a 40 	tileloaddt1 0x40(%r10,%rcx,1),%tmm7
+     283:	41 0f 0d 8c 24 40 40 	prefetchw 0x14040(%r12)
+     28a:	01 00 
+     28c:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+     291:	c4 82 7b 4b ac 33 00 	tileloadd 0x40000(%r11,%r14,1),%tmm5
+     298:	00 04 00 
+     29b:	41 0f 0d 8c 24 40 90 	prefetchw 0x19040(%r12)
+     2a2:	01 00 
+     2a4:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+     2a9:	41 0f 0d 8c 24 40 e0 	prefetchw 0x1e040(%r12)
+     2b0:	01 00 
+     2b2:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+     2b7:	41 0f 0d 8c 24 40 30 	prefetchw 0x23040(%r12)
+     2be:	02 00 
+     2c0:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+     2c5:	4d 8b 9d f0 00 00 00 	mov    0xf0(%r13),%r11
+     2cc:	4d 8b 95 f8 00 00 00 	mov    0xf8(%r13),%r10
+     2d3:	ba 00 50 00 00       	mov    $0x5000,%edx
+     2d8:	c4 82 7b 4b 24 33    	tileloadd (%r11,%r14,1),%tmm4
+     2de:	c4 c2 79 4b 34 0a    	tileloaddt1 (%r10,%rcx,1),%tmm6
+     2e4:	c4 c2 79 4b 7c 0a 40 	tileloaddt1 0x40(%r10,%rcx,1),%tmm7
+     2eb:	41 0f 0d 8c 24 40 80 	prefetchw 0x28040(%r12)
+     2f2:	02 00 
+     2f4:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+     2f9:	c4 82 7b 4b ac 33 00 	tileloadd 0x40000(%r11,%r14,1),%tmm5
+     300:	00 04 00 
+     303:	41 0f 0d 8c 24 40 d0 	prefetchw 0x2d040(%r12)
+     30a:	02 00 
+     30c:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+     311:	41 0f 0d 8c 24 40 20 	prefetchw 0x32040(%r12)
+     318:	03 00 
+     31a:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+     31f:	41 0f 0d 8c 24 40 70 	prefetchw 0x37040(%r12)
+     326:	03 00 
+     328:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+     32d:	4d 8b 9d 18 01 00 00 	mov    0x118(%r13),%r11
+     334:	4d 8b 95 20 01 00 00 	mov    0x120(%r13),%r10
+     33b:	ba 00 50 00 00       	mov    $0x5000,%edx
+     340:	c4 82 7b 4b 24 33    	tileloadd (%r11,%r14,1),%tmm4
+     346:	c4 c2 79 4b 34 0a    	tileloaddt1 (%r10,%rcx,1),%tmm6
+     34c:	c4 c2 79 4b 7c 0a 40 	tileloaddt1 0x40(%r10,%rcx,1),%tmm7
+     353:	41 0f 0d 8c 24 40 c0 	prefetchw 0x3c040(%r12)
+     35a:	03 00 
+     35c:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+     361:	c4 82 7b 4b ac 33 00 	tileloadd 0x40000(%r11,%r14,1),%tmm5
+     368:	00 04 00 
+     36b:	41 0f 0d 8c 24 40 10 	prefetchw 0x41040(%r12)
+     372:	04 00 
+     374:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+     379:	41 0f 0d 8c 24 40 60 	prefetchw 0x46040(%r12)
+     380:	04 00 
+     382:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+     387:	41 0f 0d 8c 24 40 b0 	prefetchw 0x4b040(%r12)
+     38e:	04 00 
+     390:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+     395:	4d 8b 9d 40 01 00 00 	mov    0x140(%r13),%r11
+     39c:	4d 8b 95 48 01 00 00 	mov    0x148(%r13),%r10
+     3a3:	ba 00 50 00 00       	mov    $0x5000,%edx
+     3a8:	c4 82 7b 4b 24 33    	tileloadd (%r11,%r14,1),%tmm4
+     3ae:	c4 c2 79 4b 34 0a    	tileloaddt1 (%r10,%rcx,1),%tmm6
+     3b4:	c4 c2 79 4b 7c 0a 40 	tileloaddt1 0x40(%r10,%rcx,1),%tmm7
+     3bb:	41 0f 0d 8c 24 00 00 	prefetchw 0x50000(%r12)
+     3c2:	05 00 
+     3c4:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+     3c9:	c4 82 7b 4b ac 33 00 	tileloadd 0x40000(%r11,%r14,1),%tmm5
+     3d0:	00 04 00 
+     3d3:	41 0f 0d 8c 24 00 50 	prefetchw 0x55000(%r12)
+     3da:	05 00 
+     3dc:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+     3e1:	41 0f 0d 8c 24 00 a0 	prefetchw 0x5a000(%r12)
+     3e8:	05 00 
+     3ea:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+     3ef:	41 0f 0d 8c 24 00 f0 	prefetchw 0x5f000(%r12)
+     3f6:	05 00 
+     3f8:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+     3fd:	4d 8b 9d 68 01 00 00 	mov    0x168(%r13),%r11
+     404:	4d 8b 95 70 01 00 00 	mov    0x170(%r13),%r10
+     40b:	ba 00 50 00 00       	mov    $0x5000,%edx
+     410:	c4 82 7b 4b 24 33    	tileloadd (%r11,%r14,1),%tmm4
+     416:	c4 c2 79 4b 34 0a    	tileloaddt1 (%r10,%rcx,1),%tmm6
+     41c:	c4 c2 79 4b 7c 0a 40 	tileloaddt1 0x40(%r10,%rcx,1),%tmm7
+     423:	41 0f 0d 8c 24 00 40 	prefetchw 0x64000(%r12)
+     42a:	06 00 
+     42c:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+     431:	c4 82 7b 4b ac 33 00 	tileloadd 0x40000(%r11,%r14,1),%tmm5
+     438:	00 04 00 
+     43b:	41 0f 0d 8c 24 00 90 	prefetchw 0x69000(%r12)
+     442:	06 00 
+     444:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+     449:	41 0f 0d 8c 24 00 e0 	prefetchw 0x6e000(%r12)
+     450:	06 00 
+     452:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+     457:	41 0f 0d 8c 24 00 30 	prefetchw 0x73000(%r12)
+     45e:	07 00 
+     460:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+     465:	4d 8b 9d 90 01 00 00 	mov    0x190(%r13),%r11
+     46c:	4d 8b 95 98 01 00 00 	mov    0x198(%r13),%r10
+     473:	ba 00 50 00 00       	mov    $0x5000,%edx
+     478:	c4 82 7b 4b 24 33    	tileloadd (%r11,%r14,1),%tmm4
+     47e:	c4 c2 79 4b 34 0a    	tileloaddt1 (%r10,%rcx,1),%tmm6
+     484:	c4 c2 79 4b 7c 0a 40 	tileloaddt1 0x40(%r10,%rcx,1),%tmm7
+     48b:	41 0f 0d 8c 24 00 80 	prefetchw 0x78000(%r12)
+     492:	07 00 
+     494:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+     499:	c4 82 7b 4b ac 33 00 	tileloadd 0x40000(%r11,%r14,1),%tmm5
+     4a0:	00 04 00 
+     4a3:	41 0f 0d 8c 24 00 d0 	prefetchw 0x7d000(%r12)
+     4aa:	07 00 
+     4ac:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+     4b1:	41 0f 0d 8c 24 00 20 	prefetchw 0x82000(%r12)
+     4b8:	08 00 
+     4ba:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+     4bf:	41 0f 0d 8c 24 00 70 	prefetchw 0x87000(%r12)
+     4c6:	08 00 
+     4c8:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+     4cd:	4d 8b 9d b8 01 00 00 	mov    0x1b8(%r13),%r11
+     4d4:	4d 8b 95 c0 01 00 00 	mov    0x1c0(%r13),%r10
+     4db:	ba 00 50 00 00       	mov    $0x5000,%edx
+     4e0:	c4 82 7b 4b 24 33    	tileloadd (%r11,%r14,1),%tmm4
+     4e6:	c4 c2 79 4b 34 0a    	tileloaddt1 (%r10,%rcx,1),%tmm6
+     4ec:	c4 c2 79 4b 7c 0a 40 	tileloaddt1 0x40(%r10,%rcx,1),%tmm7
+     4f3:	41 0f 0d 8c 24 00 c0 	prefetchw 0x8c000(%r12)
+     4fa:	08 00 
+     4fc:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+     501:	c4 82 7b 4b ac 33 00 	tileloadd 0x40000(%r11,%r14,1),%tmm5
+     508:	00 04 00 
+     50b:	41 0f 0d 8c 24 00 10 	prefetchw 0x91000(%r12)
+     512:	09 00 
+     514:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+     519:	41 0f 0d 8c 24 00 60 	prefetchw 0x96000(%r12)
+     520:	09 00 
+     522:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+     527:	41 0f 0d 8c 24 00 b0 	prefetchw 0x9b000(%r12)
+     52e:	09 00 
+     530:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+     535:	4d 8b 9d e0 01 00 00 	mov    0x1e0(%r13),%r11
+     53c:	4d 8b 95 e8 01 00 00 	mov    0x1e8(%r13),%r10
+     543:	ba 00 50 00 00       	mov    $0x5000,%edx
+     548:	c4 82 7b 4b 24 33    	tileloadd (%r11,%r14,1),%tmm4
+     54e:	c4 c2 79 4b 34 0a    	tileloaddt1 (%r10,%rcx,1),%tmm6
+     554:	c4 c2 79 4b 7c 0a 40 	tileloaddt1 0x40(%r10,%rcx,1),%tmm7
+     55b:	41 0f 0d 8c 24 40 00 	prefetchw 0x50040(%r12)
+     562:	05 00 
+     564:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+     569:	c4 82 7b 4b ac 33 00 	tileloadd 0x40000(%r11,%r14,1),%tmm5
+     570:	00 04 00 
+     573:	41 0f 0d 8c 24 40 50 	prefetchw 0x55040(%r12)
+     57a:	05 00 
+     57c:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+     581:	41 0f 0d 8c 24 40 a0 	prefetchw 0x5a040(%r12)
+     588:	05 00 
+     58a:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+     58f:	41 0f 0d 8c 24 40 f0 	prefetchw 0x5f040(%r12)
+     596:	05 00 
+     598:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+     59d:	4d 8b 9c 2d 08 fe ff 	mov    -0x1f8(%r13,%rbp,1),%r11
+     5a4:	ff 
+     5a5:	4d 8b 94 2d 10 fe ff 	mov    -0x1f0(%r13,%rbp,1),%r10
+     5ac:	ff 
+     5ad:	ba 00 50 00 00       	mov    $0x5000,%edx
+     5b2:	c4 82 7b 4b 24 33    	tileloadd (%r11,%r14,1),%tmm4
+     5b8:	c4 c2 79 4b 34 0a    	tileloaddt1 (%r10,%rcx,1),%tmm6
+     5be:	c4 c2 79 4b 7c 0a 40 	tileloaddt1 0x40(%r10,%rcx,1),%tmm7
+     5c5:	41 0f 0d 8c 24 40 40 	prefetchw 0x64040(%r12)
+     5cc:	06 00 
+     5ce:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+     5d3:	c4 82 7b 4b ac 33 00 	tileloadd 0x40000(%r11,%r14,1),%tmm5
+     5da:	00 04 00 
+     5dd:	41 0f 0d 8c 24 40 90 	prefetchw 0x69040(%r12)
+     5e4:	06 00 
+     5e6:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+     5eb:	41 0f 0d 8c 24 40 e0 	prefetchw 0x6e040(%r12)
+     5f2:	06 00 
+     5f4:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+     5f9:	41 0f 0d 8c 24 40 30 	prefetchw 0x73040(%r12)
+     600:	07 00 
+     602:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+     607:	4d 8b 9c 2d 30 fe ff 	mov    -0x1d0(%r13,%rbp,1),%r11
+     60e:	ff 
+     60f:	4d 8b 94 2d 38 fe ff 	mov    -0x1c8(%r13,%rbp,1),%r10
+     616:	ff 
+     617:	ba 00 50 00 00       	mov    $0x5000,%edx
+     61c:	c4 82 7b 4b 24 33    	tileloadd (%r11,%r14,1),%tmm4
+     622:	c4 c2 79 4b 34 0a    	tileloaddt1 (%r10,%rcx,1),%tmm6
+     628:	c4 c2 79 4b 7c 0a 40 	tileloaddt1 0x40(%r10,%rcx,1),%tmm7
+     62f:	41 0f 0d 8c 24 40 80 	prefetchw 0x78040(%r12)
+     636:	07 00 
+     638:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+     63d:	c4 82 7b 4b ac 33 00 	tileloadd 0x40000(%r11,%r14,1),%tmm5
+     644:	00 04 00 
+     647:	41 0f 0d 8c 24 40 d0 	prefetchw 0x7d040(%r12)
+     64e:	07 00 
+     650:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+     655:	41 0f 0d 8c 24 40 20 	prefetchw 0x82040(%r12)
+     65c:	08 00 
+     65e:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+     663:	41 0f 0d 8c 24 40 70 	prefetchw 0x87040(%r12)
+     66a:	08 00 
+     66c:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+     671:	4d 8b 9c 2d 58 fe ff 	mov    -0x1a8(%r13,%rbp,1),%r11
+     678:	ff 
+     679:	4d 8b 94 2d 60 fe ff 	mov    -0x1a0(%r13,%rbp,1),%r10
+     680:	ff 
+     681:	ba 00 50 00 00       	mov    $0x5000,%edx
+     686:	c4 82 7b 4b 24 33    	tileloadd (%r11,%r14,1),%tmm4
+     68c:	c4 c2 79 4b 34 0a    	tileloaddt1 (%r10,%rcx,1),%tmm6
+     692:	c4 c2 79 4b 7c 0a 40 	tileloaddt1 0x40(%r10,%rcx,1),%tmm7
+     699:	41 0f 0d 8c 24 40 c0 	prefetchw 0x8c040(%r12)
+     6a0:	08 00 
+     6a2:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+     6a7:	c4 82 7b 4b ac 33 00 	tileloadd 0x40000(%r11,%r14,1),%tmm5
+     6ae:	00 04 00 
+     6b1:	41 0f 0d 8c 24 40 10 	prefetchw 0x91040(%r12)
+     6b8:	09 00 
+     6ba:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+     6bf:	41 0f 0d 8c 24 40 60 	prefetchw 0x96040(%r12)
+     6c6:	09 00 
+     6c8:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+     6cd:	41 0f 0d 8c 24 40 b0 	prefetchw 0x9b040(%r12)
+     6d4:	09 00 
+     6d6:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+     6db:	4d 8b 9c 2d 80 fe ff 	mov    -0x180(%r13,%rbp,1),%r11
+     6e2:	ff 
+     6e3:	4d 8b 94 2d 88 fe ff 	mov    -0x178(%r13,%rbp,1),%r10
+     6ea:	ff 
+     6eb:	ba 00 50 00 00       	mov    $0x5000,%edx
+     6f0:	c4 82 7b 4b 24 33    	tileloadd (%r11,%r14,1),%tmm4
+     6f6:	c4 c2 79 4b 34 0a    	tileloaddt1 (%r10,%rcx,1),%tmm6
+     6fc:	c4 c2 79 4b 7c 0a 40 	tileloaddt1 0x40(%r10,%rcx,1),%tmm7
+     703:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+     708:	c4 82 7b 4b ac 33 00 	tileloadd 0x40000(%r11,%r14,1),%tmm5
+     70f:	00 04 00 
+     712:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+     717:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+     71c:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+     721:	4d 8b 9c 2d a8 fe ff 	mov    -0x158(%r13,%rbp,1),%r11
+     728:	ff 
+     729:	4d 8b 94 2d b0 fe ff 	mov    -0x150(%r13,%rbp,1),%r10
+     730:	ff 
+     731:	ba 00 50 00 00       	mov    $0x5000,%edx
+     736:	c4 82 7b 4b 24 33    	tileloadd (%r11,%r14,1),%tmm4
+     73c:	c4 c2 79 4b 34 0a    	tileloaddt1 (%r10,%rcx,1),%tmm6
+     742:	c4 c2 79 4b 7c 0a 40 	tileloaddt1 0x40(%r10,%rcx,1),%tmm7
+     749:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+     74e:	c4 82 7b 4b ac 33 00 	tileloadd 0x40000(%r11,%r14,1),%tmm5
+     755:	00 04 00 
+     758:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+     75d:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+     762:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+     767:	4d 8b 9c 2d d0 fe ff 	mov    -0x130(%r13,%rbp,1),%r11
+     76e:	ff 
+     76f:	4d 8b 94 2d d8 fe ff 	mov    -0x128(%r13,%rbp,1),%r10
+     776:	ff 
+     777:	ba 00 50 00 00       	mov    $0x5000,%edx
+     77c:	c4 82 7b 4b 24 33    	tileloadd (%r11,%r14,1),%tmm4
+     782:	c4 c2 79 4b 34 0a    	tileloaddt1 (%r10,%rcx,1),%tmm6
+     788:	c4 c2 79 4b 7c 0a 40 	tileloaddt1 0x40(%r10,%rcx,1),%tmm7
+     78f:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+     794:	c4 82 7b 4b ac 33 00 	tileloadd 0x40000(%r11,%r14,1),%tmm5
+     79b:	00 04 00 
+     79e:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+     7a3:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+     7a8:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+     7ad:	4d 8b 9c 2d f8 fe ff 	mov    -0x108(%r13,%rbp,1),%r11
+     7b4:	ff 
+     7b5:	4d 8b 94 2d 00 ff ff 	mov    -0x100(%r13,%rbp,1),%r10
+     7bc:	ff 
+     7bd:	ba 00 50 00 00       	mov    $0x5000,%edx
+     7c2:	c4 82 7b 4b 24 33    	tileloadd (%r11,%r14,1),%tmm4
+     7c8:	c4 c2 79 4b 34 0a    	tileloaddt1 (%r10,%rcx,1),%tmm6
+     7ce:	c4 c2 79 4b 7c 0a 40 	tileloaddt1 0x40(%r10,%rcx,1),%tmm7
+     7d5:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+     7da:	c4 82 7b 4b ac 33 00 	tileloadd 0x40000(%r11,%r14,1),%tmm5
+     7e1:	00 04 00 
+     7e4:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+     7e9:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+     7ee:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+     7f3:	4d 8b 9c 2d 20 ff ff 	mov    -0xe0(%r13,%rbp,1),%r11
+     7fa:	ff 
+     7fb:	4d 8b 94 2d 28 ff ff 	mov    -0xd8(%r13,%rbp,1),%r10
+     802:	ff 
+     803:	ba 00 50 00 00       	mov    $0x5000,%edx
+     808:	c4 82 7b 4b 24 33    	tileloadd (%r11,%r14,1),%tmm4
+     80e:	c4 c2 79 4b 34 0a    	tileloaddt1 (%r10,%rcx,1),%tmm6
+     814:	c4 c2 79 4b 7c 0a 40 	tileloaddt1 0x40(%r10,%rcx,1),%tmm7
+     81b:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+     820:	c4 82 7b 4b ac 33 00 	tileloadd 0x40000(%r11,%r14,1),%tmm5
+     827:	00 04 00 
+     82a:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+     82f:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+     834:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+     839:	4d 8b 9c 2d 48 ff ff 	mov    -0xb8(%r13,%rbp,1),%r11
+     840:	ff 
+     841:	4d 8b 94 2d 50 ff ff 	mov    -0xb0(%r13,%rbp,1),%r10
+     848:	ff 
+     849:	ba 00 50 00 00       	mov    $0x5000,%edx
+     84e:	c4 82 7b 4b 24 33    	tileloadd (%r11,%r14,1),%tmm4
+     854:	c4 c2 79 4b 34 0a    	tileloaddt1 (%r10,%rcx,1),%tmm6
+     85a:	c4 c2 79 4b 7c 0a 40 	tileloaddt1 0x40(%r10,%rcx,1),%tmm7
+     861:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+     866:	c4 82 7b 4b ac 33 00 	tileloadd 0x40000(%r11,%r14,1),%tmm5
+     86d:	00 04 00 
+     870:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+     875:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+     87a:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+     87f:	4d 8b 9c 2d 70 ff ff 	mov    -0x90(%r13,%rbp,1),%r11
+     886:	ff 
+     887:	4d 8b 94 2d 78 ff ff 	mov    -0x88(%r13,%rbp,1),%r10
+     88e:	ff 
+     88f:	ba 00 50 00 00       	mov    $0x5000,%edx
+     894:	c4 82 7b 4b 24 33    	tileloadd (%r11,%r14,1),%tmm4
+     89a:	c4 c2 79 4b 34 0a    	tileloaddt1 (%r10,%rcx,1),%tmm6
+     8a0:	c4 c2 79 4b 7c 0a 40 	tileloaddt1 0x40(%r10,%rcx,1),%tmm7
+     8a7:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+     8ac:	c4 82 7b 4b ac 33 00 	tileloadd 0x40000(%r11,%r14,1),%tmm5
+     8b3:	00 04 00 
+     8b6:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+     8bb:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+     8c0:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+     8c5:	4d 8b 5c 2d 98       	mov    -0x68(%r13,%rbp,1),%r11
+     8ca:	4d 8b 54 2d a0       	mov    -0x60(%r13,%rbp,1),%r10
+     8cf:	ba 00 50 00 00       	mov    $0x5000,%edx
+     8d4:	c4 82 7b 4b 24 33    	tileloadd (%r11,%r14,1),%tmm4
+     8da:	c4 c2 79 4b 34 0a    	tileloaddt1 (%r10,%rcx,1),%tmm6
+     8e0:	c4 c2 79 4b 7c 0a 40 	tileloaddt1 0x40(%r10,%rcx,1),%tmm7
+     8e7:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+     8ec:	c4 82 7b 4b ac 33 00 	tileloadd 0x40000(%r11,%r14,1),%tmm5
+     8f3:	00 04 00 
+     8f6:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+     8fb:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+     900:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+     905:	4d 8b 5c 2d c0       	mov    -0x40(%r13,%rbp,1),%r11
+     90a:	4d 8b 54 2d c8       	mov    -0x38(%r13,%rbp,1),%r10
+     90f:	ba 00 50 00 00       	mov    $0x5000,%edx
+     914:	c4 82 7b 4b 24 33    	tileloadd (%r11,%r14,1),%tmm4
+     91a:	c4 c2 79 4b 34 0a    	tileloaddt1 (%r10,%rcx,1),%tmm6
+     920:	c4 c2 79 4b 7c 0a 40 	tileloaddt1 0x40(%r10,%rcx,1),%tmm7
+     927:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+     92c:	c4 82 7b 4b ac 33 00 	tileloadd 0x40000(%r11,%r14,1),%tmm5
+     933:	00 04 00 
+     936:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+     93b:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+     940:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+     945:	4d 8b 5c 2d e8       	mov    -0x18(%r13,%rbp,1),%r11
+     94a:	4d 8b 54 2d f0       	mov    -0x10(%r13,%rbp,1),%r10
+     94f:	ba 00 50 00 00       	mov    $0x5000,%edx
+     954:	c4 82 7b 4b 24 33    	tileloadd (%r11,%r14,1),%tmm4
+     95a:	c4 c2 79 4b 34 0a    	tileloaddt1 (%r10,%rcx,1),%tmm6
+     960:	c4 c2 79 4b 7c 0a 40 	tileloaddt1 0x40(%r10,%rcx,1),%tmm7
+     967:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+     96c:	c4 82 7b 4b ac 33 00 	tileloadd 0x40000(%r11,%r14,1),%tmm5
+     973:	00 04 00 
+     976:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+     97b:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+     980:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+     985:	4d 8b 5c 2d 10       	mov    0x10(%r13,%rbp,1),%r11
+     98a:	4d 8b 54 2d 18       	mov    0x18(%r13,%rbp,1),%r10
+     98f:	ba 00 50 00 00       	mov    $0x5000,%edx
+     994:	c4 82 7b 4b 24 33    	tileloadd (%r11,%r14,1),%tmm4
+     99a:	c4 c2 79 4b 34 0a    	tileloaddt1 (%r10,%rcx,1),%tmm6
+     9a0:	c4 c2 79 4b 7c 0a 40 	tileloaddt1 0x40(%r10,%rcx,1),%tmm7
+     9a7:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+     9ac:	c4 82 7b 4b ac 33 00 	tileloadd 0x40000(%r11,%r14,1),%tmm5
+     9b3:	00 04 00 
+     9b6:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+     9bb:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+     9c0:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+     9c5:	4d 8b 5c 2d 38       	mov    0x38(%r13,%rbp,1),%r11
+     9ca:	4d 8b 54 2d 40       	mov    0x40(%r13,%rbp,1),%r10
+     9cf:	ba 00 50 00 00       	mov    $0x5000,%edx
+     9d4:	c4 82 7b 4b 24 33    	tileloadd (%r11,%r14,1),%tmm4
+     9da:	c4 c2 79 4b 34 0a    	tileloaddt1 (%r10,%rcx,1),%tmm6
+     9e0:	c4 c2 79 4b 7c 0a 40 	tileloaddt1 0x40(%r10,%rcx,1),%tmm7
+     9e7:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+     9ec:	c4 82 7b 4b ac 33 00 	tileloadd 0x40000(%r11,%r14,1),%tmm5
+     9f3:	00 04 00 
+     9f6:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+     9fb:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+     a00:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+     a05:	4d 8b 5c 2d 60       	mov    0x60(%r13,%rbp,1),%r11
+     a0a:	4d 8b 54 2d 68       	mov    0x68(%r13,%rbp,1),%r10
+     a0f:	ba 00 50 00 00       	mov    $0x5000,%edx
+     a14:	c4 82 7b 4b 24 33    	tileloadd (%r11,%r14,1),%tmm4
+     a1a:	c4 c2 79 4b 34 0a    	tileloaddt1 (%r10,%rcx,1),%tmm6
+     a20:	c4 c2 79 4b 7c 0a 40 	tileloaddt1 0x40(%r10,%rcx,1),%tmm7
+     a27:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+     a2c:	c4 82 7b 4b ac 33 00 	tileloadd 0x40000(%r11,%r14,1),%tmm5
+     a33:	00 04 00 
+     a36:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+     a3b:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+     a40:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+     a45:	4d 8b 9c 2d 88 00 00 	mov    0x88(%r13,%rbp,1),%r11
+     a4c:	00 
+     a4d:	4d 8b 94 2d 90 00 00 	mov    0x90(%r13,%rbp,1),%r10
+     a54:	00 
+     a55:	ba 00 50 00 00       	mov    $0x5000,%edx
+     a5a:	c4 82 7b 4b 24 33    	tileloadd (%r11,%r14,1),%tmm4
+     a60:	c4 c2 79 4b 34 0a    	tileloaddt1 (%r10,%rcx,1),%tmm6
+     a66:	c4 c2 79 4b 7c 0a 40 	tileloaddt1 0x40(%r10,%rcx,1),%tmm7
+     a6d:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+     a72:	c4 82 7b 4b ac 33 00 	tileloadd 0x40000(%r11,%r14,1),%tmm5
+     a79:	00 04 00 
+     a7c:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+     a81:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+     a86:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+     a8b:	4d 8b 9c 2d b0 00 00 	mov    0xb0(%r13,%rbp,1),%r11
+     a92:	00 
+     a93:	4d 8b 94 2d b8 00 00 	mov    0xb8(%r13,%rbp,1),%r10
+     a9a:	00 
+     a9b:	ba 00 50 00 00       	mov    $0x5000,%edx
+     aa0:	c4 82 7b 4b 24 33    	tileloadd (%r11,%r14,1),%tmm4
+     aa6:	c4 c2 79 4b 34 0a    	tileloaddt1 (%r10,%rcx,1),%tmm6
+     aac:	c4 c2 79 4b 7c 0a 40 	tileloaddt1 0x40(%r10,%rcx,1),%tmm7
+     ab3:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+     ab8:	c4 82 7b 4b ac 33 00 	tileloadd 0x40000(%r11,%r14,1),%tmm5
+     abf:	00 04 00 
+     ac2:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+     ac7:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+     acc:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+     ad1:	4d 8b 9c 2d d8 00 00 	mov    0xd8(%r13,%rbp,1),%r11
+     ad8:	00 
+     ad9:	4d 8b 94 2d e0 00 00 	mov    0xe0(%r13,%rbp,1),%r10
+     ae0:	00 
+     ae1:	ba 00 50 00 00       	mov    $0x5000,%edx
+     ae6:	c4 82 7b 4b 24 33    	tileloadd (%r11,%r14,1),%tmm4
+     aec:	c4 c2 79 4b 34 0a    	tileloaddt1 (%r10,%rcx,1),%tmm6
+     af2:	c4 c2 79 4b 7c 0a 40 	tileloaddt1 0x40(%r10,%rcx,1),%tmm7
+     af9:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+     afe:	c4 82 7b 4b ac 33 00 	tileloadd 0x40000(%r11,%r14,1),%tmm5
+     b05:	00 04 00 
+     b08:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+     b0d:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+     b12:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+     b17:	4d 8b 9c 2d 00 01 00 	mov    0x100(%r13,%rbp,1),%r11
+     b1e:	00 
+     b1f:	4d 8b 94 2d 08 01 00 	mov    0x108(%r13,%rbp,1),%r10
+     b26:	00 
+     b27:	ba 00 50 00 00       	mov    $0x5000,%edx
+     b2c:	c4 82 7b 4b 24 33    	tileloadd (%r11,%r14,1),%tmm4
+     b32:	c4 c2 79 4b 34 0a    	tileloaddt1 (%r10,%rcx,1),%tmm6
+     b38:	c4 c2 79 4b 7c 0a 40 	tileloaddt1 0x40(%r10,%rcx,1),%tmm7
+     b3f:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+     b44:	c4 82 7b 4b ac 33 00 	tileloadd 0x40000(%r11,%r14,1),%tmm5
+     b4b:	00 04 00 
+     b4e:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+     b53:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+     b58:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+     b5d:	4d 8b 9c 2d 28 01 00 	mov    0x128(%r13,%rbp,1),%r11
+     b64:	00 
+     b65:	4d 8b 94 2d 30 01 00 	mov    0x130(%r13,%rbp,1),%r10
+     b6c:	00 
+     b6d:	ba 00 50 00 00       	mov    $0x5000,%edx
+     b72:	c4 82 7b 4b 24 33    	tileloadd (%r11,%r14,1),%tmm4
+     b78:	c4 c2 79 4b 34 0a    	tileloaddt1 (%r10,%rcx,1),%tmm6
+     b7e:	c4 c2 79 4b 7c 0a 40 	tileloaddt1 0x40(%r10,%rcx,1),%tmm7
+     b85:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+     b8a:	c4 82 7b 4b ac 33 00 	tileloadd 0x40000(%r11,%r14,1),%tmm5
+     b91:	00 04 00 
+     b94:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+     b99:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+     b9e:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+     ba3:	4d 8b 9c 2d 50 01 00 	mov    0x150(%r13,%rbp,1),%r11
+     baa:	00 
+     bab:	4d 8b 94 2d 58 01 00 	mov    0x158(%r13,%rbp,1),%r10
+     bb2:	00 
+     bb3:	ba 00 50 00 00       	mov    $0x5000,%edx
+     bb8:	c4 82 7b 4b 24 33    	tileloadd (%r11,%r14,1),%tmm4
+     bbe:	c4 c2 79 4b 34 0a    	tileloaddt1 (%r10,%rcx,1),%tmm6
+     bc4:	c4 c2 79 4b 7c 0a 40 	tileloaddt1 0x40(%r10,%rcx,1),%tmm7
+     bcb:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+     bd0:	c4 82 7b 4b ac 33 00 	tileloadd 0x40000(%r11,%r14,1),%tmm5
+     bd7:	00 04 00 
+     bda:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+     bdf:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+     be4:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+     be9:	4d 8b 9c 2d 78 01 00 	mov    0x178(%r13,%rbp,1),%r11
+     bf0:	00 
+     bf1:	4d 8b 94 2d 80 01 00 	mov    0x180(%r13,%rbp,1),%r10
+     bf8:	00 
+     bf9:	ba 00 50 00 00       	mov    $0x5000,%edx
+     bfe:	c4 82 7b 4b 24 33    	tileloadd (%r11,%r14,1),%tmm4
+     c04:	c4 c2 79 4b 34 0a    	tileloaddt1 (%r10,%rcx,1),%tmm6
+     c0a:	c4 c2 79 4b 7c 0a 40 	tileloaddt1 0x40(%r10,%rcx,1),%tmm7
+     c11:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+     c16:	c4 82 7b 4b ac 33 00 	tileloadd 0x40000(%r11,%r14,1),%tmm5
+     c1d:	00 04 00 
+     c20:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+     c25:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+     c2a:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+     c2f:	4d 8b 9c 2d a0 01 00 	mov    0x1a0(%r13,%rbp,1),%r11
+     c36:	00 
+     c37:	4d 8b 94 2d a8 01 00 	mov    0x1a8(%r13,%rbp,1),%r10
+     c3e:	00 
+     c3f:	ba 00 50 00 00       	mov    $0x5000,%edx
+     c44:	c4 82 7b 4b 24 33    	tileloadd (%r11,%r14,1),%tmm4
+     c4a:	c4 c2 79 4b 34 0a    	tileloaddt1 (%r10,%rcx,1),%tmm6
+     c50:	c4 c2 79 4b 7c 0a 40 	tileloaddt1 0x40(%r10,%rcx,1),%tmm7
+     c57:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+     c5c:	c4 82 7b 4b ac 33 00 	tileloadd 0x40000(%r11,%r14,1),%tmm5
+     c63:	00 04 00 
+     c66:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+     c6b:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+     c70:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+     c75:	4d 8b 9c 2d c8 01 00 	mov    0x1c8(%r13,%rbp,1),%r11
+     c7c:	00 
+     c7d:	4d 8b 94 2d d0 01 00 	mov    0x1d0(%r13,%rbp,1),%r10
+     c84:	00 
+     c85:	ba 00 50 00 00       	mov    $0x5000,%edx
+     c8a:	c4 82 7b 4b 24 33    	tileloadd (%r11,%r14,1),%tmm4
+     c90:	c4 c2 79 4b 34 0a    	tileloaddt1 (%r10,%rcx,1),%tmm6
+     c96:	c4 c2 79 4b 7c 0a 40 	tileloaddt1 0x40(%r10,%rcx,1),%tmm7
+     c9d:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+     ca2:	c4 82 7b 4b ac 33 00 	tileloadd 0x40000(%r11,%r14,1),%tmm5
+     ca9:	00 04 00 
+     cac:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+     cb1:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+     cb6:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+     cbb:	4d 8b 9c 2d f0 01 00 	mov    0x1f0(%r13,%rbp,1),%r11
+     cc2:	00 
+     cc3:	4d 8b 94 2d f8 01 00 	mov    0x1f8(%r13,%rbp,1),%r10
+     cca:	00 
+     ccb:	ba 00 50 00 00       	mov    $0x5000,%edx
+     cd0:	c4 82 7b 4b 24 33    	tileloadd (%r11,%r14,1),%tmm4
+     cd6:	c4 c2 79 4b 34 0a    	tileloaddt1 (%r10,%rcx,1),%tmm6
+     cdc:	c4 c2 79 4b 7c 0a 40 	tileloaddt1 0x40(%r10,%rcx,1),%tmm7
+     ce3:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+     ce8:	c4 82 7b 4b ac 33 00 	tileloadd 0x40000(%r11,%r14,1),%tmm5
+     cef:	00 04 00 
+     cf2:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+     cf7:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+     cfc:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+     d01:	4d 8b 9c 6d 18 fe ff 	mov    -0x1e8(%r13,%rbp,2),%r11
+     d08:	ff 
+     d09:	4d 8b 94 6d 20 fe ff 	mov    -0x1e0(%r13,%rbp,2),%r10
+     d10:	ff 
+     d11:	ba 00 50 00 00       	mov    $0x5000,%edx
+     d16:	c4 82 7b 4b 24 33    	tileloadd (%r11,%r14,1),%tmm4
+     d1c:	c4 c2 79 4b 34 0a    	tileloaddt1 (%r10,%rcx,1),%tmm6
+     d22:	c4 c2 79 4b 7c 0a 40 	tileloaddt1 0x40(%r10,%rcx,1),%tmm7
+     d29:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+     d2e:	c4 82 7b 4b ac 33 00 	tileloadd 0x40000(%r11,%r14,1),%tmm5
+     d35:	00 04 00 
+     d38:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+     d3d:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+     d42:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+     d47:	4d 8b 9c 6d 40 fe ff 	mov    -0x1c0(%r13,%rbp,2),%r11
+     d4e:	ff 
+     d4f:	4d 8b 94 6d 48 fe ff 	mov    -0x1b8(%r13,%rbp,2),%r10
+     d56:	ff 
+     d57:	ba 00 50 00 00       	mov    $0x5000,%edx
+     d5c:	c4 82 7b 4b 24 33    	tileloadd (%r11,%r14,1),%tmm4
+     d62:	c4 c2 79 4b 34 0a    	tileloaddt1 (%r10,%rcx,1),%tmm6
+     d68:	c4 c2 79 4b 7c 0a 40 	tileloaddt1 0x40(%r10,%rcx,1),%tmm7
+     d6f:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+     d74:	c4 82 7b 4b ac 33 00 	tileloadd 0x40000(%r11,%r14,1),%tmm5
+     d7b:	00 04 00 
+     d7e:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+     d83:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+     d88:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+     d8d:	4d 8b 9c 6d 68 fe ff 	mov    -0x198(%r13,%rbp,2),%r11
+     d94:	ff 
+     d95:	4d 8b 94 6d 70 fe ff 	mov    -0x190(%r13,%rbp,2),%r10
+     d9c:	ff 
+     d9d:	ba 00 50 00 00       	mov    $0x5000,%edx
+     da2:	c4 82 7b 4b 24 33    	tileloadd (%r11,%r14,1),%tmm4
+     da8:	c4 c2 79 4b 34 0a    	tileloaddt1 (%r10,%rcx,1),%tmm6
+     dae:	c4 c2 79 4b 7c 0a 40 	tileloaddt1 0x40(%r10,%rcx,1),%tmm7
+     db5:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+     dba:	c4 82 7b 4b ac 33 00 	tileloadd 0x40000(%r11,%r14,1),%tmm5
+     dc1:	00 04 00 
+     dc4:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+     dc9:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+     dce:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+     dd3:	4d 8b 9c 6d 90 fe ff 	mov    -0x170(%r13,%rbp,2),%r11
+     dda:	ff 
+     ddb:	4d 8b 94 6d 98 fe ff 	mov    -0x168(%r13,%rbp,2),%r10
+     de2:	ff 
+     de3:	ba 00 50 00 00       	mov    $0x5000,%edx
+     de8:	c4 82 7b 4b 24 33    	tileloadd (%r11,%r14,1),%tmm4
+     dee:	c4 c2 79 4b 34 0a    	tileloaddt1 (%r10,%rcx,1),%tmm6
+     df4:	c4 c2 79 4b 7c 0a 40 	tileloaddt1 0x40(%r10,%rcx,1),%tmm7
+     dfb:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+     e00:	c4 82 7b 4b ac 33 00 	tileloadd 0x40000(%r11,%r14,1),%tmm5
+     e07:	00 04 00 
+     e0a:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+     e0f:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+     e14:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+     e19:	ba 00 50 00 00       	mov    $0x5000,%edx
+     e1e:	c4 c2 7a 4b 04 17    	tilestored %tmm0,(%r15,%rdx,1)
+     e24:	c4 c2 7a 4b 4c 17 40 	tilestored %tmm1,0x40(%r15,%rdx,1)
+     e2b:	c4 c2 7a 4b 94 17 00 	tilestored %tmm2,0x50000(%r15,%rdx,1)
+     e32:	00 05 00 
+     e35:	c4 c2 7a 4b 9c 17 40 	tilestored %tmm3,0x50040(%r15,%rdx,1)
+     e3c:	00 05 00 
+     e3f:	ba 00 50 00 00       	mov    $0x5000,%edx
+     e44:	c4 c2 7b 4b 84 17 80 	tileloadd 0x80(%r15,%rdx,1),%tmm0
+     e4b:	00 00 00 
+     e4e:	c4 c2 7b 4b 8c 17 c0 	tileloadd 0xc0(%r15,%rdx,1),%tmm1
+     e55:	00 00 00 
+     e58:	c4 c2 7b 4b 94 17 80 	tileloadd 0x50080(%r15,%rdx,1),%tmm2
+     e5f:	00 05 00 
+     e62:	c4 c2 7b 4b 9c 17 c0 	tileloadd 0x500c0(%r15,%rdx,1),%tmm3
+     e69:	00 05 00 
+     e6c:	4d 8b 5d 00          	mov    0x0(%r13),%r11
+     e70:	4d 8b 55 08          	mov    0x8(%r13),%r10
+     e74:	ba 00 50 00 00       	mov    $0x5000,%edx
+     e79:	c4 82 7b 4b 24 33    	tileloadd (%r11,%r14,1),%tmm4
+     e7f:	c4 c2 79 4b b4 0a 80 	tileloaddt1 0x80(%r10,%rcx,1),%tmm6
+     e86:	00 00 00 
+     e89:	c4 c2 79 4b bc 0a c0 	tileloaddt1 0xc0(%r10,%rcx,1),%tmm7
+     e90:	00 00 00 
+     e93:	41 0f 0d 8c 24 80 00 	prefetchw 0x80(%r12)
+     e9a:	00 00 
+     e9c:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+     ea1:	c4 82 7b 4b ac 33 00 	tileloadd 0x40000(%r11,%r14,1),%tmm5
+     ea8:	00 04 00 
+     eab:	41 0f 0d 8c 24 80 50 	prefetchw 0x5080(%r12)
+     eb2:	00 00 
+     eb4:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+     eb9:	41 0f 0d 8c 24 80 a0 	prefetchw 0xa080(%r12)
+     ec0:	00 00 
+     ec2:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+     ec7:	41 0f 0d 8c 24 80 f0 	prefetchw 0xf080(%r12)
+     ece:	00 00 
+     ed0:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+     ed5:	4d 8b 5d 28          	mov    0x28(%r13),%r11
+     ed9:	4d 8b 55 30          	mov    0x30(%r13),%r10
+     edd:	ba 00 50 00 00       	mov    $0x5000,%edx
+     ee2:	c4 82 7b 4b 24 33    	tileloadd (%r11,%r14,1),%tmm4
+     ee8:	c4 c2 79 4b b4 0a 80 	tileloaddt1 0x80(%r10,%rcx,1),%tmm6
+     eef:	00 00 00 
+     ef2:	c4 c2 79 4b bc 0a c0 	tileloaddt1 0xc0(%r10,%rcx,1),%tmm7
+     ef9:	00 00 00 
+     efc:	41 0f 0d 8c 24 80 40 	prefetchw 0x14080(%r12)
+     f03:	01 00 
+     f05:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+     f0a:	c4 82 7b 4b ac 33 00 	tileloadd 0x40000(%r11,%r14,1),%tmm5
+     f11:	00 04 00 
+     f14:	41 0f 0d 8c 24 80 90 	prefetchw 0x19080(%r12)
+     f1b:	01 00 
+     f1d:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+     f22:	41 0f 0d 8c 24 80 e0 	prefetchw 0x1e080(%r12)
+     f29:	01 00 
+     f2b:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+     f30:	41 0f 0d 8c 24 80 30 	prefetchw 0x23080(%r12)
+     f37:	02 00 
+     f39:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+     f3e:	4d 8b 5d 50          	mov    0x50(%r13),%r11
+     f42:	4d 8b 55 58          	mov    0x58(%r13),%r10
+     f46:	ba 00 50 00 00       	mov    $0x5000,%edx
+     f4b:	c4 82 7b 4b 24 33    	tileloadd (%r11,%r14,1),%tmm4
+     f51:	c4 c2 79 4b b4 0a 80 	tileloaddt1 0x80(%r10,%rcx,1),%tmm6
+     f58:	00 00 00 
+     f5b:	c4 c2 79 4b bc 0a c0 	tileloaddt1 0xc0(%r10,%rcx,1),%tmm7
+     f62:	00 00 00 
+     f65:	41 0f 0d 8c 24 80 80 	prefetchw 0x28080(%r12)
+     f6c:	02 00 
+     f6e:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+     f73:	c4 82 7b 4b ac 33 00 	tileloadd 0x40000(%r11,%r14,1),%tmm5
+     f7a:	00 04 00 
+     f7d:	41 0f 0d 8c 24 80 d0 	prefetchw 0x2d080(%r12)
+     f84:	02 00 
+     f86:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+     f8b:	41 0f 0d 8c 24 80 20 	prefetchw 0x32080(%r12)
+     f92:	03 00 
+     f94:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+     f99:	41 0f 0d 8c 24 80 70 	prefetchw 0x37080(%r12)
+     fa0:	03 00 
+     fa2:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+     fa7:	4d 8b 5d 78          	mov    0x78(%r13),%r11
+     fab:	4d 8b 95 80 00 00 00 	mov    0x80(%r13),%r10
+     fb2:	ba 00 50 00 00       	mov    $0x5000,%edx
+     fb7:	c4 82 7b 4b 24 33    	tileloadd (%r11,%r14,1),%tmm4
+     fbd:	c4 c2 79 4b b4 0a 80 	tileloaddt1 0x80(%r10,%rcx,1),%tmm6
+     fc4:	00 00 00 
+     fc7:	c4 c2 79 4b bc 0a c0 	tileloaddt1 0xc0(%r10,%rcx,1),%tmm7
+     fce:	00 00 00 
+     fd1:	41 0f 0d 8c 24 80 c0 	prefetchw 0x3c080(%r12)
+     fd8:	03 00 
+     fda:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+     fdf:	c4 82 7b 4b ac 33 00 	tileloadd 0x40000(%r11,%r14,1),%tmm5
+     fe6:	00 04 00 
+     fe9:	41 0f 0d 8c 24 80 10 	prefetchw 0x41080(%r12)
+     ff0:	04 00 
+     ff2:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+     ff7:	41 0f 0d 8c 24 80 60 	prefetchw 0x46080(%r12)
+     ffe:	04 00 
+    1000:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    1005:	41 0f 0d 8c 24 80 b0 	prefetchw 0x4b080(%r12)
+    100c:	04 00 
+    100e:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    1013:	4d 8b 9d a0 00 00 00 	mov    0xa0(%r13),%r11
+    101a:	4d 8b 95 a8 00 00 00 	mov    0xa8(%r13),%r10
+    1021:	ba 00 50 00 00       	mov    $0x5000,%edx
+    1026:	c4 82 7b 4b 24 33    	tileloadd (%r11,%r14,1),%tmm4
+    102c:	c4 c2 79 4b b4 0a 80 	tileloaddt1 0x80(%r10,%rcx,1),%tmm6
+    1033:	00 00 00 
+    1036:	c4 c2 79 4b bc 0a c0 	tileloaddt1 0xc0(%r10,%rcx,1),%tmm7
+    103d:	00 00 00 
+    1040:	41 0f 0d 8c 24 c0 00 	prefetchw 0xc0(%r12)
+    1047:	00 00 
+    1049:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    104e:	c4 82 7b 4b ac 33 00 	tileloadd 0x40000(%r11,%r14,1),%tmm5
+    1055:	00 04 00 
+    1058:	41 0f 0d 8c 24 c0 50 	prefetchw 0x50c0(%r12)
+    105f:	00 00 
+    1061:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    1066:	41 0f 0d 8c 24 c0 a0 	prefetchw 0xa0c0(%r12)
+    106d:	00 00 
+    106f:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    1074:	41 0f 0d 8c 24 c0 f0 	prefetchw 0xf0c0(%r12)
+    107b:	00 00 
+    107d:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    1082:	4d 8b 9d c8 00 00 00 	mov    0xc8(%r13),%r11
+    1089:	4d 8b 95 d0 00 00 00 	mov    0xd0(%r13),%r10
+    1090:	ba 00 50 00 00       	mov    $0x5000,%edx
+    1095:	c4 82 7b 4b 24 33    	tileloadd (%r11,%r14,1),%tmm4
+    109b:	c4 c2 79 4b b4 0a 80 	tileloaddt1 0x80(%r10,%rcx,1),%tmm6
+    10a2:	00 00 00 
+    10a5:	c4 c2 79 4b bc 0a c0 	tileloaddt1 0xc0(%r10,%rcx,1),%tmm7
+    10ac:	00 00 00 
+    10af:	41 0f 0d 8c 24 c0 40 	prefetchw 0x140c0(%r12)
+    10b6:	01 00 
+    10b8:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    10bd:	c4 82 7b 4b ac 33 00 	tileloadd 0x40000(%r11,%r14,1),%tmm5
+    10c4:	00 04 00 
+    10c7:	41 0f 0d 8c 24 c0 90 	prefetchw 0x190c0(%r12)
+    10ce:	01 00 
+    10d0:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    10d5:	41 0f 0d 8c 24 c0 e0 	prefetchw 0x1e0c0(%r12)
+    10dc:	01 00 
+    10de:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    10e3:	41 0f 0d 8c 24 c0 30 	prefetchw 0x230c0(%r12)
+    10ea:	02 00 
+    10ec:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    10f1:	4d 8b 9d f0 00 00 00 	mov    0xf0(%r13),%r11
+    10f8:	4d 8b 95 f8 00 00 00 	mov    0xf8(%r13),%r10
+    10ff:	ba 00 50 00 00       	mov    $0x5000,%edx
+    1104:	c4 82 7b 4b 24 33    	tileloadd (%r11,%r14,1),%tmm4
+    110a:	c4 c2 79 4b b4 0a 80 	tileloaddt1 0x80(%r10,%rcx,1),%tmm6
+    1111:	00 00 00 
+    1114:	c4 c2 79 4b bc 0a c0 	tileloaddt1 0xc0(%r10,%rcx,1),%tmm7
+    111b:	00 00 00 
+    111e:	41 0f 0d 8c 24 c0 80 	prefetchw 0x280c0(%r12)
+    1125:	02 00 
+    1127:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    112c:	c4 82 7b 4b ac 33 00 	tileloadd 0x40000(%r11,%r14,1),%tmm5
+    1133:	00 04 00 
+    1136:	41 0f 0d 8c 24 c0 d0 	prefetchw 0x2d0c0(%r12)
+    113d:	02 00 
+    113f:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    1144:	41 0f 0d 8c 24 c0 20 	prefetchw 0x320c0(%r12)
+    114b:	03 00 
+    114d:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    1152:	41 0f 0d 8c 24 c0 70 	prefetchw 0x370c0(%r12)
+    1159:	03 00 
+    115b:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    1160:	4d 8b 9d 18 01 00 00 	mov    0x118(%r13),%r11
+    1167:	4d 8b 95 20 01 00 00 	mov    0x120(%r13),%r10
+    116e:	ba 00 50 00 00       	mov    $0x5000,%edx
+    1173:	c4 82 7b 4b 24 33    	tileloadd (%r11,%r14,1),%tmm4
+    1179:	c4 c2 79 4b b4 0a 80 	tileloaddt1 0x80(%r10,%rcx,1),%tmm6
+    1180:	00 00 00 
+    1183:	c4 c2 79 4b bc 0a c0 	tileloaddt1 0xc0(%r10,%rcx,1),%tmm7
+    118a:	00 00 00 
+    118d:	41 0f 0d 8c 24 c0 c0 	prefetchw 0x3c0c0(%r12)
+    1194:	03 00 
+    1196:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    119b:	c4 82 7b 4b ac 33 00 	tileloadd 0x40000(%r11,%r14,1),%tmm5
+    11a2:	00 04 00 
+    11a5:	41 0f 0d 8c 24 c0 10 	prefetchw 0x410c0(%r12)
+    11ac:	04 00 
+    11ae:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    11b3:	41 0f 0d 8c 24 c0 60 	prefetchw 0x460c0(%r12)
+    11ba:	04 00 
+    11bc:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    11c1:	41 0f 0d 8c 24 c0 b0 	prefetchw 0x4b0c0(%r12)
+    11c8:	04 00 
+    11ca:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    11cf:	4d 8b 9d 40 01 00 00 	mov    0x140(%r13),%r11
+    11d6:	4d 8b 95 48 01 00 00 	mov    0x148(%r13),%r10
+    11dd:	ba 00 50 00 00       	mov    $0x5000,%edx
+    11e2:	c4 82 7b 4b 24 33    	tileloadd (%r11,%r14,1),%tmm4
+    11e8:	c4 c2 79 4b b4 0a 80 	tileloaddt1 0x80(%r10,%rcx,1),%tmm6
+    11ef:	00 00 00 
+    11f2:	c4 c2 79 4b bc 0a c0 	tileloaddt1 0xc0(%r10,%rcx,1),%tmm7
+    11f9:	00 00 00 
+    11fc:	41 0f 0d 8c 24 80 00 	prefetchw 0x50080(%r12)
+    1203:	05 00 
+    1205:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    120a:	c4 82 7b 4b ac 33 00 	tileloadd 0x40000(%r11,%r14,1),%tmm5
+    1211:	00 04 00 
+    1214:	41 0f 0d 8c 24 80 50 	prefetchw 0x55080(%r12)
+    121b:	05 00 
+    121d:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    1222:	41 0f 0d 8c 24 80 a0 	prefetchw 0x5a080(%r12)
+    1229:	05 00 
+    122b:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    1230:	41 0f 0d 8c 24 80 f0 	prefetchw 0x5f080(%r12)
+    1237:	05 00 
+    1239:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    123e:	4d 8b 9d 68 01 00 00 	mov    0x168(%r13),%r11
+    1245:	4d 8b 95 70 01 00 00 	mov    0x170(%r13),%r10
+    124c:	ba 00 50 00 00       	mov    $0x5000,%edx
+    1251:	c4 82 7b 4b 24 33    	tileloadd (%r11,%r14,1),%tmm4
+    1257:	c4 c2 79 4b b4 0a 80 	tileloaddt1 0x80(%r10,%rcx,1),%tmm6
+    125e:	00 00 00 
+    1261:	c4 c2 79 4b bc 0a c0 	tileloaddt1 0xc0(%r10,%rcx,1),%tmm7
+    1268:	00 00 00 
+    126b:	41 0f 0d 8c 24 80 40 	prefetchw 0x64080(%r12)
+    1272:	06 00 
+    1274:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    1279:	c4 82 7b 4b ac 33 00 	tileloadd 0x40000(%r11,%r14,1),%tmm5
+    1280:	00 04 00 
+    1283:	41 0f 0d 8c 24 80 90 	prefetchw 0x69080(%r12)
+    128a:	06 00 
+    128c:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    1291:	41 0f 0d 8c 24 80 e0 	prefetchw 0x6e080(%r12)
+    1298:	06 00 
+    129a:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    129f:	41 0f 0d 8c 24 80 30 	prefetchw 0x73080(%r12)
+    12a6:	07 00 
+    12a8:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    12ad:	4d 8b 9d 90 01 00 00 	mov    0x190(%r13),%r11
+    12b4:	4d 8b 95 98 01 00 00 	mov    0x198(%r13),%r10
+    12bb:	ba 00 50 00 00       	mov    $0x5000,%edx
+    12c0:	c4 82 7b 4b 24 33    	tileloadd (%r11,%r14,1),%tmm4
+    12c6:	c4 c2 79 4b b4 0a 80 	tileloaddt1 0x80(%r10,%rcx,1),%tmm6
+    12cd:	00 00 00 
+    12d0:	c4 c2 79 4b bc 0a c0 	tileloaddt1 0xc0(%r10,%rcx,1),%tmm7
+    12d7:	00 00 00 
+    12da:	41 0f 0d 8c 24 80 80 	prefetchw 0x78080(%r12)
+    12e1:	07 00 
+    12e3:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    12e8:	c4 82 7b 4b ac 33 00 	tileloadd 0x40000(%r11,%r14,1),%tmm5
+    12ef:	00 04 00 
+    12f2:	41 0f 0d 8c 24 80 d0 	prefetchw 0x7d080(%r12)
+    12f9:	07 00 
+    12fb:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    1300:	41 0f 0d 8c 24 80 20 	prefetchw 0x82080(%r12)
+    1307:	08 00 
+    1309:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    130e:	41 0f 0d 8c 24 80 70 	prefetchw 0x87080(%r12)
+    1315:	08 00 
+    1317:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    131c:	4d 8b 9d b8 01 00 00 	mov    0x1b8(%r13),%r11
+    1323:	4d 8b 95 c0 01 00 00 	mov    0x1c0(%r13),%r10
+    132a:	ba 00 50 00 00       	mov    $0x5000,%edx
+    132f:	c4 82 7b 4b 24 33    	tileloadd (%r11,%r14,1),%tmm4
+    1335:	c4 c2 79 4b b4 0a 80 	tileloaddt1 0x80(%r10,%rcx,1),%tmm6
+    133c:	00 00 00 
+    133f:	c4 c2 79 4b bc 0a c0 	tileloaddt1 0xc0(%r10,%rcx,1),%tmm7
+    1346:	00 00 00 
+    1349:	41 0f 0d 8c 24 80 c0 	prefetchw 0x8c080(%r12)
+    1350:	08 00 
+    1352:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    1357:	c4 82 7b 4b ac 33 00 	tileloadd 0x40000(%r11,%r14,1),%tmm5
+    135e:	00 04 00 
+    1361:	41 0f 0d 8c 24 80 10 	prefetchw 0x91080(%r12)
+    1368:	09 00 
+    136a:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    136f:	41 0f 0d 8c 24 80 60 	prefetchw 0x96080(%r12)
+    1376:	09 00 
+    1378:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    137d:	41 0f 0d 8c 24 80 b0 	prefetchw 0x9b080(%r12)
+    1384:	09 00 
+    1386:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    138b:	4d 8b 9d e0 01 00 00 	mov    0x1e0(%r13),%r11
+    1392:	4d 8b 95 e8 01 00 00 	mov    0x1e8(%r13),%r10
+    1399:	ba 00 50 00 00       	mov    $0x5000,%edx
+    139e:	c4 82 7b 4b 24 33    	tileloadd (%r11,%r14,1),%tmm4
+    13a4:	c4 c2 79 4b b4 0a 80 	tileloaddt1 0x80(%r10,%rcx,1),%tmm6
+    13ab:	00 00 00 
+    13ae:	c4 c2 79 4b bc 0a c0 	tileloaddt1 0xc0(%r10,%rcx,1),%tmm7
+    13b5:	00 00 00 
+    13b8:	41 0f 0d 8c 24 c0 00 	prefetchw 0x500c0(%r12)
+    13bf:	05 00 
+    13c1:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    13c6:	c4 82 7b 4b ac 33 00 	tileloadd 0x40000(%r11,%r14,1),%tmm5
+    13cd:	00 04 00 
+    13d0:	41 0f 0d 8c 24 c0 50 	prefetchw 0x550c0(%r12)
+    13d7:	05 00 
+    13d9:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    13de:	41 0f 0d 8c 24 c0 a0 	prefetchw 0x5a0c0(%r12)
+    13e5:	05 00 
+    13e7:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    13ec:	41 0f 0d 8c 24 c0 f0 	prefetchw 0x5f0c0(%r12)
+    13f3:	05 00 
+    13f5:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    13fa:	4d 8b 9c 2d 08 fe ff 	mov    -0x1f8(%r13,%rbp,1),%r11
+    1401:	ff 
+    1402:	4d 8b 94 2d 10 fe ff 	mov    -0x1f0(%r13,%rbp,1),%r10
+    1409:	ff 
+    140a:	ba 00 50 00 00       	mov    $0x5000,%edx
+    140f:	c4 82 7b 4b 24 33    	tileloadd (%r11,%r14,1),%tmm4
+    1415:	c4 c2 79 4b b4 0a 80 	tileloaddt1 0x80(%r10,%rcx,1),%tmm6
+    141c:	00 00 00 
+    141f:	c4 c2 79 4b bc 0a c0 	tileloaddt1 0xc0(%r10,%rcx,1),%tmm7
+    1426:	00 00 00 
+    1429:	41 0f 0d 8c 24 c0 40 	prefetchw 0x640c0(%r12)
+    1430:	06 00 
+    1432:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    1437:	c4 82 7b 4b ac 33 00 	tileloadd 0x40000(%r11,%r14,1),%tmm5
+    143e:	00 04 00 
+    1441:	41 0f 0d 8c 24 c0 90 	prefetchw 0x690c0(%r12)
+    1448:	06 00 
+    144a:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    144f:	41 0f 0d 8c 24 c0 e0 	prefetchw 0x6e0c0(%r12)
+    1456:	06 00 
+    1458:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    145d:	41 0f 0d 8c 24 c0 30 	prefetchw 0x730c0(%r12)
+    1464:	07 00 
+    1466:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    146b:	4d 8b 9c 2d 30 fe ff 	mov    -0x1d0(%r13,%rbp,1),%r11
+    1472:	ff 
+    1473:	4d 8b 94 2d 38 fe ff 	mov    -0x1c8(%r13,%rbp,1),%r10
+    147a:	ff 
+    147b:	ba 00 50 00 00       	mov    $0x5000,%edx
+    1480:	c4 82 7b 4b 24 33    	tileloadd (%r11,%r14,1),%tmm4
+    1486:	c4 c2 79 4b b4 0a 80 	tileloaddt1 0x80(%r10,%rcx,1),%tmm6
+    148d:	00 00 00 
+    1490:	c4 c2 79 4b bc 0a c0 	tileloaddt1 0xc0(%r10,%rcx,1),%tmm7
+    1497:	00 00 00 
+    149a:	41 0f 0d 8c 24 c0 80 	prefetchw 0x780c0(%r12)
+    14a1:	07 00 
+    14a3:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    14a8:	c4 82 7b 4b ac 33 00 	tileloadd 0x40000(%r11,%r14,1),%tmm5
+    14af:	00 04 00 
+    14b2:	41 0f 0d 8c 24 c0 d0 	prefetchw 0x7d0c0(%r12)
+    14b9:	07 00 
+    14bb:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    14c0:	41 0f 0d 8c 24 c0 20 	prefetchw 0x820c0(%r12)
+    14c7:	08 00 
+    14c9:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    14ce:	41 0f 0d 8c 24 c0 70 	prefetchw 0x870c0(%r12)
+    14d5:	08 00 
+    14d7:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    14dc:	4d 8b 9c 2d 58 fe ff 	mov    -0x1a8(%r13,%rbp,1),%r11
+    14e3:	ff 
+    14e4:	4d 8b 94 2d 60 fe ff 	mov    -0x1a0(%r13,%rbp,1),%r10
+    14eb:	ff 
+    14ec:	ba 00 50 00 00       	mov    $0x5000,%edx
+    14f1:	c4 82 7b 4b 24 33    	tileloadd (%r11,%r14,1),%tmm4
+    14f7:	c4 c2 79 4b b4 0a 80 	tileloaddt1 0x80(%r10,%rcx,1),%tmm6
+    14fe:	00 00 00 
+    1501:	c4 c2 79 4b bc 0a c0 	tileloaddt1 0xc0(%r10,%rcx,1),%tmm7
+    1508:	00 00 00 
+    150b:	41 0f 0d 8c 24 c0 c0 	prefetchw 0x8c0c0(%r12)
+    1512:	08 00 
+    1514:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    1519:	c4 82 7b 4b ac 33 00 	tileloadd 0x40000(%r11,%r14,1),%tmm5
+    1520:	00 04 00 
+    1523:	41 0f 0d 8c 24 c0 10 	prefetchw 0x910c0(%r12)
+    152a:	09 00 
+    152c:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    1531:	41 0f 0d 8c 24 c0 60 	prefetchw 0x960c0(%r12)
+    1538:	09 00 
+    153a:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    153f:	41 0f 0d 8c 24 c0 b0 	prefetchw 0x9b0c0(%r12)
+    1546:	09 00 
+    1548:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    154d:	4d 8b 9c 2d 80 fe ff 	mov    -0x180(%r13,%rbp,1),%r11
+    1554:	ff 
+    1555:	4d 8b 94 2d 88 fe ff 	mov    -0x178(%r13,%rbp,1),%r10
+    155c:	ff 
+    155d:	ba 00 50 00 00       	mov    $0x5000,%edx
+    1562:	c4 82 7b 4b 24 33    	tileloadd (%r11,%r14,1),%tmm4
+    1568:	c4 c2 79 4b b4 0a 80 	tileloaddt1 0x80(%r10,%rcx,1),%tmm6
+    156f:	00 00 00 
+    1572:	c4 c2 79 4b bc 0a c0 	tileloaddt1 0xc0(%r10,%rcx,1),%tmm7
+    1579:	00 00 00 
+    157c:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    1581:	c4 82 7b 4b ac 33 00 	tileloadd 0x40000(%r11,%r14,1),%tmm5
+    1588:	00 04 00 
+    158b:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    1590:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    1595:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    159a:	4d 8b 9c 2d a8 fe ff 	mov    -0x158(%r13,%rbp,1),%r11
+    15a1:	ff 
+    15a2:	4d 8b 94 2d b0 fe ff 	mov    -0x150(%r13,%rbp,1),%r10
+    15a9:	ff 
+    15aa:	ba 00 50 00 00       	mov    $0x5000,%edx
+    15af:	c4 82 7b 4b 24 33    	tileloadd (%r11,%r14,1),%tmm4
+    15b5:	c4 c2 79 4b b4 0a 80 	tileloaddt1 0x80(%r10,%rcx,1),%tmm6
+    15bc:	00 00 00 
+    15bf:	c4 c2 79 4b bc 0a c0 	tileloaddt1 0xc0(%r10,%rcx,1),%tmm7
+    15c6:	00 00 00 
+    15c9:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    15ce:	c4 82 7b 4b ac 33 00 	tileloadd 0x40000(%r11,%r14,1),%tmm5
+    15d5:	00 04 00 
+    15d8:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    15dd:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    15e2:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    15e7:	4d 8b 9c 2d d0 fe ff 	mov    -0x130(%r13,%rbp,1),%r11
+    15ee:	ff 
+    15ef:	4d 8b 94 2d d8 fe ff 	mov    -0x128(%r13,%rbp,1),%r10
+    15f6:	ff 
+    15f7:	ba 00 50 00 00       	mov    $0x5000,%edx
+    15fc:	c4 82 7b 4b 24 33    	tileloadd (%r11,%r14,1),%tmm4
+    1602:	c4 c2 79 4b b4 0a 80 	tileloaddt1 0x80(%r10,%rcx,1),%tmm6
+    1609:	00 00 00 
+    160c:	c4 c2 79 4b bc 0a c0 	tileloaddt1 0xc0(%r10,%rcx,1),%tmm7
+    1613:	00 00 00 
+    1616:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    161b:	c4 82 7b 4b ac 33 00 	tileloadd 0x40000(%r11,%r14,1),%tmm5
+    1622:	00 04 00 
+    1625:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    162a:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    162f:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    1634:	4d 8b 9c 2d f8 fe ff 	mov    -0x108(%r13,%rbp,1),%r11
+    163b:	ff 
+    163c:	4d 8b 94 2d 00 ff ff 	mov    -0x100(%r13,%rbp,1),%r10
+    1643:	ff 
+    1644:	ba 00 50 00 00       	mov    $0x5000,%edx
+    1649:	c4 82 7b 4b 24 33    	tileloadd (%r11,%r14,1),%tmm4
+    164f:	c4 c2 79 4b b4 0a 80 	tileloaddt1 0x80(%r10,%rcx,1),%tmm6
+    1656:	00 00 00 
+    1659:	c4 c2 79 4b bc 0a c0 	tileloaddt1 0xc0(%r10,%rcx,1),%tmm7
+    1660:	00 00 00 
+    1663:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    1668:	c4 82 7b 4b ac 33 00 	tileloadd 0x40000(%r11,%r14,1),%tmm5
+    166f:	00 04 00 
+    1672:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    1677:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    167c:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    1681:	4d 8b 9c 2d 20 ff ff 	mov    -0xe0(%r13,%rbp,1),%r11
+    1688:	ff 
+    1689:	4d 8b 94 2d 28 ff ff 	mov    -0xd8(%r13,%rbp,1),%r10
+    1690:	ff 
+    1691:	ba 00 50 00 00       	mov    $0x5000,%edx
+    1696:	c4 82 7b 4b 24 33    	tileloadd (%r11,%r14,1),%tmm4
+    169c:	c4 c2 79 4b b4 0a 80 	tileloaddt1 0x80(%r10,%rcx,1),%tmm6
+    16a3:	00 00 00 
+    16a6:	c4 c2 79 4b bc 0a c0 	tileloaddt1 0xc0(%r10,%rcx,1),%tmm7
+    16ad:	00 00 00 
+    16b0:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    16b5:	c4 82 7b 4b ac 33 00 	tileloadd 0x40000(%r11,%r14,1),%tmm5
+    16bc:	00 04 00 
+    16bf:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    16c4:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    16c9:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    16ce:	4d 8b 9c 2d 48 ff ff 	mov    -0xb8(%r13,%rbp,1),%r11
+    16d5:	ff 
+    16d6:	4d 8b 94 2d 50 ff ff 	mov    -0xb0(%r13,%rbp,1),%r10
+    16dd:	ff 
+    16de:	ba 00 50 00 00       	mov    $0x5000,%edx
+    16e3:	c4 82 7b 4b 24 33    	tileloadd (%r11,%r14,1),%tmm4
+    16e9:	c4 c2 79 4b b4 0a 80 	tileloaddt1 0x80(%r10,%rcx,1),%tmm6
+    16f0:	00 00 00 
+    16f3:	c4 c2 79 4b bc 0a c0 	tileloaddt1 0xc0(%r10,%rcx,1),%tmm7
+    16fa:	00 00 00 
+    16fd:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    1702:	c4 82 7b 4b ac 33 00 	tileloadd 0x40000(%r11,%r14,1),%tmm5
+    1709:	00 04 00 
+    170c:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    1711:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    1716:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    171b:	4d 8b 9c 2d 70 ff ff 	mov    -0x90(%r13,%rbp,1),%r11
+    1722:	ff 
+    1723:	4d 8b 94 2d 78 ff ff 	mov    -0x88(%r13,%rbp,1),%r10
+    172a:	ff 
+    172b:	ba 00 50 00 00       	mov    $0x5000,%edx
+    1730:	c4 82 7b 4b 24 33    	tileloadd (%r11,%r14,1),%tmm4
+    1736:	c4 c2 79 4b b4 0a 80 	tileloaddt1 0x80(%r10,%rcx,1),%tmm6
+    173d:	00 00 00 
+    1740:	c4 c2 79 4b bc 0a c0 	tileloaddt1 0xc0(%r10,%rcx,1),%tmm7
+    1747:	00 00 00 
+    174a:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    174f:	c4 82 7b 4b ac 33 00 	tileloadd 0x40000(%r11,%r14,1),%tmm5
+    1756:	00 04 00 
+    1759:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    175e:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    1763:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    1768:	4d 8b 5c 2d 98       	mov    -0x68(%r13,%rbp,1),%r11
+    176d:	4d 8b 54 2d a0       	mov    -0x60(%r13,%rbp,1),%r10
+    1772:	ba 00 50 00 00       	mov    $0x5000,%edx
+    1777:	c4 82 7b 4b 24 33    	tileloadd (%r11,%r14,1),%tmm4
+    177d:	c4 c2 79 4b b4 0a 80 	tileloaddt1 0x80(%r10,%rcx,1),%tmm6
+    1784:	00 00 00 
+    1787:	c4 c2 79 4b bc 0a c0 	tileloaddt1 0xc0(%r10,%rcx,1),%tmm7
+    178e:	00 00 00 
+    1791:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    1796:	c4 82 7b 4b ac 33 00 	tileloadd 0x40000(%r11,%r14,1),%tmm5
+    179d:	00 04 00 
+    17a0:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    17a5:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    17aa:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    17af:	4d 8b 5c 2d c0       	mov    -0x40(%r13,%rbp,1),%r11
+    17b4:	4d 8b 54 2d c8       	mov    -0x38(%r13,%rbp,1),%r10
+    17b9:	ba 00 50 00 00       	mov    $0x5000,%edx
+    17be:	c4 82 7b 4b 24 33    	tileloadd (%r11,%r14,1),%tmm4
+    17c4:	c4 c2 79 4b b4 0a 80 	tileloaddt1 0x80(%r10,%rcx,1),%tmm6
+    17cb:	00 00 00 
+    17ce:	c4 c2 79 4b bc 0a c0 	tileloaddt1 0xc0(%r10,%rcx,1),%tmm7
+    17d5:	00 00 00 
+    17d8:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    17dd:	c4 82 7b 4b ac 33 00 	tileloadd 0x40000(%r11,%r14,1),%tmm5
+    17e4:	00 04 00 
+    17e7:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    17ec:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    17f1:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    17f6:	4d 8b 5c 2d e8       	mov    -0x18(%r13,%rbp,1),%r11
+    17fb:	4d 8b 54 2d f0       	mov    -0x10(%r13,%rbp,1),%r10
+    1800:	ba 00 50 00 00       	mov    $0x5000,%edx
+    1805:	c4 82 7b 4b 24 33    	tileloadd (%r11,%r14,1),%tmm4
+    180b:	c4 c2 79 4b b4 0a 80 	tileloaddt1 0x80(%r10,%rcx,1),%tmm6
+    1812:	00 00 00 
+    1815:	c4 c2 79 4b bc 0a c0 	tileloaddt1 0xc0(%r10,%rcx,1),%tmm7
+    181c:	00 00 00 
+    181f:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    1824:	c4 82 7b 4b ac 33 00 	tileloadd 0x40000(%r11,%r14,1),%tmm5
+    182b:	00 04 00 
+    182e:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    1833:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    1838:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    183d:	4d 8b 5c 2d 10       	mov    0x10(%r13,%rbp,1),%r11
+    1842:	4d 8b 54 2d 18       	mov    0x18(%r13,%rbp,1),%r10
+    1847:	ba 00 50 00 00       	mov    $0x5000,%edx
+    184c:	c4 82 7b 4b 24 33    	tileloadd (%r11,%r14,1),%tmm4
+    1852:	c4 c2 79 4b b4 0a 80 	tileloaddt1 0x80(%r10,%rcx,1),%tmm6
+    1859:	00 00 00 
+    185c:	c4 c2 79 4b bc 0a c0 	tileloaddt1 0xc0(%r10,%rcx,1),%tmm7
+    1863:	00 00 00 
+    1866:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    186b:	c4 82 7b 4b ac 33 00 	tileloadd 0x40000(%r11,%r14,1),%tmm5
+    1872:	00 04 00 
+    1875:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    187a:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    187f:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    1884:	4d 8b 5c 2d 38       	mov    0x38(%r13,%rbp,1),%r11
+    1889:	4d 8b 54 2d 40       	mov    0x40(%r13,%rbp,1),%r10
+    188e:	ba 00 50 00 00       	mov    $0x5000,%edx
+    1893:	c4 82 7b 4b 24 33    	tileloadd (%r11,%r14,1),%tmm4
+    1899:	c4 c2 79 4b b4 0a 80 	tileloaddt1 0x80(%r10,%rcx,1),%tmm6
+    18a0:	00 00 00 
+    18a3:	c4 c2 79 4b bc 0a c0 	tileloaddt1 0xc0(%r10,%rcx,1),%tmm7
+    18aa:	00 00 00 
+    18ad:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    18b2:	c4 82 7b 4b ac 33 00 	tileloadd 0x40000(%r11,%r14,1),%tmm5
+    18b9:	00 04 00 
+    18bc:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    18c1:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    18c6:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    18cb:	4d 8b 5c 2d 60       	mov    0x60(%r13,%rbp,1),%r11
+    18d0:	4d 8b 54 2d 68       	mov    0x68(%r13,%rbp,1),%r10
+    18d5:	ba 00 50 00 00       	mov    $0x5000,%edx
+    18da:	c4 82 7b 4b 24 33    	tileloadd (%r11,%r14,1),%tmm4
+    18e0:	c4 c2 79 4b b4 0a 80 	tileloaddt1 0x80(%r10,%rcx,1),%tmm6
+    18e7:	00 00 00 
+    18ea:	c4 c2 79 4b bc 0a c0 	tileloaddt1 0xc0(%r10,%rcx,1),%tmm7
+    18f1:	00 00 00 
+    18f4:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    18f9:	c4 82 7b 4b ac 33 00 	tileloadd 0x40000(%r11,%r14,1),%tmm5
+    1900:	00 04 00 
+    1903:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    1908:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    190d:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    1912:	4d 8b 9c 2d 88 00 00 	mov    0x88(%r13,%rbp,1),%r11
+    1919:	00 
+    191a:	4d 8b 94 2d 90 00 00 	mov    0x90(%r13,%rbp,1),%r10
+    1921:	00 
+    1922:	ba 00 50 00 00       	mov    $0x5000,%edx
+    1927:	c4 82 7b 4b 24 33    	tileloadd (%r11,%r14,1),%tmm4
+    192d:	c4 c2 79 4b b4 0a 80 	tileloaddt1 0x80(%r10,%rcx,1),%tmm6
+    1934:	00 00 00 
+    1937:	c4 c2 79 4b bc 0a c0 	tileloaddt1 0xc0(%r10,%rcx,1),%tmm7
+    193e:	00 00 00 
+    1941:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    1946:	c4 82 7b 4b ac 33 00 	tileloadd 0x40000(%r11,%r14,1),%tmm5
+    194d:	00 04 00 
+    1950:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    1955:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    195a:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    195f:	4d 8b 9c 2d b0 00 00 	mov    0xb0(%r13,%rbp,1),%r11
+    1966:	00 
+    1967:	4d 8b 94 2d b8 00 00 	mov    0xb8(%r13,%rbp,1),%r10
+    196e:	00 
+    196f:	ba 00 50 00 00       	mov    $0x5000,%edx
+    1974:	c4 82 7b 4b 24 33    	tileloadd (%r11,%r14,1),%tmm4
+    197a:	c4 c2 79 4b b4 0a 80 	tileloaddt1 0x80(%r10,%rcx,1),%tmm6
+    1981:	00 00 00 
+    1984:	c4 c2 79 4b bc 0a c0 	tileloaddt1 0xc0(%r10,%rcx,1),%tmm7
+    198b:	00 00 00 
+    198e:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    1993:	c4 82 7b 4b ac 33 00 	tileloadd 0x40000(%r11,%r14,1),%tmm5
+    199a:	00 04 00 
+    199d:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    19a2:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    19a7:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    19ac:	4d 8b 9c 2d d8 00 00 	mov    0xd8(%r13,%rbp,1),%r11
+    19b3:	00 
+    19b4:	4d 8b 94 2d e0 00 00 	mov    0xe0(%r13,%rbp,1),%r10
+    19bb:	00 
+    19bc:	ba 00 50 00 00       	mov    $0x5000,%edx
+    19c1:	c4 82 7b 4b 24 33    	tileloadd (%r11,%r14,1),%tmm4
+    19c7:	c4 c2 79 4b b4 0a 80 	tileloaddt1 0x80(%r10,%rcx,1),%tmm6
+    19ce:	00 00 00 
+    19d1:	c4 c2 79 4b bc 0a c0 	tileloaddt1 0xc0(%r10,%rcx,1),%tmm7
+    19d8:	00 00 00 
+    19db:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    19e0:	c4 82 7b 4b ac 33 00 	tileloadd 0x40000(%r11,%r14,1),%tmm5
+    19e7:	00 04 00 
+    19ea:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    19ef:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    19f4:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    19f9:	4d 8b 9c 2d 00 01 00 	mov    0x100(%r13,%rbp,1),%r11
+    1a00:	00 
+    1a01:	4d 8b 94 2d 08 01 00 	mov    0x108(%r13,%rbp,1),%r10
+    1a08:	00 
+    1a09:	ba 00 50 00 00       	mov    $0x5000,%edx
+    1a0e:	c4 82 7b 4b 24 33    	tileloadd (%r11,%r14,1),%tmm4
+    1a14:	c4 c2 79 4b b4 0a 80 	tileloaddt1 0x80(%r10,%rcx,1),%tmm6
+    1a1b:	00 00 00 
+    1a1e:	c4 c2 79 4b bc 0a c0 	tileloaddt1 0xc0(%r10,%rcx,1),%tmm7
+    1a25:	00 00 00 
+    1a28:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    1a2d:	c4 82 7b 4b ac 33 00 	tileloadd 0x40000(%r11,%r14,1),%tmm5
+    1a34:	00 04 00 
+    1a37:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    1a3c:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    1a41:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    1a46:	4d 8b 9c 2d 28 01 00 	mov    0x128(%r13,%rbp,1),%r11
+    1a4d:	00 
+    1a4e:	4d 8b 94 2d 30 01 00 	mov    0x130(%r13,%rbp,1),%r10
+    1a55:	00 
+    1a56:	ba 00 50 00 00       	mov    $0x5000,%edx
+    1a5b:	c4 82 7b 4b 24 33    	tileloadd (%r11,%r14,1),%tmm4
+    1a61:	c4 c2 79 4b b4 0a 80 	tileloaddt1 0x80(%r10,%rcx,1),%tmm6
+    1a68:	00 00 00 
+    1a6b:	c4 c2 79 4b bc 0a c0 	tileloaddt1 0xc0(%r10,%rcx,1),%tmm7
+    1a72:	00 00 00 
+    1a75:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    1a7a:	c4 82 7b 4b ac 33 00 	tileloadd 0x40000(%r11,%r14,1),%tmm5
+    1a81:	00 04 00 
+    1a84:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    1a89:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    1a8e:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    1a93:	4d 8b 9c 2d 50 01 00 	mov    0x150(%r13,%rbp,1),%r11
+    1a9a:	00 
+    1a9b:	4d 8b 94 2d 58 01 00 	mov    0x158(%r13,%rbp,1),%r10
+    1aa2:	00 
+    1aa3:	ba 00 50 00 00       	mov    $0x5000,%edx
+    1aa8:	c4 82 7b 4b 24 33    	tileloadd (%r11,%r14,1),%tmm4
+    1aae:	c4 c2 79 4b b4 0a 80 	tileloaddt1 0x80(%r10,%rcx,1),%tmm6
+    1ab5:	00 00 00 
+    1ab8:	c4 c2 79 4b bc 0a c0 	tileloaddt1 0xc0(%r10,%rcx,1),%tmm7
+    1abf:	00 00 00 
+    1ac2:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    1ac7:	c4 82 7b 4b ac 33 00 	tileloadd 0x40000(%r11,%r14,1),%tmm5
+    1ace:	00 04 00 
+    1ad1:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    1ad6:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    1adb:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    1ae0:	4d 8b 9c 2d 78 01 00 	mov    0x178(%r13,%rbp,1),%r11
+    1ae7:	00 
+    1ae8:	4d 8b 94 2d 80 01 00 	mov    0x180(%r13,%rbp,1),%r10
+    1aef:	00 
+    1af0:	ba 00 50 00 00       	mov    $0x5000,%edx
+    1af5:	c4 82 7b 4b 24 33    	tileloadd (%r11,%r14,1),%tmm4
+    1afb:	c4 c2 79 4b b4 0a 80 	tileloaddt1 0x80(%r10,%rcx,1),%tmm6
+    1b02:	00 00 00 
+    1b05:	c4 c2 79 4b bc 0a c0 	tileloaddt1 0xc0(%r10,%rcx,1),%tmm7
+    1b0c:	00 00 00 
+    1b0f:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    1b14:	c4 82 7b 4b ac 33 00 	tileloadd 0x40000(%r11,%r14,1),%tmm5
+    1b1b:	00 04 00 
+    1b1e:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    1b23:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    1b28:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    1b2d:	4d 8b 9c 2d a0 01 00 	mov    0x1a0(%r13,%rbp,1),%r11
+    1b34:	00 
+    1b35:	4d 8b 94 2d a8 01 00 	mov    0x1a8(%r13,%rbp,1),%r10
+    1b3c:	00 
+    1b3d:	ba 00 50 00 00       	mov    $0x5000,%edx
+    1b42:	c4 82 7b 4b 24 33    	tileloadd (%r11,%r14,1),%tmm4
+    1b48:	c4 c2 79 4b b4 0a 80 	tileloaddt1 0x80(%r10,%rcx,1),%tmm6
+    1b4f:	00 00 00 
+    1b52:	c4 c2 79 4b bc 0a c0 	tileloaddt1 0xc0(%r10,%rcx,1),%tmm7
+    1b59:	00 00 00 
+    1b5c:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    1b61:	c4 82 7b 4b ac 33 00 	tileloadd 0x40000(%r11,%r14,1),%tmm5
+    1b68:	00 04 00 
+    1b6b:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    1b70:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    1b75:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    1b7a:	4d 8b 9c 2d c8 01 00 	mov    0x1c8(%r13,%rbp,1),%r11
+    1b81:	00 
+    1b82:	4d 8b 94 2d d0 01 00 	mov    0x1d0(%r13,%rbp,1),%r10
+    1b89:	00 
+    1b8a:	ba 00 50 00 00       	mov    $0x5000,%edx
+    1b8f:	c4 82 7b 4b 24 33    	tileloadd (%r11,%r14,1),%tmm4
+    1b95:	c4 c2 79 4b b4 0a 80 	tileloaddt1 0x80(%r10,%rcx,1),%tmm6
+    1b9c:	00 00 00 
+    1b9f:	c4 c2 79 4b bc 0a c0 	tileloaddt1 0xc0(%r10,%rcx,1),%tmm7
+    1ba6:	00 00 00 
+    1ba9:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    1bae:	c4 82 7b 4b ac 33 00 	tileloadd 0x40000(%r11,%r14,1),%tmm5
+    1bb5:	00 04 00 
+    1bb8:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    1bbd:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    1bc2:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    1bc7:	4d 8b 9c 2d f0 01 00 	mov    0x1f0(%r13,%rbp,1),%r11
+    1bce:	00 
+    1bcf:	4d 8b 94 2d f8 01 00 	mov    0x1f8(%r13,%rbp,1),%r10
+    1bd6:	00 
+    1bd7:	ba 00 50 00 00       	mov    $0x5000,%edx
+    1bdc:	c4 82 7b 4b 24 33    	tileloadd (%r11,%r14,1),%tmm4
+    1be2:	c4 c2 79 4b b4 0a 80 	tileloaddt1 0x80(%r10,%rcx,1),%tmm6
+    1be9:	00 00 00 
+    1bec:	c4 c2 79 4b bc 0a c0 	tileloaddt1 0xc0(%r10,%rcx,1),%tmm7
+    1bf3:	00 00 00 
+    1bf6:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    1bfb:	c4 82 7b 4b ac 33 00 	tileloadd 0x40000(%r11,%r14,1),%tmm5
+    1c02:	00 04 00 
+    1c05:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    1c0a:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    1c0f:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    1c14:	4d 8b 9c 6d 18 fe ff 	mov    -0x1e8(%r13,%rbp,2),%r11
+    1c1b:	ff 
+    1c1c:	4d 8b 94 6d 20 fe ff 	mov    -0x1e0(%r13,%rbp,2),%r10
+    1c23:	ff 
+    1c24:	ba 00 50 00 00       	mov    $0x5000,%edx
+    1c29:	c4 82 7b 4b 24 33    	tileloadd (%r11,%r14,1),%tmm4
+    1c2f:	c4 c2 79 4b b4 0a 80 	tileloaddt1 0x80(%r10,%rcx,1),%tmm6
+    1c36:	00 00 00 
+    1c39:	c4 c2 79 4b bc 0a c0 	tileloaddt1 0xc0(%r10,%rcx,1),%tmm7
+    1c40:	00 00 00 
+    1c43:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    1c48:	c4 82 7b 4b ac 33 00 	tileloadd 0x40000(%r11,%r14,1),%tmm5
+    1c4f:	00 04 00 
+    1c52:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    1c57:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    1c5c:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    1c61:	4d 8b 9c 6d 40 fe ff 	mov    -0x1c0(%r13,%rbp,2),%r11
+    1c68:	ff 
+    1c69:	4d 8b 94 6d 48 fe ff 	mov    -0x1b8(%r13,%rbp,2),%r10
+    1c70:	ff 
+    1c71:	ba 00 50 00 00       	mov    $0x5000,%edx
+    1c76:	c4 82 7b 4b 24 33    	tileloadd (%r11,%r14,1),%tmm4
+    1c7c:	c4 c2 79 4b b4 0a 80 	tileloaddt1 0x80(%r10,%rcx,1),%tmm6
+    1c83:	00 00 00 
+    1c86:	c4 c2 79 4b bc 0a c0 	tileloaddt1 0xc0(%r10,%rcx,1),%tmm7
+    1c8d:	00 00 00 
+    1c90:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    1c95:	c4 82 7b 4b ac 33 00 	tileloadd 0x40000(%r11,%r14,1),%tmm5
+    1c9c:	00 04 00 
+    1c9f:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    1ca4:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    1ca9:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    1cae:	4d 8b 9c 6d 68 fe ff 	mov    -0x198(%r13,%rbp,2),%r11
+    1cb5:	ff 
+    1cb6:	4d 8b 94 6d 70 fe ff 	mov    -0x190(%r13,%rbp,2),%r10
+    1cbd:	ff 
+    1cbe:	ba 00 50 00 00       	mov    $0x5000,%edx
+    1cc3:	c4 82 7b 4b 24 33    	tileloadd (%r11,%r14,1),%tmm4
+    1cc9:	c4 c2 79 4b b4 0a 80 	tileloaddt1 0x80(%r10,%rcx,1),%tmm6
+    1cd0:	00 00 00 
+    1cd3:	c4 c2 79 4b bc 0a c0 	tileloaddt1 0xc0(%r10,%rcx,1),%tmm7
+    1cda:	00 00 00 
+    1cdd:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    1ce2:	c4 82 7b 4b ac 33 00 	tileloadd 0x40000(%r11,%r14,1),%tmm5
+    1ce9:	00 04 00 
+    1cec:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    1cf1:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    1cf6:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    1cfb:	4d 8b 9c 6d 90 fe ff 	mov    -0x170(%r13,%rbp,2),%r11
+    1d02:	ff 
+    1d03:	4d 8b 94 6d 98 fe ff 	mov    -0x168(%r13,%rbp,2),%r10
+    1d0a:	ff 
+    1d0b:	ba 00 50 00 00       	mov    $0x5000,%edx
+    1d10:	c4 82 7b 4b 24 33    	tileloadd (%r11,%r14,1),%tmm4
+    1d16:	c4 c2 79 4b b4 0a 80 	tileloaddt1 0x80(%r10,%rcx,1),%tmm6
+    1d1d:	00 00 00 
+    1d20:	c4 c2 79 4b bc 0a c0 	tileloaddt1 0xc0(%r10,%rcx,1),%tmm7
+    1d27:	00 00 00 
+    1d2a:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    1d2f:	c4 82 7b 4b ac 33 00 	tileloadd 0x40000(%r11,%r14,1),%tmm5
+    1d36:	00 04 00 
+    1d39:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    1d3e:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    1d43:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    1d48:	ba 00 50 00 00       	mov    $0x5000,%edx
+    1d4d:	c4 c2 7a 4b 84 17 80 	tilestored %tmm0,0x80(%r15,%rdx,1)
+    1d54:	00 00 00 
+    1d57:	c4 c2 7a 4b 8c 17 c0 	tilestored %tmm1,0xc0(%r15,%rdx,1)
+    1d5e:	00 00 00 
+    1d61:	c4 c2 7a 4b 94 17 80 	tilestored %tmm2,0x50080(%r15,%rdx,1)
+    1d68:	00 05 00 
+    1d6b:	c4 c2 7a 4b 9c 17 c0 	tilestored %tmm3,0x500c0(%r15,%rdx,1)
+    1d72:	00 05 00 
+    1d75:	ba 00 50 00 00       	mov    $0x5000,%edx
+    1d7a:	c4 c2 7b 4b 84 17 00 	tileloadd 0xa0000(%r15,%rdx,1),%tmm0
+    1d81:	00 0a 00 
+    1d84:	c4 c2 7b 4b 8c 17 40 	tileloadd 0xa0040(%r15,%rdx,1),%tmm1
+    1d8b:	00 0a 00 
+    1d8e:	c4 c2 7b 4b 94 17 00 	tileloadd 0xf0000(%r15,%rdx,1),%tmm2
+    1d95:	00 0f 00 
+    1d98:	c4 c2 7b 4b 9c 17 40 	tileloadd 0xf0040(%r15,%rdx,1),%tmm3
+    1d9f:	00 0f 00 
+    1da2:	4d 8b 5d 00          	mov    0x0(%r13),%r11
+    1da6:	4d 8b 55 08          	mov    0x8(%r13),%r10
+    1daa:	ba 00 50 00 00       	mov    $0x5000,%edx
+    1daf:	c4 82 7b 4b a4 33 00 	tileloadd 0x80000(%r11,%r14,1),%tmm4
+    1db6:	00 08 00 
+    1db9:	c4 c2 79 4b 34 0a    	tileloaddt1 (%r10,%rcx,1),%tmm6
+    1dbf:	c4 c2 79 4b 7c 0a 40 	tileloaddt1 0x40(%r10,%rcx,1),%tmm7
+    1dc6:	41 0f 0d 8c 24 00 00 	prefetchw 0xa0000(%r12)
+    1dcd:	0a 00 
+    1dcf:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    1dd4:	c4 82 7b 4b ac 33 00 	tileloadd 0xc0000(%r11,%r14,1),%tmm5
+    1ddb:	00 0c 00 
+    1dde:	41 0f 0d 8c 24 00 50 	prefetchw 0xa5000(%r12)
+    1de5:	0a 00 
+    1de7:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    1dec:	41 0f 0d 8c 24 00 a0 	prefetchw 0xaa000(%r12)
+    1df3:	0a 00 
+    1df5:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    1dfa:	41 0f 0d 8c 24 00 f0 	prefetchw 0xaf000(%r12)
+    1e01:	0a 00 
+    1e03:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    1e08:	4d 8b 5d 28          	mov    0x28(%r13),%r11
+    1e0c:	4d 8b 55 30          	mov    0x30(%r13),%r10
+    1e10:	ba 00 50 00 00       	mov    $0x5000,%edx
+    1e15:	c4 82 7b 4b a4 33 00 	tileloadd 0x80000(%r11,%r14,1),%tmm4
+    1e1c:	00 08 00 
+    1e1f:	c4 c2 79 4b 34 0a    	tileloaddt1 (%r10,%rcx,1),%tmm6
+    1e25:	c4 c2 79 4b 7c 0a 40 	tileloaddt1 0x40(%r10,%rcx,1),%tmm7
+    1e2c:	41 0f 0d 8c 24 00 40 	prefetchw 0xb4000(%r12)
+    1e33:	0b 00 
+    1e35:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    1e3a:	c4 82 7b 4b ac 33 00 	tileloadd 0xc0000(%r11,%r14,1),%tmm5
+    1e41:	00 0c 00 
+    1e44:	41 0f 0d 8c 24 00 90 	prefetchw 0xb9000(%r12)
+    1e4b:	0b 00 
+    1e4d:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    1e52:	41 0f 0d 8c 24 00 e0 	prefetchw 0xbe000(%r12)
+    1e59:	0b 00 
+    1e5b:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    1e60:	41 0f 0d 8c 24 00 30 	prefetchw 0xc3000(%r12)
+    1e67:	0c 00 
+    1e69:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    1e6e:	4d 8b 5d 50          	mov    0x50(%r13),%r11
+    1e72:	4d 8b 55 58          	mov    0x58(%r13),%r10
+    1e76:	ba 00 50 00 00       	mov    $0x5000,%edx
+    1e7b:	c4 82 7b 4b a4 33 00 	tileloadd 0x80000(%r11,%r14,1),%tmm4
+    1e82:	00 08 00 
+    1e85:	c4 c2 79 4b 34 0a    	tileloaddt1 (%r10,%rcx,1),%tmm6
+    1e8b:	c4 c2 79 4b 7c 0a 40 	tileloaddt1 0x40(%r10,%rcx,1),%tmm7
+    1e92:	41 0f 0d 8c 24 00 80 	prefetchw 0xc8000(%r12)
+    1e99:	0c 00 
+    1e9b:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    1ea0:	c4 82 7b 4b ac 33 00 	tileloadd 0xc0000(%r11,%r14,1),%tmm5
+    1ea7:	00 0c 00 
+    1eaa:	41 0f 0d 8c 24 00 d0 	prefetchw 0xcd000(%r12)
+    1eb1:	0c 00 
+    1eb3:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    1eb8:	41 0f 0d 8c 24 00 20 	prefetchw 0xd2000(%r12)
+    1ebf:	0d 00 
+    1ec1:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    1ec6:	41 0f 0d 8c 24 00 70 	prefetchw 0xd7000(%r12)
+    1ecd:	0d 00 
+    1ecf:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    1ed4:	4d 8b 5d 78          	mov    0x78(%r13),%r11
+    1ed8:	4d 8b 95 80 00 00 00 	mov    0x80(%r13),%r10
+    1edf:	ba 00 50 00 00       	mov    $0x5000,%edx
+    1ee4:	c4 82 7b 4b a4 33 00 	tileloadd 0x80000(%r11,%r14,1),%tmm4
+    1eeb:	00 08 00 
+    1eee:	c4 c2 79 4b 34 0a    	tileloaddt1 (%r10,%rcx,1),%tmm6
+    1ef4:	c4 c2 79 4b 7c 0a 40 	tileloaddt1 0x40(%r10,%rcx,1),%tmm7
+    1efb:	41 0f 0d 8c 24 00 c0 	prefetchw 0xdc000(%r12)
+    1f02:	0d 00 
+    1f04:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    1f09:	c4 82 7b 4b ac 33 00 	tileloadd 0xc0000(%r11,%r14,1),%tmm5
+    1f10:	00 0c 00 
+    1f13:	41 0f 0d 8c 24 00 10 	prefetchw 0xe1000(%r12)
+    1f1a:	0e 00 
+    1f1c:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    1f21:	41 0f 0d 8c 24 00 60 	prefetchw 0xe6000(%r12)
+    1f28:	0e 00 
+    1f2a:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    1f2f:	41 0f 0d 8c 24 00 b0 	prefetchw 0xeb000(%r12)
+    1f36:	0e 00 
+    1f38:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    1f3d:	4d 8b 9d a0 00 00 00 	mov    0xa0(%r13),%r11
+    1f44:	4d 8b 95 a8 00 00 00 	mov    0xa8(%r13),%r10
+    1f4b:	ba 00 50 00 00       	mov    $0x5000,%edx
+    1f50:	c4 82 7b 4b a4 33 00 	tileloadd 0x80000(%r11,%r14,1),%tmm4
+    1f57:	00 08 00 
+    1f5a:	c4 c2 79 4b 34 0a    	tileloaddt1 (%r10,%rcx,1),%tmm6
+    1f60:	c4 c2 79 4b 7c 0a 40 	tileloaddt1 0x40(%r10,%rcx,1),%tmm7
+    1f67:	41 0f 0d 8c 24 40 00 	prefetchw 0xa0040(%r12)
+    1f6e:	0a 00 
+    1f70:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    1f75:	c4 82 7b 4b ac 33 00 	tileloadd 0xc0000(%r11,%r14,1),%tmm5
+    1f7c:	00 0c 00 
+    1f7f:	41 0f 0d 8c 24 40 50 	prefetchw 0xa5040(%r12)
+    1f86:	0a 00 
+    1f88:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    1f8d:	41 0f 0d 8c 24 40 a0 	prefetchw 0xaa040(%r12)
+    1f94:	0a 00 
+    1f96:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    1f9b:	41 0f 0d 8c 24 40 f0 	prefetchw 0xaf040(%r12)
+    1fa2:	0a 00 
+    1fa4:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    1fa9:	4d 8b 9d c8 00 00 00 	mov    0xc8(%r13),%r11
+    1fb0:	4d 8b 95 d0 00 00 00 	mov    0xd0(%r13),%r10
+    1fb7:	ba 00 50 00 00       	mov    $0x5000,%edx
+    1fbc:	c4 82 7b 4b a4 33 00 	tileloadd 0x80000(%r11,%r14,1),%tmm4
+    1fc3:	00 08 00 
+    1fc6:	c4 c2 79 4b 34 0a    	tileloaddt1 (%r10,%rcx,1),%tmm6
+    1fcc:	c4 c2 79 4b 7c 0a 40 	tileloaddt1 0x40(%r10,%rcx,1),%tmm7
+    1fd3:	41 0f 0d 8c 24 40 40 	prefetchw 0xb4040(%r12)
+    1fda:	0b 00 
+    1fdc:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    1fe1:	c4 82 7b 4b ac 33 00 	tileloadd 0xc0000(%r11,%r14,1),%tmm5
+    1fe8:	00 0c 00 
+    1feb:	41 0f 0d 8c 24 40 90 	prefetchw 0xb9040(%r12)
+    1ff2:	0b 00 
+    1ff4:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    1ff9:	41 0f 0d 8c 24 40 e0 	prefetchw 0xbe040(%r12)
+    2000:	0b 00 
+    2002:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    2007:	41 0f 0d 8c 24 40 30 	prefetchw 0xc3040(%r12)
+    200e:	0c 00 
+    2010:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    2015:	4d 8b 9d f0 00 00 00 	mov    0xf0(%r13),%r11
+    201c:	4d 8b 95 f8 00 00 00 	mov    0xf8(%r13),%r10
+    2023:	ba 00 50 00 00       	mov    $0x5000,%edx
+    2028:	c4 82 7b 4b a4 33 00 	tileloadd 0x80000(%r11,%r14,1),%tmm4
+    202f:	00 08 00 
+    2032:	c4 c2 79 4b 34 0a    	tileloaddt1 (%r10,%rcx,1),%tmm6
+    2038:	c4 c2 79 4b 7c 0a 40 	tileloaddt1 0x40(%r10,%rcx,1),%tmm7
+    203f:	41 0f 0d 8c 24 40 80 	prefetchw 0xc8040(%r12)
+    2046:	0c 00 
+    2048:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    204d:	c4 82 7b 4b ac 33 00 	tileloadd 0xc0000(%r11,%r14,1),%tmm5
+    2054:	00 0c 00 
+    2057:	41 0f 0d 8c 24 40 d0 	prefetchw 0xcd040(%r12)
+    205e:	0c 00 
+    2060:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    2065:	41 0f 0d 8c 24 40 20 	prefetchw 0xd2040(%r12)
+    206c:	0d 00 
+    206e:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    2073:	41 0f 0d 8c 24 40 70 	prefetchw 0xd7040(%r12)
+    207a:	0d 00 
+    207c:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    2081:	4d 8b 9d 18 01 00 00 	mov    0x118(%r13),%r11
+    2088:	4d 8b 95 20 01 00 00 	mov    0x120(%r13),%r10
+    208f:	ba 00 50 00 00       	mov    $0x5000,%edx
+    2094:	c4 82 7b 4b a4 33 00 	tileloadd 0x80000(%r11,%r14,1),%tmm4
+    209b:	00 08 00 
+    209e:	c4 c2 79 4b 34 0a    	tileloaddt1 (%r10,%rcx,1),%tmm6
+    20a4:	c4 c2 79 4b 7c 0a 40 	tileloaddt1 0x40(%r10,%rcx,1),%tmm7
+    20ab:	41 0f 0d 8c 24 40 c0 	prefetchw 0xdc040(%r12)
+    20b2:	0d 00 
+    20b4:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    20b9:	c4 82 7b 4b ac 33 00 	tileloadd 0xc0000(%r11,%r14,1),%tmm5
+    20c0:	00 0c 00 
+    20c3:	41 0f 0d 8c 24 40 10 	prefetchw 0xe1040(%r12)
+    20ca:	0e 00 
+    20cc:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    20d1:	41 0f 0d 8c 24 40 60 	prefetchw 0xe6040(%r12)
+    20d8:	0e 00 
+    20da:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    20df:	41 0f 0d 8c 24 40 b0 	prefetchw 0xeb040(%r12)
+    20e6:	0e 00 
+    20e8:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    20ed:	4d 8b 9d 40 01 00 00 	mov    0x140(%r13),%r11
+    20f4:	4d 8b 95 48 01 00 00 	mov    0x148(%r13),%r10
+    20fb:	ba 00 50 00 00       	mov    $0x5000,%edx
+    2100:	c4 82 7b 4b a4 33 00 	tileloadd 0x80000(%r11,%r14,1),%tmm4
+    2107:	00 08 00 
+    210a:	c4 c2 79 4b 34 0a    	tileloaddt1 (%r10,%rcx,1),%tmm6
+    2110:	c4 c2 79 4b 7c 0a 40 	tileloaddt1 0x40(%r10,%rcx,1),%tmm7
+    2117:	41 0f 0d 8c 24 00 00 	prefetchw 0xf0000(%r12)
+    211e:	0f 00 
+    2120:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    2125:	c4 82 7b 4b ac 33 00 	tileloadd 0xc0000(%r11,%r14,1),%tmm5
+    212c:	00 0c 00 
+    212f:	41 0f 0d 8c 24 00 50 	prefetchw 0xf5000(%r12)
+    2136:	0f 00 
+    2138:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    213d:	41 0f 0d 8c 24 00 a0 	prefetchw 0xfa000(%r12)
+    2144:	0f 00 
+    2146:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    214b:	41 0f 0d 8c 24 00 f0 	prefetchw 0xff000(%r12)
+    2152:	0f 00 
+    2154:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    2159:	4d 8b 9d 68 01 00 00 	mov    0x168(%r13),%r11
+    2160:	4d 8b 95 70 01 00 00 	mov    0x170(%r13),%r10
+    2167:	ba 00 50 00 00       	mov    $0x5000,%edx
+    216c:	c4 82 7b 4b a4 33 00 	tileloadd 0x80000(%r11,%r14,1),%tmm4
+    2173:	00 08 00 
+    2176:	c4 c2 79 4b 34 0a    	tileloaddt1 (%r10,%rcx,1),%tmm6
+    217c:	c4 c2 79 4b 7c 0a 40 	tileloaddt1 0x40(%r10,%rcx,1),%tmm7
+    2183:	41 0f 0d 8c 24 00 40 	prefetchw 0x104000(%r12)
+    218a:	10 00 
+    218c:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    2191:	c4 82 7b 4b ac 33 00 	tileloadd 0xc0000(%r11,%r14,1),%tmm5
+    2198:	00 0c 00 
+    219b:	41 0f 0d 8c 24 00 90 	prefetchw 0x109000(%r12)
+    21a2:	10 00 
+    21a4:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    21a9:	41 0f 0d 8c 24 00 e0 	prefetchw 0x10e000(%r12)
+    21b0:	10 00 
+    21b2:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    21b7:	41 0f 0d 8c 24 00 30 	prefetchw 0x113000(%r12)
+    21be:	11 00 
+    21c0:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    21c5:	4d 8b 9d 90 01 00 00 	mov    0x190(%r13),%r11
+    21cc:	4d 8b 95 98 01 00 00 	mov    0x198(%r13),%r10
+    21d3:	ba 00 50 00 00       	mov    $0x5000,%edx
+    21d8:	c4 82 7b 4b a4 33 00 	tileloadd 0x80000(%r11,%r14,1),%tmm4
+    21df:	00 08 00 
+    21e2:	c4 c2 79 4b 34 0a    	tileloaddt1 (%r10,%rcx,1),%tmm6
+    21e8:	c4 c2 79 4b 7c 0a 40 	tileloaddt1 0x40(%r10,%rcx,1),%tmm7
+    21ef:	41 0f 0d 8c 24 00 80 	prefetchw 0x118000(%r12)
+    21f6:	11 00 
+    21f8:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    21fd:	c4 82 7b 4b ac 33 00 	tileloadd 0xc0000(%r11,%r14,1),%tmm5
+    2204:	00 0c 00 
+    2207:	41 0f 0d 8c 24 00 d0 	prefetchw 0x11d000(%r12)
+    220e:	11 00 
+    2210:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    2215:	41 0f 0d 8c 24 00 20 	prefetchw 0x122000(%r12)
+    221c:	12 00 
+    221e:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    2223:	41 0f 0d 8c 24 00 70 	prefetchw 0x127000(%r12)
+    222a:	12 00 
+    222c:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    2231:	4d 8b 9d b8 01 00 00 	mov    0x1b8(%r13),%r11
+    2238:	4d 8b 95 c0 01 00 00 	mov    0x1c0(%r13),%r10
+    223f:	ba 00 50 00 00       	mov    $0x5000,%edx
+    2244:	c4 82 7b 4b a4 33 00 	tileloadd 0x80000(%r11,%r14,1),%tmm4
+    224b:	00 08 00 
+    224e:	c4 c2 79 4b 34 0a    	tileloaddt1 (%r10,%rcx,1),%tmm6
+    2254:	c4 c2 79 4b 7c 0a 40 	tileloaddt1 0x40(%r10,%rcx,1),%tmm7
+    225b:	41 0f 0d 8c 24 00 c0 	prefetchw 0x12c000(%r12)
+    2262:	12 00 
+    2264:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    2269:	c4 82 7b 4b ac 33 00 	tileloadd 0xc0000(%r11,%r14,1),%tmm5
+    2270:	00 0c 00 
+    2273:	41 0f 0d 8c 24 00 10 	prefetchw 0x131000(%r12)
+    227a:	13 00 
+    227c:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    2281:	41 0f 0d 8c 24 00 60 	prefetchw 0x136000(%r12)
+    2288:	13 00 
+    228a:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    228f:	41 0f 0d 8c 24 00 b0 	prefetchw 0x13b000(%r12)
+    2296:	13 00 
+    2298:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    229d:	4d 8b 9d e0 01 00 00 	mov    0x1e0(%r13),%r11
+    22a4:	4d 8b 95 e8 01 00 00 	mov    0x1e8(%r13),%r10
+    22ab:	ba 00 50 00 00       	mov    $0x5000,%edx
+    22b0:	c4 82 7b 4b a4 33 00 	tileloadd 0x80000(%r11,%r14,1),%tmm4
+    22b7:	00 08 00 
+    22ba:	c4 c2 79 4b 34 0a    	tileloaddt1 (%r10,%rcx,1),%tmm6
+    22c0:	c4 c2 79 4b 7c 0a 40 	tileloaddt1 0x40(%r10,%rcx,1),%tmm7
+    22c7:	41 0f 0d 8c 24 40 00 	prefetchw 0xf0040(%r12)
+    22ce:	0f 00 
+    22d0:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    22d5:	c4 82 7b 4b ac 33 00 	tileloadd 0xc0000(%r11,%r14,1),%tmm5
+    22dc:	00 0c 00 
+    22df:	41 0f 0d 8c 24 40 50 	prefetchw 0xf5040(%r12)
+    22e6:	0f 00 
+    22e8:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    22ed:	41 0f 0d 8c 24 40 a0 	prefetchw 0xfa040(%r12)
+    22f4:	0f 00 
+    22f6:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    22fb:	41 0f 0d 8c 24 40 f0 	prefetchw 0xff040(%r12)
+    2302:	0f 00 
+    2304:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    2309:	4d 8b 9c 2d 08 fe ff 	mov    -0x1f8(%r13,%rbp,1),%r11
+    2310:	ff 
+    2311:	4d 8b 94 2d 10 fe ff 	mov    -0x1f0(%r13,%rbp,1),%r10
+    2318:	ff 
+    2319:	ba 00 50 00 00       	mov    $0x5000,%edx
+    231e:	c4 82 7b 4b a4 33 00 	tileloadd 0x80000(%r11,%r14,1),%tmm4
+    2325:	00 08 00 
+    2328:	c4 c2 79 4b 34 0a    	tileloaddt1 (%r10,%rcx,1),%tmm6
+    232e:	c4 c2 79 4b 7c 0a 40 	tileloaddt1 0x40(%r10,%rcx,1),%tmm7
+    2335:	41 0f 0d 8c 24 40 40 	prefetchw 0x104040(%r12)
+    233c:	10 00 
+    233e:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    2343:	c4 82 7b 4b ac 33 00 	tileloadd 0xc0000(%r11,%r14,1),%tmm5
+    234a:	00 0c 00 
+    234d:	41 0f 0d 8c 24 40 90 	prefetchw 0x109040(%r12)
+    2354:	10 00 
+    2356:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    235b:	41 0f 0d 8c 24 40 e0 	prefetchw 0x10e040(%r12)
+    2362:	10 00 
+    2364:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    2369:	41 0f 0d 8c 24 40 30 	prefetchw 0x113040(%r12)
+    2370:	11 00 
+    2372:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    2377:	4d 8b 9c 2d 30 fe ff 	mov    -0x1d0(%r13,%rbp,1),%r11
+    237e:	ff 
+    237f:	4d 8b 94 2d 38 fe ff 	mov    -0x1c8(%r13,%rbp,1),%r10
+    2386:	ff 
+    2387:	ba 00 50 00 00       	mov    $0x5000,%edx
+    238c:	c4 82 7b 4b a4 33 00 	tileloadd 0x80000(%r11,%r14,1),%tmm4
+    2393:	00 08 00 
+    2396:	c4 c2 79 4b 34 0a    	tileloaddt1 (%r10,%rcx,1),%tmm6
+    239c:	c4 c2 79 4b 7c 0a 40 	tileloaddt1 0x40(%r10,%rcx,1),%tmm7
+    23a3:	41 0f 0d 8c 24 40 80 	prefetchw 0x118040(%r12)
+    23aa:	11 00 
+    23ac:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    23b1:	c4 82 7b 4b ac 33 00 	tileloadd 0xc0000(%r11,%r14,1),%tmm5
+    23b8:	00 0c 00 
+    23bb:	41 0f 0d 8c 24 40 d0 	prefetchw 0x11d040(%r12)
+    23c2:	11 00 
+    23c4:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    23c9:	41 0f 0d 8c 24 40 20 	prefetchw 0x122040(%r12)
+    23d0:	12 00 
+    23d2:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    23d7:	41 0f 0d 8c 24 40 70 	prefetchw 0x127040(%r12)
+    23de:	12 00 
+    23e0:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    23e5:	4d 8b 9c 2d 58 fe ff 	mov    -0x1a8(%r13,%rbp,1),%r11
+    23ec:	ff 
+    23ed:	4d 8b 94 2d 60 fe ff 	mov    -0x1a0(%r13,%rbp,1),%r10
+    23f4:	ff 
+    23f5:	ba 00 50 00 00       	mov    $0x5000,%edx
+    23fa:	c4 82 7b 4b a4 33 00 	tileloadd 0x80000(%r11,%r14,1),%tmm4
+    2401:	00 08 00 
+    2404:	c4 c2 79 4b 34 0a    	tileloaddt1 (%r10,%rcx,1),%tmm6
+    240a:	c4 c2 79 4b 7c 0a 40 	tileloaddt1 0x40(%r10,%rcx,1),%tmm7
+    2411:	41 0f 0d 8c 24 40 c0 	prefetchw 0x12c040(%r12)
+    2418:	12 00 
+    241a:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    241f:	c4 82 7b 4b ac 33 00 	tileloadd 0xc0000(%r11,%r14,1),%tmm5
+    2426:	00 0c 00 
+    2429:	41 0f 0d 8c 24 40 10 	prefetchw 0x131040(%r12)
+    2430:	13 00 
+    2432:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    2437:	41 0f 0d 8c 24 40 60 	prefetchw 0x136040(%r12)
+    243e:	13 00 
+    2440:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    2445:	41 0f 0d 8c 24 40 b0 	prefetchw 0x13b040(%r12)
+    244c:	13 00 
+    244e:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    2453:	4d 8b 9c 2d 80 fe ff 	mov    -0x180(%r13,%rbp,1),%r11
+    245a:	ff 
+    245b:	4d 8b 94 2d 88 fe ff 	mov    -0x178(%r13,%rbp,1),%r10
+    2462:	ff 
+    2463:	ba 00 50 00 00       	mov    $0x5000,%edx
+    2468:	c4 82 7b 4b a4 33 00 	tileloadd 0x80000(%r11,%r14,1),%tmm4
+    246f:	00 08 00 
+    2472:	c4 c2 79 4b 34 0a    	tileloaddt1 (%r10,%rcx,1),%tmm6
+    2478:	c4 c2 79 4b 7c 0a 40 	tileloaddt1 0x40(%r10,%rcx,1),%tmm7
+    247f:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    2484:	c4 82 7b 4b ac 33 00 	tileloadd 0xc0000(%r11,%r14,1),%tmm5
+    248b:	00 0c 00 
+    248e:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    2493:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    2498:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    249d:	4d 8b 9c 2d a8 fe ff 	mov    -0x158(%r13,%rbp,1),%r11
+    24a4:	ff 
+    24a5:	4d 8b 94 2d b0 fe ff 	mov    -0x150(%r13,%rbp,1),%r10
+    24ac:	ff 
+    24ad:	ba 00 50 00 00       	mov    $0x5000,%edx
+    24b2:	c4 82 7b 4b a4 33 00 	tileloadd 0x80000(%r11,%r14,1),%tmm4
+    24b9:	00 08 00 
+    24bc:	c4 c2 79 4b 34 0a    	tileloaddt1 (%r10,%rcx,1),%tmm6
+    24c2:	c4 c2 79 4b 7c 0a 40 	tileloaddt1 0x40(%r10,%rcx,1),%tmm7
+    24c9:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    24ce:	c4 82 7b 4b ac 33 00 	tileloadd 0xc0000(%r11,%r14,1),%tmm5
+    24d5:	00 0c 00 
+    24d8:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    24dd:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    24e2:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    24e7:	4d 8b 9c 2d d0 fe ff 	mov    -0x130(%r13,%rbp,1),%r11
+    24ee:	ff 
+    24ef:	4d 8b 94 2d d8 fe ff 	mov    -0x128(%r13,%rbp,1),%r10
+    24f6:	ff 
+    24f7:	ba 00 50 00 00       	mov    $0x5000,%edx
+    24fc:	c4 82 7b 4b a4 33 00 	tileloadd 0x80000(%r11,%r14,1),%tmm4
+    2503:	00 08 00 
+    2506:	c4 c2 79 4b 34 0a    	tileloaddt1 (%r10,%rcx,1),%tmm6
+    250c:	c4 c2 79 4b 7c 0a 40 	tileloaddt1 0x40(%r10,%rcx,1),%tmm7
+    2513:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    2518:	c4 82 7b 4b ac 33 00 	tileloadd 0xc0000(%r11,%r14,1),%tmm5
+    251f:	00 0c 00 
+    2522:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    2527:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    252c:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    2531:	4d 8b 9c 2d f8 fe ff 	mov    -0x108(%r13,%rbp,1),%r11
+    2538:	ff 
+    2539:	4d 8b 94 2d 00 ff ff 	mov    -0x100(%r13,%rbp,1),%r10
+    2540:	ff 
+    2541:	ba 00 50 00 00       	mov    $0x5000,%edx
+    2546:	c4 82 7b 4b a4 33 00 	tileloadd 0x80000(%r11,%r14,1),%tmm4
+    254d:	00 08 00 
+    2550:	c4 c2 79 4b 34 0a    	tileloaddt1 (%r10,%rcx,1),%tmm6
+    2556:	c4 c2 79 4b 7c 0a 40 	tileloaddt1 0x40(%r10,%rcx,1),%tmm7
+    255d:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    2562:	c4 82 7b 4b ac 33 00 	tileloadd 0xc0000(%r11,%r14,1),%tmm5
+    2569:	00 0c 00 
+    256c:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    2571:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    2576:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    257b:	4d 8b 9c 2d 20 ff ff 	mov    -0xe0(%r13,%rbp,1),%r11
+    2582:	ff 
+    2583:	4d 8b 94 2d 28 ff ff 	mov    -0xd8(%r13,%rbp,1),%r10
+    258a:	ff 
+    258b:	ba 00 50 00 00       	mov    $0x5000,%edx
+    2590:	c4 82 7b 4b a4 33 00 	tileloadd 0x80000(%r11,%r14,1),%tmm4
+    2597:	00 08 00 
+    259a:	c4 c2 79 4b 34 0a    	tileloaddt1 (%r10,%rcx,1),%tmm6
+    25a0:	c4 c2 79 4b 7c 0a 40 	tileloaddt1 0x40(%r10,%rcx,1),%tmm7
+    25a7:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    25ac:	c4 82 7b 4b ac 33 00 	tileloadd 0xc0000(%r11,%r14,1),%tmm5
+    25b3:	00 0c 00 
+    25b6:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    25bb:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    25c0:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    25c5:	4d 8b 9c 2d 48 ff ff 	mov    -0xb8(%r13,%rbp,1),%r11
+    25cc:	ff 
+    25cd:	4d 8b 94 2d 50 ff ff 	mov    -0xb0(%r13,%rbp,1),%r10
+    25d4:	ff 
+    25d5:	ba 00 50 00 00       	mov    $0x5000,%edx
+    25da:	c4 82 7b 4b a4 33 00 	tileloadd 0x80000(%r11,%r14,1),%tmm4
+    25e1:	00 08 00 
+    25e4:	c4 c2 79 4b 34 0a    	tileloaddt1 (%r10,%rcx,1),%tmm6
+    25ea:	c4 c2 79 4b 7c 0a 40 	tileloaddt1 0x40(%r10,%rcx,1),%tmm7
+    25f1:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    25f6:	c4 82 7b 4b ac 33 00 	tileloadd 0xc0000(%r11,%r14,1),%tmm5
+    25fd:	00 0c 00 
+    2600:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    2605:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    260a:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    260f:	4d 8b 9c 2d 70 ff ff 	mov    -0x90(%r13,%rbp,1),%r11
+    2616:	ff 
+    2617:	4d 8b 94 2d 78 ff ff 	mov    -0x88(%r13,%rbp,1),%r10
+    261e:	ff 
+    261f:	ba 00 50 00 00       	mov    $0x5000,%edx
+    2624:	c4 82 7b 4b a4 33 00 	tileloadd 0x80000(%r11,%r14,1),%tmm4
+    262b:	00 08 00 
+    262e:	c4 c2 79 4b 34 0a    	tileloaddt1 (%r10,%rcx,1),%tmm6
+    2634:	c4 c2 79 4b 7c 0a 40 	tileloaddt1 0x40(%r10,%rcx,1),%tmm7
+    263b:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    2640:	c4 82 7b 4b ac 33 00 	tileloadd 0xc0000(%r11,%r14,1),%tmm5
+    2647:	00 0c 00 
+    264a:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    264f:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    2654:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    2659:	4d 8b 5c 2d 98       	mov    -0x68(%r13,%rbp,1),%r11
+    265e:	4d 8b 54 2d a0       	mov    -0x60(%r13,%rbp,1),%r10
+    2663:	ba 00 50 00 00       	mov    $0x5000,%edx
+    2668:	c4 82 7b 4b a4 33 00 	tileloadd 0x80000(%r11,%r14,1),%tmm4
+    266f:	00 08 00 
+    2672:	c4 c2 79 4b 34 0a    	tileloaddt1 (%r10,%rcx,1),%tmm6
+    2678:	c4 c2 79 4b 7c 0a 40 	tileloaddt1 0x40(%r10,%rcx,1),%tmm7
+    267f:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    2684:	c4 82 7b 4b ac 33 00 	tileloadd 0xc0000(%r11,%r14,1),%tmm5
+    268b:	00 0c 00 
+    268e:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    2693:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    2698:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    269d:	4d 8b 5c 2d c0       	mov    -0x40(%r13,%rbp,1),%r11
+    26a2:	4d 8b 54 2d c8       	mov    -0x38(%r13,%rbp,1),%r10
+    26a7:	ba 00 50 00 00       	mov    $0x5000,%edx
+    26ac:	c4 82 7b 4b a4 33 00 	tileloadd 0x80000(%r11,%r14,1),%tmm4
+    26b3:	00 08 00 
+    26b6:	c4 c2 79 4b 34 0a    	tileloaddt1 (%r10,%rcx,1),%tmm6
+    26bc:	c4 c2 79 4b 7c 0a 40 	tileloaddt1 0x40(%r10,%rcx,1),%tmm7
+    26c3:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    26c8:	c4 82 7b 4b ac 33 00 	tileloadd 0xc0000(%r11,%r14,1),%tmm5
+    26cf:	00 0c 00 
+    26d2:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    26d7:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    26dc:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    26e1:	4d 8b 5c 2d e8       	mov    -0x18(%r13,%rbp,1),%r11
+    26e6:	4d 8b 54 2d f0       	mov    -0x10(%r13,%rbp,1),%r10
+    26eb:	ba 00 50 00 00       	mov    $0x5000,%edx
+    26f0:	c4 82 7b 4b a4 33 00 	tileloadd 0x80000(%r11,%r14,1),%tmm4
+    26f7:	00 08 00 
+    26fa:	c4 c2 79 4b 34 0a    	tileloaddt1 (%r10,%rcx,1),%tmm6
+    2700:	c4 c2 79 4b 7c 0a 40 	tileloaddt1 0x40(%r10,%rcx,1),%tmm7
+    2707:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    270c:	c4 82 7b 4b ac 33 00 	tileloadd 0xc0000(%r11,%r14,1),%tmm5
+    2713:	00 0c 00 
+    2716:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    271b:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    2720:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    2725:	4d 8b 5c 2d 10       	mov    0x10(%r13,%rbp,1),%r11
+    272a:	4d 8b 54 2d 18       	mov    0x18(%r13,%rbp,1),%r10
+    272f:	ba 00 50 00 00       	mov    $0x5000,%edx
+    2734:	c4 82 7b 4b a4 33 00 	tileloadd 0x80000(%r11,%r14,1),%tmm4
+    273b:	00 08 00 
+    273e:	c4 c2 79 4b 34 0a    	tileloaddt1 (%r10,%rcx,1),%tmm6
+    2744:	c4 c2 79 4b 7c 0a 40 	tileloaddt1 0x40(%r10,%rcx,1),%tmm7
+    274b:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    2750:	c4 82 7b 4b ac 33 00 	tileloadd 0xc0000(%r11,%r14,1),%tmm5
+    2757:	00 0c 00 
+    275a:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    275f:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    2764:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    2769:	4d 8b 5c 2d 38       	mov    0x38(%r13,%rbp,1),%r11
+    276e:	4d 8b 54 2d 40       	mov    0x40(%r13,%rbp,1),%r10
+    2773:	ba 00 50 00 00       	mov    $0x5000,%edx
+    2778:	c4 82 7b 4b a4 33 00 	tileloadd 0x80000(%r11,%r14,1),%tmm4
+    277f:	00 08 00 
+    2782:	c4 c2 79 4b 34 0a    	tileloaddt1 (%r10,%rcx,1),%tmm6
+    2788:	c4 c2 79 4b 7c 0a 40 	tileloaddt1 0x40(%r10,%rcx,1),%tmm7
+    278f:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    2794:	c4 82 7b 4b ac 33 00 	tileloadd 0xc0000(%r11,%r14,1),%tmm5
+    279b:	00 0c 00 
+    279e:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    27a3:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    27a8:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    27ad:	4d 8b 5c 2d 60       	mov    0x60(%r13,%rbp,1),%r11
+    27b2:	4d 8b 54 2d 68       	mov    0x68(%r13,%rbp,1),%r10
+    27b7:	ba 00 50 00 00       	mov    $0x5000,%edx
+    27bc:	c4 82 7b 4b a4 33 00 	tileloadd 0x80000(%r11,%r14,1),%tmm4
+    27c3:	00 08 00 
+    27c6:	c4 c2 79 4b 34 0a    	tileloaddt1 (%r10,%rcx,1),%tmm6
+    27cc:	c4 c2 79 4b 7c 0a 40 	tileloaddt1 0x40(%r10,%rcx,1),%tmm7
+    27d3:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    27d8:	c4 82 7b 4b ac 33 00 	tileloadd 0xc0000(%r11,%r14,1),%tmm5
+    27df:	00 0c 00 
+    27e2:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    27e7:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    27ec:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    27f1:	4d 8b 9c 2d 88 00 00 	mov    0x88(%r13,%rbp,1),%r11
+    27f8:	00 
+    27f9:	4d 8b 94 2d 90 00 00 	mov    0x90(%r13,%rbp,1),%r10
+    2800:	00 
+    2801:	ba 00 50 00 00       	mov    $0x5000,%edx
+    2806:	c4 82 7b 4b a4 33 00 	tileloadd 0x80000(%r11,%r14,1),%tmm4
+    280d:	00 08 00 
+    2810:	c4 c2 79 4b 34 0a    	tileloaddt1 (%r10,%rcx,1),%tmm6
+    2816:	c4 c2 79 4b 7c 0a 40 	tileloaddt1 0x40(%r10,%rcx,1),%tmm7
+    281d:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    2822:	c4 82 7b 4b ac 33 00 	tileloadd 0xc0000(%r11,%r14,1),%tmm5
+    2829:	00 0c 00 
+    282c:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    2831:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    2836:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    283b:	4d 8b 9c 2d b0 00 00 	mov    0xb0(%r13,%rbp,1),%r11
+    2842:	00 
+    2843:	4d 8b 94 2d b8 00 00 	mov    0xb8(%r13,%rbp,1),%r10
+    284a:	00 
+    284b:	ba 00 50 00 00       	mov    $0x5000,%edx
+    2850:	c4 82 7b 4b a4 33 00 	tileloadd 0x80000(%r11,%r14,1),%tmm4
+    2857:	00 08 00 
+    285a:	c4 c2 79 4b 34 0a    	tileloaddt1 (%r10,%rcx,1),%tmm6
+    2860:	c4 c2 79 4b 7c 0a 40 	tileloaddt1 0x40(%r10,%rcx,1),%tmm7
+    2867:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    286c:	c4 82 7b 4b ac 33 00 	tileloadd 0xc0000(%r11,%r14,1),%tmm5
+    2873:	00 0c 00 
+    2876:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    287b:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    2880:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    2885:	4d 8b 9c 2d d8 00 00 	mov    0xd8(%r13,%rbp,1),%r11
+    288c:	00 
+    288d:	4d 8b 94 2d e0 00 00 	mov    0xe0(%r13,%rbp,1),%r10
+    2894:	00 
+    2895:	ba 00 50 00 00       	mov    $0x5000,%edx
+    289a:	c4 82 7b 4b a4 33 00 	tileloadd 0x80000(%r11,%r14,1),%tmm4
+    28a1:	00 08 00 
+    28a4:	c4 c2 79 4b 34 0a    	tileloaddt1 (%r10,%rcx,1),%tmm6
+    28aa:	c4 c2 79 4b 7c 0a 40 	tileloaddt1 0x40(%r10,%rcx,1),%tmm7
+    28b1:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    28b6:	c4 82 7b 4b ac 33 00 	tileloadd 0xc0000(%r11,%r14,1),%tmm5
+    28bd:	00 0c 00 
+    28c0:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    28c5:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    28ca:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    28cf:	4d 8b 9c 2d 00 01 00 	mov    0x100(%r13,%rbp,1),%r11
+    28d6:	00 
+    28d7:	4d 8b 94 2d 08 01 00 	mov    0x108(%r13,%rbp,1),%r10
+    28de:	00 
+    28df:	ba 00 50 00 00       	mov    $0x5000,%edx
+    28e4:	c4 82 7b 4b a4 33 00 	tileloadd 0x80000(%r11,%r14,1),%tmm4
+    28eb:	00 08 00 
+    28ee:	c4 c2 79 4b 34 0a    	tileloaddt1 (%r10,%rcx,1),%tmm6
+    28f4:	c4 c2 79 4b 7c 0a 40 	tileloaddt1 0x40(%r10,%rcx,1),%tmm7
+    28fb:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    2900:	c4 82 7b 4b ac 33 00 	tileloadd 0xc0000(%r11,%r14,1),%tmm5
+    2907:	00 0c 00 
+    290a:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    290f:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    2914:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    2919:	4d 8b 9c 2d 28 01 00 	mov    0x128(%r13,%rbp,1),%r11
+    2920:	00 
+    2921:	4d 8b 94 2d 30 01 00 	mov    0x130(%r13,%rbp,1),%r10
+    2928:	00 
+    2929:	ba 00 50 00 00       	mov    $0x5000,%edx
+    292e:	c4 82 7b 4b a4 33 00 	tileloadd 0x80000(%r11,%r14,1),%tmm4
+    2935:	00 08 00 
+    2938:	c4 c2 79 4b 34 0a    	tileloaddt1 (%r10,%rcx,1),%tmm6
+    293e:	c4 c2 79 4b 7c 0a 40 	tileloaddt1 0x40(%r10,%rcx,1),%tmm7
+    2945:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    294a:	c4 82 7b 4b ac 33 00 	tileloadd 0xc0000(%r11,%r14,1),%tmm5
+    2951:	00 0c 00 
+    2954:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    2959:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    295e:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    2963:	4d 8b 9c 2d 50 01 00 	mov    0x150(%r13,%rbp,1),%r11
+    296a:	00 
+    296b:	4d 8b 94 2d 58 01 00 	mov    0x158(%r13,%rbp,1),%r10
+    2972:	00 
+    2973:	ba 00 50 00 00       	mov    $0x5000,%edx
+    2978:	c4 82 7b 4b a4 33 00 	tileloadd 0x80000(%r11,%r14,1),%tmm4
+    297f:	00 08 00 
+    2982:	c4 c2 79 4b 34 0a    	tileloaddt1 (%r10,%rcx,1),%tmm6
+    2988:	c4 c2 79 4b 7c 0a 40 	tileloaddt1 0x40(%r10,%rcx,1),%tmm7
+    298f:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    2994:	c4 82 7b 4b ac 33 00 	tileloadd 0xc0000(%r11,%r14,1),%tmm5
+    299b:	00 0c 00 
+    299e:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    29a3:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    29a8:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    29ad:	4d 8b 9c 2d 78 01 00 	mov    0x178(%r13,%rbp,1),%r11
+    29b4:	00 
+    29b5:	4d 8b 94 2d 80 01 00 	mov    0x180(%r13,%rbp,1),%r10
+    29bc:	00 
+    29bd:	ba 00 50 00 00       	mov    $0x5000,%edx
+    29c2:	c4 82 7b 4b a4 33 00 	tileloadd 0x80000(%r11,%r14,1),%tmm4
+    29c9:	00 08 00 
+    29cc:	c4 c2 79 4b 34 0a    	tileloaddt1 (%r10,%rcx,1),%tmm6
+    29d2:	c4 c2 79 4b 7c 0a 40 	tileloaddt1 0x40(%r10,%rcx,1),%tmm7
+    29d9:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    29de:	c4 82 7b 4b ac 33 00 	tileloadd 0xc0000(%r11,%r14,1),%tmm5
+    29e5:	00 0c 00 
+    29e8:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    29ed:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    29f2:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    29f7:	4d 8b 9c 2d a0 01 00 	mov    0x1a0(%r13,%rbp,1),%r11
+    29fe:	00 
+    29ff:	4d 8b 94 2d a8 01 00 	mov    0x1a8(%r13,%rbp,1),%r10
+    2a06:	00 
+    2a07:	ba 00 50 00 00       	mov    $0x5000,%edx
+    2a0c:	c4 82 7b 4b a4 33 00 	tileloadd 0x80000(%r11,%r14,1),%tmm4
+    2a13:	00 08 00 
+    2a16:	c4 c2 79 4b 34 0a    	tileloaddt1 (%r10,%rcx,1),%tmm6
+    2a1c:	c4 c2 79 4b 7c 0a 40 	tileloaddt1 0x40(%r10,%rcx,1),%tmm7
+    2a23:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    2a28:	c4 82 7b 4b ac 33 00 	tileloadd 0xc0000(%r11,%r14,1),%tmm5
+    2a2f:	00 0c 00 
+    2a32:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    2a37:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    2a3c:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    2a41:	4d 8b 9c 2d c8 01 00 	mov    0x1c8(%r13,%rbp,1),%r11
+    2a48:	00 
+    2a49:	4d 8b 94 2d d0 01 00 	mov    0x1d0(%r13,%rbp,1),%r10
+    2a50:	00 
+    2a51:	ba 00 50 00 00       	mov    $0x5000,%edx
+    2a56:	c4 82 7b 4b a4 33 00 	tileloadd 0x80000(%r11,%r14,1),%tmm4
+    2a5d:	00 08 00 
+    2a60:	c4 c2 79 4b 34 0a    	tileloaddt1 (%r10,%rcx,1),%tmm6
+    2a66:	c4 c2 79 4b 7c 0a 40 	tileloaddt1 0x40(%r10,%rcx,1),%tmm7
+    2a6d:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    2a72:	c4 82 7b 4b ac 33 00 	tileloadd 0xc0000(%r11,%r14,1),%tmm5
+    2a79:	00 0c 00 
+    2a7c:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    2a81:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    2a86:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    2a8b:	4d 8b 9c 2d f0 01 00 	mov    0x1f0(%r13,%rbp,1),%r11
+    2a92:	00 
+    2a93:	4d 8b 94 2d f8 01 00 	mov    0x1f8(%r13,%rbp,1),%r10
+    2a9a:	00 
+    2a9b:	ba 00 50 00 00       	mov    $0x5000,%edx
+    2aa0:	c4 82 7b 4b a4 33 00 	tileloadd 0x80000(%r11,%r14,1),%tmm4
+    2aa7:	00 08 00 
+    2aaa:	c4 c2 79 4b 34 0a    	tileloaddt1 (%r10,%rcx,1),%tmm6
+    2ab0:	c4 c2 79 4b 7c 0a 40 	tileloaddt1 0x40(%r10,%rcx,1),%tmm7
+    2ab7:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    2abc:	c4 82 7b 4b ac 33 00 	tileloadd 0xc0000(%r11,%r14,1),%tmm5
+    2ac3:	00 0c 00 
+    2ac6:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    2acb:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    2ad0:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    2ad5:	4d 8b 9c 6d 18 fe ff 	mov    -0x1e8(%r13,%rbp,2),%r11
+    2adc:	ff 
+    2add:	4d 8b 94 6d 20 fe ff 	mov    -0x1e0(%r13,%rbp,2),%r10
+    2ae4:	ff 
+    2ae5:	ba 00 50 00 00       	mov    $0x5000,%edx
+    2aea:	c4 82 7b 4b a4 33 00 	tileloadd 0x80000(%r11,%r14,1),%tmm4
+    2af1:	00 08 00 
+    2af4:	c4 c2 79 4b 34 0a    	tileloaddt1 (%r10,%rcx,1),%tmm6
+    2afa:	c4 c2 79 4b 7c 0a 40 	tileloaddt1 0x40(%r10,%rcx,1),%tmm7
+    2b01:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    2b06:	c4 82 7b 4b ac 33 00 	tileloadd 0xc0000(%r11,%r14,1),%tmm5
+    2b0d:	00 0c 00 
+    2b10:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    2b15:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    2b1a:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    2b1f:	4d 8b 9c 6d 40 fe ff 	mov    -0x1c0(%r13,%rbp,2),%r11
+    2b26:	ff 
+    2b27:	4d 8b 94 6d 48 fe ff 	mov    -0x1b8(%r13,%rbp,2),%r10
+    2b2e:	ff 
+    2b2f:	ba 00 50 00 00       	mov    $0x5000,%edx
+    2b34:	c4 82 7b 4b a4 33 00 	tileloadd 0x80000(%r11,%r14,1),%tmm4
+    2b3b:	00 08 00 
+    2b3e:	c4 c2 79 4b 34 0a    	tileloaddt1 (%r10,%rcx,1),%tmm6
+    2b44:	c4 c2 79 4b 7c 0a 40 	tileloaddt1 0x40(%r10,%rcx,1),%tmm7
+    2b4b:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    2b50:	c4 82 7b 4b ac 33 00 	tileloadd 0xc0000(%r11,%r14,1),%tmm5
+    2b57:	00 0c 00 
+    2b5a:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    2b5f:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    2b64:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    2b69:	4d 8b 9c 6d 68 fe ff 	mov    -0x198(%r13,%rbp,2),%r11
+    2b70:	ff 
+    2b71:	4d 8b 94 6d 70 fe ff 	mov    -0x190(%r13,%rbp,2),%r10
+    2b78:	ff 
+    2b79:	ba 00 50 00 00       	mov    $0x5000,%edx
+    2b7e:	c4 82 7b 4b a4 33 00 	tileloadd 0x80000(%r11,%r14,1),%tmm4
+    2b85:	00 08 00 
+    2b88:	c4 c2 79 4b 34 0a    	tileloaddt1 (%r10,%rcx,1),%tmm6
+    2b8e:	c4 c2 79 4b 7c 0a 40 	tileloaddt1 0x40(%r10,%rcx,1),%tmm7
+    2b95:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    2b9a:	c4 82 7b 4b ac 33 00 	tileloadd 0xc0000(%r11,%r14,1),%tmm5
+    2ba1:	00 0c 00 
+    2ba4:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    2ba9:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    2bae:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    2bb3:	4d 8b 9c 6d 90 fe ff 	mov    -0x170(%r13,%rbp,2),%r11
+    2bba:	ff 
+    2bbb:	4d 8b 94 6d 98 fe ff 	mov    -0x168(%r13,%rbp,2),%r10
+    2bc2:	ff 
+    2bc3:	ba 00 50 00 00       	mov    $0x5000,%edx
+    2bc8:	c4 82 7b 4b a4 33 00 	tileloadd 0x80000(%r11,%r14,1),%tmm4
+    2bcf:	00 08 00 
+    2bd2:	c4 c2 79 4b 34 0a    	tileloaddt1 (%r10,%rcx,1),%tmm6
+    2bd8:	c4 c2 79 4b 7c 0a 40 	tileloaddt1 0x40(%r10,%rcx,1),%tmm7
+    2bdf:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    2be4:	c4 82 7b 4b ac 33 00 	tileloadd 0xc0000(%r11,%r14,1),%tmm5
+    2beb:	00 0c 00 
+    2bee:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    2bf3:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    2bf8:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    2bfd:	ba 00 50 00 00       	mov    $0x5000,%edx
+    2c02:	c4 c2 7a 4b 84 17 00 	tilestored %tmm0,0xa0000(%r15,%rdx,1)
+    2c09:	00 0a 00 
+    2c0c:	c4 c2 7a 4b 8c 17 40 	tilestored %tmm1,0xa0040(%r15,%rdx,1)
+    2c13:	00 0a 00 
+    2c16:	c4 c2 7a 4b 94 17 00 	tilestored %tmm2,0xf0000(%r15,%rdx,1)
+    2c1d:	00 0f 00 
+    2c20:	c4 c2 7a 4b 9c 17 40 	tilestored %tmm3,0xf0040(%r15,%rdx,1)
+    2c27:	00 0f 00 
+    2c2a:	ba 00 50 00 00       	mov    $0x5000,%edx
+    2c2f:	c4 c2 7b 4b 84 17 80 	tileloadd 0xa0080(%r15,%rdx,1),%tmm0
+    2c36:	00 0a 00 
+    2c39:	c4 c2 7b 4b 8c 17 c0 	tileloadd 0xa00c0(%r15,%rdx,1),%tmm1
+    2c40:	00 0a 00 
+    2c43:	c4 c2 7b 4b 94 17 80 	tileloadd 0xf0080(%r15,%rdx,1),%tmm2
+    2c4a:	00 0f 00 
+    2c4d:	c4 c2 7b 4b 9c 17 c0 	tileloadd 0xf00c0(%r15,%rdx,1),%tmm3
+    2c54:	00 0f 00 
+    2c57:	4d 8b 5d 00          	mov    0x0(%r13),%r11
+    2c5b:	4d 8b 55 08          	mov    0x8(%r13),%r10
+    2c5f:	ba 00 50 00 00       	mov    $0x5000,%edx
+    2c64:	c4 82 7b 4b a4 33 00 	tileloadd 0x80000(%r11,%r14,1),%tmm4
+    2c6b:	00 08 00 
+    2c6e:	c4 c2 79 4b b4 0a 80 	tileloaddt1 0x80(%r10,%rcx,1),%tmm6
+    2c75:	00 00 00 
+    2c78:	c4 c2 79 4b bc 0a c0 	tileloaddt1 0xc0(%r10,%rcx,1),%tmm7
+    2c7f:	00 00 00 
+    2c82:	41 0f 0d 8c 24 80 00 	prefetchw 0xa0080(%r12)
+    2c89:	0a 00 
+    2c8b:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    2c90:	c4 82 7b 4b ac 33 00 	tileloadd 0xc0000(%r11,%r14,1),%tmm5
+    2c97:	00 0c 00 
+    2c9a:	41 0f 0d 8c 24 80 50 	prefetchw 0xa5080(%r12)
+    2ca1:	0a 00 
+    2ca3:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    2ca8:	41 0f 0d 8c 24 80 a0 	prefetchw 0xaa080(%r12)
+    2caf:	0a 00 
+    2cb1:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    2cb6:	41 0f 0d 8c 24 80 f0 	prefetchw 0xaf080(%r12)
+    2cbd:	0a 00 
+    2cbf:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    2cc4:	4d 8b 5d 28          	mov    0x28(%r13),%r11
+    2cc8:	4d 8b 55 30          	mov    0x30(%r13),%r10
+    2ccc:	ba 00 50 00 00       	mov    $0x5000,%edx
+    2cd1:	c4 82 7b 4b a4 33 00 	tileloadd 0x80000(%r11,%r14,1),%tmm4
+    2cd8:	00 08 00 
+    2cdb:	c4 c2 79 4b b4 0a 80 	tileloaddt1 0x80(%r10,%rcx,1),%tmm6
+    2ce2:	00 00 00 
+    2ce5:	c4 c2 79 4b bc 0a c0 	tileloaddt1 0xc0(%r10,%rcx,1),%tmm7
+    2cec:	00 00 00 
+    2cef:	41 0f 0d 8c 24 80 40 	prefetchw 0xb4080(%r12)
+    2cf6:	0b 00 
+    2cf8:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    2cfd:	c4 82 7b 4b ac 33 00 	tileloadd 0xc0000(%r11,%r14,1),%tmm5
+    2d04:	00 0c 00 
+    2d07:	41 0f 0d 8c 24 80 90 	prefetchw 0xb9080(%r12)
+    2d0e:	0b 00 
+    2d10:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    2d15:	41 0f 0d 8c 24 80 e0 	prefetchw 0xbe080(%r12)
+    2d1c:	0b 00 
+    2d1e:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    2d23:	41 0f 0d 8c 24 80 30 	prefetchw 0xc3080(%r12)
+    2d2a:	0c 00 
+    2d2c:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    2d31:	4d 8b 5d 50          	mov    0x50(%r13),%r11
+    2d35:	4d 8b 55 58          	mov    0x58(%r13),%r10
+    2d39:	ba 00 50 00 00       	mov    $0x5000,%edx
+    2d3e:	c4 82 7b 4b a4 33 00 	tileloadd 0x80000(%r11,%r14,1),%tmm4
+    2d45:	00 08 00 
+    2d48:	c4 c2 79 4b b4 0a 80 	tileloaddt1 0x80(%r10,%rcx,1),%tmm6
+    2d4f:	00 00 00 
+    2d52:	c4 c2 79 4b bc 0a c0 	tileloaddt1 0xc0(%r10,%rcx,1),%tmm7
+    2d59:	00 00 00 
+    2d5c:	41 0f 0d 8c 24 80 80 	prefetchw 0xc8080(%r12)
+    2d63:	0c 00 
+    2d65:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    2d6a:	c4 82 7b 4b ac 33 00 	tileloadd 0xc0000(%r11,%r14,1),%tmm5
+    2d71:	00 0c 00 
+    2d74:	41 0f 0d 8c 24 80 d0 	prefetchw 0xcd080(%r12)
+    2d7b:	0c 00 
+    2d7d:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    2d82:	41 0f 0d 8c 24 80 20 	prefetchw 0xd2080(%r12)
+    2d89:	0d 00 
+    2d8b:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    2d90:	41 0f 0d 8c 24 80 70 	prefetchw 0xd7080(%r12)
+    2d97:	0d 00 
+    2d99:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    2d9e:	4d 8b 5d 78          	mov    0x78(%r13),%r11
+    2da2:	4d 8b 95 80 00 00 00 	mov    0x80(%r13),%r10
+    2da9:	ba 00 50 00 00       	mov    $0x5000,%edx
+    2dae:	c4 82 7b 4b a4 33 00 	tileloadd 0x80000(%r11,%r14,1),%tmm4
+    2db5:	00 08 00 
+    2db8:	c4 c2 79 4b b4 0a 80 	tileloaddt1 0x80(%r10,%rcx,1),%tmm6
+    2dbf:	00 00 00 
+    2dc2:	c4 c2 79 4b bc 0a c0 	tileloaddt1 0xc0(%r10,%rcx,1),%tmm7
+    2dc9:	00 00 00 
+    2dcc:	41 0f 0d 8c 24 80 c0 	prefetchw 0xdc080(%r12)
+    2dd3:	0d 00 
+    2dd5:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    2dda:	c4 82 7b 4b ac 33 00 	tileloadd 0xc0000(%r11,%r14,1),%tmm5
+    2de1:	00 0c 00 
+    2de4:	41 0f 0d 8c 24 80 10 	prefetchw 0xe1080(%r12)
+    2deb:	0e 00 
+    2ded:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    2df2:	41 0f 0d 8c 24 80 60 	prefetchw 0xe6080(%r12)
+    2df9:	0e 00 
+    2dfb:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    2e00:	41 0f 0d 8c 24 80 b0 	prefetchw 0xeb080(%r12)
+    2e07:	0e 00 
+    2e09:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    2e0e:	4d 8b 9d a0 00 00 00 	mov    0xa0(%r13),%r11
+    2e15:	4d 8b 95 a8 00 00 00 	mov    0xa8(%r13),%r10
+    2e1c:	ba 00 50 00 00       	mov    $0x5000,%edx
+    2e21:	c4 82 7b 4b a4 33 00 	tileloadd 0x80000(%r11,%r14,1),%tmm4
+    2e28:	00 08 00 
+    2e2b:	c4 c2 79 4b b4 0a 80 	tileloaddt1 0x80(%r10,%rcx,1),%tmm6
+    2e32:	00 00 00 
+    2e35:	c4 c2 79 4b bc 0a c0 	tileloaddt1 0xc0(%r10,%rcx,1),%tmm7
+    2e3c:	00 00 00 
+    2e3f:	41 0f 0d 8c 24 c0 00 	prefetchw 0xa00c0(%r12)
+    2e46:	0a 00 
+    2e48:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    2e4d:	c4 82 7b 4b ac 33 00 	tileloadd 0xc0000(%r11,%r14,1),%tmm5
+    2e54:	00 0c 00 
+    2e57:	41 0f 0d 8c 24 c0 50 	prefetchw 0xa50c0(%r12)
+    2e5e:	0a 00 
+    2e60:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    2e65:	41 0f 0d 8c 24 c0 a0 	prefetchw 0xaa0c0(%r12)
+    2e6c:	0a 00 
+    2e6e:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    2e73:	41 0f 0d 8c 24 c0 f0 	prefetchw 0xaf0c0(%r12)
+    2e7a:	0a 00 
+    2e7c:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    2e81:	4d 8b 9d c8 00 00 00 	mov    0xc8(%r13),%r11
+    2e88:	4d 8b 95 d0 00 00 00 	mov    0xd0(%r13),%r10
+    2e8f:	ba 00 50 00 00       	mov    $0x5000,%edx
+    2e94:	c4 82 7b 4b a4 33 00 	tileloadd 0x80000(%r11,%r14,1),%tmm4
+    2e9b:	00 08 00 
+    2e9e:	c4 c2 79 4b b4 0a 80 	tileloaddt1 0x80(%r10,%rcx,1),%tmm6
+    2ea5:	00 00 00 
+    2ea8:	c4 c2 79 4b bc 0a c0 	tileloaddt1 0xc0(%r10,%rcx,1),%tmm7
+    2eaf:	00 00 00 
+    2eb2:	41 0f 0d 8c 24 c0 40 	prefetchw 0xb40c0(%r12)
+    2eb9:	0b 00 
+    2ebb:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    2ec0:	c4 82 7b 4b ac 33 00 	tileloadd 0xc0000(%r11,%r14,1),%tmm5
+    2ec7:	00 0c 00 
+    2eca:	41 0f 0d 8c 24 c0 90 	prefetchw 0xb90c0(%r12)
+    2ed1:	0b 00 
+    2ed3:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    2ed8:	41 0f 0d 8c 24 c0 e0 	prefetchw 0xbe0c0(%r12)
+    2edf:	0b 00 
+    2ee1:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    2ee6:	41 0f 0d 8c 24 c0 30 	prefetchw 0xc30c0(%r12)
+    2eed:	0c 00 
+    2eef:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    2ef4:	4d 8b 9d f0 00 00 00 	mov    0xf0(%r13),%r11
+    2efb:	4d 8b 95 f8 00 00 00 	mov    0xf8(%r13),%r10
+    2f02:	ba 00 50 00 00       	mov    $0x5000,%edx
+    2f07:	c4 82 7b 4b a4 33 00 	tileloadd 0x80000(%r11,%r14,1),%tmm4
+    2f0e:	00 08 00 
+    2f11:	c4 c2 79 4b b4 0a 80 	tileloaddt1 0x80(%r10,%rcx,1),%tmm6
+    2f18:	00 00 00 
+    2f1b:	c4 c2 79 4b bc 0a c0 	tileloaddt1 0xc0(%r10,%rcx,1),%tmm7
+    2f22:	00 00 00 
+    2f25:	41 0f 0d 8c 24 c0 80 	prefetchw 0xc80c0(%r12)
+    2f2c:	0c 00 
+    2f2e:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    2f33:	c4 82 7b 4b ac 33 00 	tileloadd 0xc0000(%r11,%r14,1),%tmm5
+    2f3a:	00 0c 00 
+    2f3d:	41 0f 0d 8c 24 c0 d0 	prefetchw 0xcd0c0(%r12)
+    2f44:	0c 00 
+    2f46:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    2f4b:	41 0f 0d 8c 24 c0 20 	prefetchw 0xd20c0(%r12)
+    2f52:	0d 00 
+    2f54:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    2f59:	41 0f 0d 8c 24 c0 70 	prefetchw 0xd70c0(%r12)
+    2f60:	0d 00 
+    2f62:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    2f67:	4d 8b 9d 18 01 00 00 	mov    0x118(%r13),%r11
+    2f6e:	4d 8b 95 20 01 00 00 	mov    0x120(%r13),%r10
+    2f75:	ba 00 50 00 00       	mov    $0x5000,%edx
+    2f7a:	c4 82 7b 4b a4 33 00 	tileloadd 0x80000(%r11,%r14,1),%tmm4
+    2f81:	00 08 00 
+    2f84:	c4 c2 79 4b b4 0a 80 	tileloaddt1 0x80(%r10,%rcx,1),%tmm6
+    2f8b:	00 00 00 
+    2f8e:	c4 c2 79 4b bc 0a c0 	tileloaddt1 0xc0(%r10,%rcx,1),%tmm7
+    2f95:	00 00 00 
+    2f98:	41 0f 0d 8c 24 c0 c0 	prefetchw 0xdc0c0(%r12)
+    2f9f:	0d 00 
+    2fa1:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    2fa6:	c4 82 7b 4b ac 33 00 	tileloadd 0xc0000(%r11,%r14,1),%tmm5
+    2fad:	00 0c 00 
+    2fb0:	41 0f 0d 8c 24 c0 10 	prefetchw 0xe10c0(%r12)
+    2fb7:	0e 00 
+    2fb9:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    2fbe:	41 0f 0d 8c 24 c0 60 	prefetchw 0xe60c0(%r12)
+    2fc5:	0e 00 
+    2fc7:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    2fcc:	41 0f 0d 8c 24 c0 b0 	prefetchw 0xeb0c0(%r12)
+    2fd3:	0e 00 
+    2fd5:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    2fda:	4d 8b 9d 40 01 00 00 	mov    0x140(%r13),%r11
+    2fe1:	4d 8b 95 48 01 00 00 	mov    0x148(%r13),%r10
+    2fe8:	ba 00 50 00 00       	mov    $0x5000,%edx
+    2fed:	c4 82 7b 4b a4 33 00 	tileloadd 0x80000(%r11,%r14,1),%tmm4
+    2ff4:	00 08 00 
+    2ff7:	c4 c2 79 4b b4 0a 80 	tileloaddt1 0x80(%r10,%rcx,1),%tmm6
+    2ffe:	00 00 00 
+    3001:	c4 c2 79 4b bc 0a c0 	tileloaddt1 0xc0(%r10,%rcx,1),%tmm7
+    3008:	00 00 00 
+    300b:	41 0f 0d 8c 24 80 00 	prefetchw 0xf0080(%r12)
+    3012:	0f 00 
+    3014:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    3019:	c4 82 7b 4b ac 33 00 	tileloadd 0xc0000(%r11,%r14,1),%tmm5
+    3020:	00 0c 00 
+    3023:	41 0f 0d 8c 24 80 50 	prefetchw 0xf5080(%r12)
+    302a:	0f 00 
+    302c:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    3031:	41 0f 0d 8c 24 80 a0 	prefetchw 0xfa080(%r12)
+    3038:	0f 00 
+    303a:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    303f:	41 0f 0d 8c 24 80 f0 	prefetchw 0xff080(%r12)
+    3046:	0f 00 
+    3048:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    304d:	4d 8b 9d 68 01 00 00 	mov    0x168(%r13),%r11
+    3054:	4d 8b 95 70 01 00 00 	mov    0x170(%r13),%r10
+    305b:	ba 00 50 00 00       	mov    $0x5000,%edx
+    3060:	c4 82 7b 4b a4 33 00 	tileloadd 0x80000(%r11,%r14,1),%tmm4
+    3067:	00 08 00 
+    306a:	c4 c2 79 4b b4 0a 80 	tileloaddt1 0x80(%r10,%rcx,1),%tmm6
+    3071:	00 00 00 
+    3074:	c4 c2 79 4b bc 0a c0 	tileloaddt1 0xc0(%r10,%rcx,1),%tmm7
+    307b:	00 00 00 
+    307e:	41 0f 0d 8c 24 80 40 	prefetchw 0x104080(%r12)
+    3085:	10 00 
+    3087:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    308c:	c4 82 7b 4b ac 33 00 	tileloadd 0xc0000(%r11,%r14,1),%tmm5
+    3093:	00 0c 00 
+    3096:	41 0f 0d 8c 24 80 90 	prefetchw 0x109080(%r12)
+    309d:	10 00 
+    309f:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    30a4:	41 0f 0d 8c 24 80 e0 	prefetchw 0x10e080(%r12)
+    30ab:	10 00 
+    30ad:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    30b2:	41 0f 0d 8c 24 80 30 	prefetchw 0x113080(%r12)
+    30b9:	11 00 
+    30bb:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    30c0:	4d 8b 9d 90 01 00 00 	mov    0x190(%r13),%r11
+    30c7:	4d 8b 95 98 01 00 00 	mov    0x198(%r13),%r10
+    30ce:	ba 00 50 00 00       	mov    $0x5000,%edx
+    30d3:	c4 82 7b 4b a4 33 00 	tileloadd 0x80000(%r11,%r14,1),%tmm4
+    30da:	00 08 00 
+    30dd:	c4 c2 79 4b b4 0a 80 	tileloaddt1 0x80(%r10,%rcx,1),%tmm6
+    30e4:	00 00 00 
+    30e7:	c4 c2 79 4b bc 0a c0 	tileloaddt1 0xc0(%r10,%rcx,1),%tmm7
+    30ee:	00 00 00 
+    30f1:	41 0f 0d 8c 24 80 80 	prefetchw 0x118080(%r12)
+    30f8:	11 00 
+    30fa:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    30ff:	c4 82 7b 4b ac 33 00 	tileloadd 0xc0000(%r11,%r14,1),%tmm5
+    3106:	00 0c 00 
+    3109:	41 0f 0d 8c 24 80 d0 	prefetchw 0x11d080(%r12)
+    3110:	11 00 
+    3112:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    3117:	41 0f 0d 8c 24 80 20 	prefetchw 0x122080(%r12)
+    311e:	12 00 
+    3120:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    3125:	41 0f 0d 8c 24 80 70 	prefetchw 0x127080(%r12)
+    312c:	12 00 
+    312e:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    3133:	4d 8b 9d b8 01 00 00 	mov    0x1b8(%r13),%r11
+    313a:	4d 8b 95 c0 01 00 00 	mov    0x1c0(%r13),%r10
+    3141:	ba 00 50 00 00       	mov    $0x5000,%edx
+    3146:	c4 82 7b 4b a4 33 00 	tileloadd 0x80000(%r11,%r14,1),%tmm4
+    314d:	00 08 00 
+    3150:	c4 c2 79 4b b4 0a 80 	tileloaddt1 0x80(%r10,%rcx,1),%tmm6
+    3157:	00 00 00 
+    315a:	c4 c2 79 4b bc 0a c0 	tileloaddt1 0xc0(%r10,%rcx,1),%tmm7
+    3161:	00 00 00 
+    3164:	41 0f 0d 8c 24 80 c0 	prefetchw 0x12c080(%r12)
+    316b:	12 00 
+    316d:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    3172:	c4 82 7b 4b ac 33 00 	tileloadd 0xc0000(%r11,%r14,1),%tmm5
+    3179:	00 0c 00 
+    317c:	41 0f 0d 8c 24 80 10 	prefetchw 0x131080(%r12)
+    3183:	13 00 
+    3185:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    318a:	41 0f 0d 8c 24 80 60 	prefetchw 0x136080(%r12)
+    3191:	13 00 
+    3193:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    3198:	41 0f 0d 8c 24 80 b0 	prefetchw 0x13b080(%r12)
+    319f:	13 00 
+    31a1:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    31a6:	4d 8b 9d e0 01 00 00 	mov    0x1e0(%r13),%r11
+    31ad:	4d 8b 95 e8 01 00 00 	mov    0x1e8(%r13),%r10
+    31b4:	ba 00 50 00 00       	mov    $0x5000,%edx
+    31b9:	c4 82 7b 4b a4 33 00 	tileloadd 0x80000(%r11,%r14,1),%tmm4
+    31c0:	00 08 00 
+    31c3:	c4 c2 79 4b b4 0a 80 	tileloaddt1 0x80(%r10,%rcx,1),%tmm6
+    31ca:	00 00 00 
+    31cd:	c4 c2 79 4b bc 0a c0 	tileloaddt1 0xc0(%r10,%rcx,1),%tmm7
+    31d4:	00 00 00 
+    31d7:	41 0f 0d 8c 24 c0 00 	prefetchw 0xf00c0(%r12)
+    31de:	0f 00 
+    31e0:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    31e5:	c4 82 7b 4b ac 33 00 	tileloadd 0xc0000(%r11,%r14,1),%tmm5
+    31ec:	00 0c 00 
+    31ef:	41 0f 0d 8c 24 c0 50 	prefetchw 0xf50c0(%r12)
+    31f6:	0f 00 
+    31f8:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    31fd:	41 0f 0d 8c 24 c0 a0 	prefetchw 0xfa0c0(%r12)
+    3204:	0f 00 
+    3206:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    320b:	41 0f 0d 8c 24 c0 f0 	prefetchw 0xff0c0(%r12)
+    3212:	0f 00 
+    3214:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    3219:	4d 8b 9c 2d 08 fe ff 	mov    -0x1f8(%r13,%rbp,1),%r11
+    3220:	ff 
+    3221:	4d 8b 94 2d 10 fe ff 	mov    -0x1f0(%r13,%rbp,1),%r10
+    3228:	ff 
+    3229:	ba 00 50 00 00       	mov    $0x5000,%edx
+    322e:	c4 82 7b 4b a4 33 00 	tileloadd 0x80000(%r11,%r14,1),%tmm4
+    3235:	00 08 00 
+    3238:	c4 c2 79 4b b4 0a 80 	tileloaddt1 0x80(%r10,%rcx,1),%tmm6
+    323f:	00 00 00 
+    3242:	c4 c2 79 4b bc 0a c0 	tileloaddt1 0xc0(%r10,%rcx,1),%tmm7
+    3249:	00 00 00 
+    324c:	41 0f 0d 8c 24 c0 40 	prefetchw 0x1040c0(%r12)
+    3253:	10 00 
+    3255:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    325a:	c4 82 7b 4b ac 33 00 	tileloadd 0xc0000(%r11,%r14,1),%tmm5
+    3261:	00 0c 00 
+    3264:	41 0f 0d 8c 24 c0 90 	prefetchw 0x1090c0(%r12)
+    326b:	10 00 
+    326d:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    3272:	41 0f 0d 8c 24 c0 e0 	prefetchw 0x10e0c0(%r12)
+    3279:	10 00 
+    327b:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    3280:	41 0f 0d 8c 24 c0 30 	prefetchw 0x1130c0(%r12)
+    3287:	11 00 
+    3289:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    328e:	4d 8b 9c 2d 30 fe ff 	mov    -0x1d0(%r13,%rbp,1),%r11
+    3295:	ff 
+    3296:	4d 8b 94 2d 38 fe ff 	mov    -0x1c8(%r13,%rbp,1),%r10
+    329d:	ff 
+    329e:	ba 00 50 00 00       	mov    $0x5000,%edx
+    32a3:	c4 82 7b 4b a4 33 00 	tileloadd 0x80000(%r11,%r14,1),%tmm4
+    32aa:	00 08 00 
+    32ad:	c4 c2 79 4b b4 0a 80 	tileloaddt1 0x80(%r10,%rcx,1),%tmm6
+    32b4:	00 00 00 
+    32b7:	c4 c2 79 4b bc 0a c0 	tileloaddt1 0xc0(%r10,%rcx,1),%tmm7
+    32be:	00 00 00 
+    32c1:	41 0f 0d 8c 24 c0 80 	prefetchw 0x1180c0(%r12)
+    32c8:	11 00 
+    32ca:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    32cf:	c4 82 7b 4b ac 33 00 	tileloadd 0xc0000(%r11,%r14,1),%tmm5
+    32d6:	00 0c 00 
+    32d9:	41 0f 0d 8c 24 c0 d0 	prefetchw 0x11d0c0(%r12)
+    32e0:	11 00 
+    32e2:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    32e7:	41 0f 0d 8c 24 c0 20 	prefetchw 0x1220c0(%r12)
+    32ee:	12 00 
+    32f0:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    32f5:	41 0f 0d 8c 24 c0 70 	prefetchw 0x1270c0(%r12)
+    32fc:	12 00 
+    32fe:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    3303:	4d 8b 9c 2d 58 fe ff 	mov    -0x1a8(%r13,%rbp,1),%r11
+    330a:	ff 
+    330b:	4d 8b 94 2d 60 fe ff 	mov    -0x1a0(%r13,%rbp,1),%r10
+    3312:	ff 
+    3313:	ba 00 50 00 00       	mov    $0x5000,%edx
+    3318:	c4 82 7b 4b a4 33 00 	tileloadd 0x80000(%r11,%r14,1),%tmm4
+    331f:	00 08 00 
+    3322:	c4 c2 79 4b b4 0a 80 	tileloaddt1 0x80(%r10,%rcx,1),%tmm6
+    3329:	00 00 00 
+    332c:	c4 c2 79 4b bc 0a c0 	tileloaddt1 0xc0(%r10,%rcx,1),%tmm7
+    3333:	00 00 00 
+    3336:	41 0f 0d 8c 24 c0 c0 	prefetchw 0x12c0c0(%r12)
+    333d:	12 00 
+    333f:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    3344:	c4 82 7b 4b ac 33 00 	tileloadd 0xc0000(%r11,%r14,1),%tmm5
+    334b:	00 0c 00 
+    334e:	41 0f 0d 8c 24 c0 10 	prefetchw 0x1310c0(%r12)
+    3355:	13 00 
+    3357:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    335c:	41 0f 0d 8c 24 c0 60 	prefetchw 0x1360c0(%r12)
+    3363:	13 00 
+    3365:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    336a:	41 0f 0d 8c 24 c0 b0 	prefetchw 0x13b0c0(%r12)
+    3371:	13 00 
+    3373:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    3378:	4d 8b 9c 2d 80 fe ff 	mov    -0x180(%r13,%rbp,1),%r11
+    337f:	ff 
+    3380:	4d 8b 94 2d 88 fe ff 	mov    -0x178(%r13,%rbp,1),%r10
+    3387:	ff 
+    3388:	ba 00 50 00 00       	mov    $0x5000,%edx
+    338d:	c4 82 7b 4b a4 33 00 	tileloadd 0x80000(%r11,%r14,1),%tmm4
+    3394:	00 08 00 
+    3397:	c4 c2 79 4b b4 0a 80 	tileloaddt1 0x80(%r10,%rcx,1),%tmm6
+    339e:	00 00 00 
+    33a1:	c4 c2 79 4b bc 0a c0 	tileloaddt1 0xc0(%r10,%rcx,1),%tmm7
+    33a8:	00 00 00 
+    33ab:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    33b0:	c4 82 7b 4b ac 33 00 	tileloadd 0xc0000(%r11,%r14,1),%tmm5
+    33b7:	00 0c 00 
+    33ba:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    33bf:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    33c4:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    33c9:	4d 8b 9c 2d a8 fe ff 	mov    -0x158(%r13,%rbp,1),%r11
+    33d0:	ff 
+    33d1:	4d 8b 94 2d b0 fe ff 	mov    -0x150(%r13,%rbp,1),%r10
+    33d8:	ff 
+    33d9:	ba 00 50 00 00       	mov    $0x5000,%edx
+    33de:	c4 82 7b 4b a4 33 00 	tileloadd 0x80000(%r11,%r14,1),%tmm4
+    33e5:	00 08 00 
+    33e8:	c4 c2 79 4b b4 0a 80 	tileloaddt1 0x80(%r10,%rcx,1),%tmm6
+    33ef:	00 00 00 
+    33f2:	c4 c2 79 4b bc 0a c0 	tileloaddt1 0xc0(%r10,%rcx,1),%tmm7
+    33f9:	00 00 00 
+    33fc:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    3401:	c4 82 7b 4b ac 33 00 	tileloadd 0xc0000(%r11,%r14,1),%tmm5
+    3408:	00 0c 00 
+    340b:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    3410:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    3415:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    341a:	4d 8b 9c 2d d0 fe ff 	mov    -0x130(%r13,%rbp,1),%r11
+    3421:	ff 
+    3422:	4d 8b 94 2d d8 fe ff 	mov    -0x128(%r13,%rbp,1),%r10
+    3429:	ff 
+    342a:	ba 00 50 00 00       	mov    $0x5000,%edx
+    342f:	c4 82 7b 4b a4 33 00 	tileloadd 0x80000(%r11,%r14,1),%tmm4
+    3436:	00 08 00 
+    3439:	c4 c2 79 4b b4 0a 80 	tileloaddt1 0x80(%r10,%rcx,1),%tmm6
+    3440:	00 00 00 
+    3443:	c4 c2 79 4b bc 0a c0 	tileloaddt1 0xc0(%r10,%rcx,1),%tmm7
+    344a:	00 00 00 
+    344d:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    3452:	c4 82 7b 4b ac 33 00 	tileloadd 0xc0000(%r11,%r14,1),%tmm5
+    3459:	00 0c 00 
+    345c:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    3461:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    3466:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    346b:	4d 8b 9c 2d f8 fe ff 	mov    -0x108(%r13,%rbp,1),%r11
+    3472:	ff 
+    3473:	4d 8b 94 2d 00 ff ff 	mov    -0x100(%r13,%rbp,1),%r10
+    347a:	ff 
+    347b:	ba 00 50 00 00       	mov    $0x5000,%edx
+    3480:	c4 82 7b 4b a4 33 00 	tileloadd 0x80000(%r11,%r14,1),%tmm4
+    3487:	00 08 00 
+    348a:	c4 c2 79 4b b4 0a 80 	tileloaddt1 0x80(%r10,%rcx,1),%tmm6
+    3491:	00 00 00 
+    3494:	c4 c2 79 4b bc 0a c0 	tileloaddt1 0xc0(%r10,%rcx,1),%tmm7
+    349b:	00 00 00 
+    349e:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    34a3:	c4 82 7b 4b ac 33 00 	tileloadd 0xc0000(%r11,%r14,1),%tmm5
+    34aa:	00 0c 00 
+    34ad:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    34b2:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    34b7:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    34bc:	4d 8b 9c 2d 20 ff ff 	mov    -0xe0(%r13,%rbp,1),%r11
+    34c3:	ff 
+    34c4:	4d 8b 94 2d 28 ff ff 	mov    -0xd8(%r13,%rbp,1),%r10
+    34cb:	ff 
+    34cc:	ba 00 50 00 00       	mov    $0x5000,%edx
+    34d1:	c4 82 7b 4b a4 33 00 	tileloadd 0x80000(%r11,%r14,1),%tmm4
+    34d8:	00 08 00 
+    34db:	c4 c2 79 4b b4 0a 80 	tileloaddt1 0x80(%r10,%rcx,1),%tmm6
+    34e2:	00 00 00 
+    34e5:	c4 c2 79 4b bc 0a c0 	tileloaddt1 0xc0(%r10,%rcx,1),%tmm7
+    34ec:	00 00 00 
+    34ef:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    34f4:	c4 82 7b 4b ac 33 00 	tileloadd 0xc0000(%r11,%r14,1),%tmm5
+    34fb:	00 0c 00 
+    34fe:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    3503:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    3508:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    350d:	4d 8b 9c 2d 48 ff ff 	mov    -0xb8(%r13,%rbp,1),%r11
+    3514:	ff 
+    3515:	4d 8b 94 2d 50 ff ff 	mov    -0xb0(%r13,%rbp,1),%r10
+    351c:	ff 
+    351d:	ba 00 50 00 00       	mov    $0x5000,%edx
+    3522:	c4 82 7b 4b a4 33 00 	tileloadd 0x80000(%r11,%r14,1),%tmm4
+    3529:	00 08 00 
+    352c:	c4 c2 79 4b b4 0a 80 	tileloaddt1 0x80(%r10,%rcx,1),%tmm6
+    3533:	00 00 00 
+    3536:	c4 c2 79 4b bc 0a c0 	tileloaddt1 0xc0(%r10,%rcx,1),%tmm7
+    353d:	00 00 00 
+    3540:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    3545:	c4 82 7b 4b ac 33 00 	tileloadd 0xc0000(%r11,%r14,1),%tmm5
+    354c:	00 0c 00 
+    354f:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    3554:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    3559:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    355e:	4d 8b 9c 2d 70 ff ff 	mov    -0x90(%r13,%rbp,1),%r11
+    3565:	ff 
+    3566:	4d 8b 94 2d 78 ff ff 	mov    -0x88(%r13,%rbp,1),%r10
+    356d:	ff 
+    356e:	ba 00 50 00 00       	mov    $0x5000,%edx
+    3573:	c4 82 7b 4b a4 33 00 	tileloadd 0x80000(%r11,%r14,1),%tmm4
+    357a:	00 08 00 
+    357d:	c4 c2 79 4b b4 0a 80 	tileloaddt1 0x80(%r10,%rcx,1),%tmm6
+    3584:	00 00 00 
+    3587:	c4 c2 79 4b bc 0a c0 	tileloaddt1 0xc0(%r10,%rcx,1),%tmm7
+    358e:	00 00 00 
+    3591:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    3596:	c4 82 7b 4b ac 33 00 	tileloadd 0xc0000(%r11,%r14,1),%tmm5
+    359d:	00 0c 00 
+    35a0:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    35a5:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    35aa:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    35af:	4d 8b 5c 2d 98       	mov    -0x68(%r13,%rbp,1),%r11
+    35b4:	4d 8b 54 2d a0       	mov    -0x60(%r13,%rbp,1),%r10
+    35b9:	ba 00 50 00 00       	mov    $0x5000,%edx
+    35be:	c4 82 7b 4b a4 33 00 	tileloadd 0x80000(%r11,%r14,1),%tmm4
+    35c5:	00 08 00 
+    35c8:	c4 c2 79 4b b4 0a 80 	tileloaddt1 0x80(%r10,%rcx,1),%tmm6
+    35cf:	00 00 00 
+    35d2:	c4 c2 79 4b bc 0a c0 	tileloaddt1 0xc0(%r10,%rcx,1),%tmm7
+    35d9:	00 00 00 
+    35dc:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    35e1:	c4 82 7b 4b ac 33 00 	tileloadd 0xc0000(%r11,%r14,1),%tmm5
+    35e8:	00 0c 00 
+    35eb:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    35f0:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    35f5:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    35fa:	4d 8b 5c 2d c0       	mov    -0x40(%r13,%rbp,1),%r11
+    35ff:	4d 8b 54 2d c8       	mov    -0x38(%r13,%rbp,1),%r10
+    3604:	ba 00 50 00 00       	mov    $0x5000,%edx
+    3609:	c4 82 7b 4b a4 33 00 	tileloadd 0x80000(%r11,%r14,1),%tmm4
+    3610:	00 08 00 
+    3613:	c4 c2 79 4b b4 0a 80 	tileloaddt1 0x80(%r10,%rcx,1),%tmm6
+    361a:	00 00 00 
+    361d:	c4 c2 79 4b bc 0a c0 	tileloaddt1 0xc0(%r10,%rcx,1),%tmm7
+    3624:	00 00 00 
+    3627:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    362c:	c4 82 7b 4b ac 33 00 	tileloadd 0xc0000(%r11,%r14,1),%tmm5
+    3633:	00 0c 00 
+    3636:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    363b:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    3640:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    3645:	4d 8b 5c 2d e8       	mov    -0x18(%r13,%rbp,1),%r11
+    364a:	4d 8b 54 2d f0       	mov    -0x10(%r13,%rbp,1),%r10
+    364f:	ba 00 50 00 00       	mov    $0x5000,%edx
+    3654:	c4 82 7b 4b a4 33 00 	tileloadd 0x80000(%r11,%r14,1),%tmm4
+    365b:	00 08 00 
+    365e:	c4 c2 79 4b b4 0a 80 	tileloaddt1 0x80(%r10,%rcx,1),%tmm6
+    3665:	00 00 00 
+    3668:	c4 c2 79 4b bc 0a c0 	tileloaddt1 0xc0(%r10,%rcx,1),%tmm7
+    366f:	00 00 00 
+    3672:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    3677:	c4 82 7b 4b ac 33 00 	tileloadd 0xc0000(%r11,%r14,1),%tmm5
+    367e:	00 0c 00 
+    3681:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    3686:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    368b:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    3690:	4d 8b 5c 2d 10       	mov    0x10(%r13,%rbp,1),%r11
+    3695:	4d 8b 54 2d 18       	mov    0x18(%r13,%rbp,1),%r10
+    369a:	ba 00 50 00 00       	mov    $0x5000,%edx
+    369f:	c4 82 7b 4b a4 33 00 	tileloadd 0x80000(%r11,%r14,1),%tmm4
+    36a6:	00 08 00 
+    36a9:	c4 c2 79 4b b4 0a 80 	tileloaddt1 0x80(%r10,%rcx,1),%tmm6
+    36b0:	00 00 00 
+    36b3:	c4 c2 79 4b bc 0a c0 	tileloaddt1 0xc0(%r10,%rcx,1),%tmm7
+    36ba:	00 00 00 
+    36bd:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    36c2:	c4 82 7b 4b ac 33 00 	tileloadd 0xc0000(%r11,%r14,1),%tmm5
+    36c9:	00 0c 00 
+    36cc:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    36d1:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    36d6:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    36db:	4d 8b 5c 2d 38       	mov    0x38(%r13,%rbp,1),%r11
+    36e0:	4d 8b 54 2d 40       	mov    0x40(%r13,%rbp,1),%r10
+    36e5:	ba 00 50 00 00       	mov    $0x5000,%edx
+    36ea:	c4 82 7b 4b a4 33 00 	tileloadd 0x80000(%r11,%r14,1),%tmm4
+    36f1:	00 08 00 
+    36f4:	c4 c2 79 4b b4 0a 80 	tileloaddt1 0x80(%r10,%rcx,1),%tmm6
+    36fb:	00 00 00 
+    36fe:	c4 c2 79 4b bc 0a c0 	tileloaddt1 0xc0(%r10,%rcx,1),%tmm7
+    3705:	00 00 00 
+    3708:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    370d:	c4 82 7b 4b ac 33 00 	tileloadd 0xc0000(%r11,%r14,1),%tmm5
+    3714:	00 0c 00 
+    3717:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    371c:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    3721:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    3726:	4d 8b 5c 2d 60       	mov    0x60(%r13,%rbp,1),%r11
+    372b:	4d 8b 54 2d 68       	mov    0x68(%r13,%rbp,1),%r10
+    3730:	ba 00 50 00 00       	mov    $0x5000,%edx
+    3735:	c4 82 7b 4b a4 33 00 	tileloadd 0x80000(%r11,%r14,1),%tmm4
+    373c:	00 08 00 
+    373f:	c4 c2 79 4b b4 0a 80 	tileloaddt1 0x80(%r10,%rcx,1),%tmm6
+    3746:	00 00 00 
+    3749:	c4 c2 79 4b bc 0a c0 	tileloaddt1 0xc0(%r10,%rcx,1),%tmm7
+    3750:	00 00 00 
+    3753:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    3758:	c4 82 7b 4b ac 33 00 	tileloadd 0xc0000(%r11,%r14,1),%tmm5
+    375f:	00 0c 00 
+    3762:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    3767:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    376c:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    3771:	4d 8b 9c 2d 88 00 00 	mov    0x88(%r13,%rbp,1),%r11
+    3778:	00 
+    3779:	4d 8b 94 2d 90 00 00 	mov    0x90(%r13,%rbp,1),%r10
+    3780:	00 
+    3781:	ba 00 50 00 00       	mov    $0x5000,%edx
+    3786:	c4 82 7b 4b a4 33 00 	tileloadd 0x80000(%r11,%r14,1),%tmm4
+    378d:	00 08 00 
+    3790:	c4 c2 79 4b b4 0a 80 	tileloaddt1 0x80(%r10,%rcx,1),%tmm6
+    3797:	00 00 00 
+    379a:	c4 c2 79 4b bc 0a c0 	tileloaddt1 0xc0(%r10,%rcx,1),%tmm7
+    37a1:	00 00 00 
+    37a4:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    37a9:	c4 82 7b 4b ac 33 00 	tileloadd 0xc0000(%r11,%r14,1),%tmm5
+    37b0:	00 0c 00 
+    37b3:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    37b8:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    37bd:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    37c2:	4d 8b 9c 2d b0 00 00 	mov    0xb0(%r13,%rbp,1),%r11
+    37c9:	00 
+    37ca:	4d 8b 94 2d b8 00 00 	mov    0xb8(%r13,%rbp,1),%r10
+    37d1:	00 
+    37d2:	ba 00 50 00 00       	mov    $0x5000,%edx
+    37d7:	c4 82 7b 4b a4 33 00 	tileloadd 0x80000(%r11,%r14,1),%tmm4
+    37de:	00 08 00 
+    37e1:	c4 c2 79 4b b4 0a 80 	tileloaddt1 0x80(%r10,%rcx,1),%tmm6
+    37e8:	00 00 00 
+    37eb:	c4 c2 79 4b bc 0a c0 	tileloaddt1 0xc0(%r10,%rcx,1),%tmm7
+    37f2:	00 00 00 
+    37f5:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    37fa:	c4 82 7b 4b ac 33 00 	tileloadd 0xc0000(%r11,%r14,1),%tmm5
+    3801:	00 0c 00 
+    3804:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    3809:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    380e:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    3813:	4d 8b 9c 2d d8 00 00 	mov    0xd8(%r13,%rbp,1),%r11
+    381a:	00 
+    381b:	4d 8b 94 2d e0 00 00 	mov    0xe0(%r13,%rbp,1),%r10
+    3822:	00 
+    3823:	ba 00 50 00 00       	mov    $0x5000,%edx
+    3828:	c4 82 7b 4b a4 33 00 	tileloadd 0x80000(%r11,%r14,1),%tmm4
+    382f:	00 08 00 
+    3832:	c4 c2 79 4b b4 0a 80 	tileloaddt1 0x80(%r10,%rcx,1),%tmm6
+    3839:	00 00 00 
+    383c:	c4 c2 79 4b bc 0a c0 	tileloaddt1 0xc0(%r10,%rcx,1),%tmm7
+    3843:	00 00 00 
+    3846:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    384b:	c4 82 7b 4b ac 33 00 	tileloadd 0xc0000(%r11,%r14,1),%tmm5
+    3852:	00 0c 00 
+    3855:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    385a:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    385f:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    3864:	4d 8b 9c 2d 00 01 00 	mov    0x100(%r13,%rbp,1),%r11
+    386b:	00 
+    386c:	4d 8b 94 2d 08 01 00 	mov    0x108(%r13,%rbp,1),%r10
+    3873:	00 
+    3874:	ba 00 50 00 00       	mov    $0x5000,%edx
+    3879:	c4 82 7b 4b a4 33 00 	tileloadd 0x80000(%r11,%r14,1),%tmm4
+    3880:	00 08 00 
+    3883:	c4 c2 79 4b b4 0a 80 	tileloaddt1 0x80(%r10,%rcx,1),%tmm6
+    388a:	00 00 00 
+    388d:	c4 c2 79 4b bc 0a c0 	tileloaddt1 0xc0(%r10,%rcx,1),%tmm7
+    3894:	00 00 00 
+    3897:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    389c:	c4 82 7b 4b ac 33 00 	tileloadd 0xc0000(%r11,%r14,1),%tmm5
+    38a3:	00 0c 00 
+    38a6:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    38ab:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    38b0:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    38b5:	4d 8b 9c 2d 28 01 00 	mov    0x128(%r13,%rbp,1),%r11
+    38bc:	00 
+    38bd:	4d 8b 94 2d 30 01 00 	mov    0x130(%r13,%rbp,1),%r10
+    38c4:	00 
+    38c5:	ba 00 50 00 00       	mov    $0x5000,%edx
+    38ca:	c4 82 7b 4b a4 33 00 	tileloadd 0x80000(%r11,%r14,1),%tmm4
+    38d1:	00 08 00 
+    38d4:	c4 c2 79 4b b4 0a 80 	tileloaddt1 0x80(%r10,%rcx,1),%tmm6
+    38db:	00 00 00 
+    38de:	c4 c2 79 4b bc 0a c0 	tileloaddt1 0xc0(%r10,%rcx,1),%tmm7
+    38e5:	00 00 00 
+    38e8:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    38ed:	c4 82 7b 4b ac 33 00 	tileloadd 0xc0000(%r11,%r14,1),%tmm5
+    38f4:	00 0c 00 
+    38f7:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    38fc:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    3901:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    3906:	4d 8b 9c 2d 50 01 00 	mov    0x150(%r13,%rbp,1),%r11
+    390d:	00 
+    390e:	4d 8b 94 2d 58 01 00 	mov    0x158(%r13,%rbp,1),%r10
+    3915:	00 
+    3916:	ba 00 50 00 00       	mov    $0x5000,%edx
+    391b:	c4 82 7b 4b a4 33 00 	tileloadd 0x80000(%r11,%r14,1),%tmm4
+    3922:	00 08 00 
+    3925:	c4 c2 79 4b b4 0a 80 	tileloaddt1 0x80(%r10,%rcx,1),%tmm6
+    392c:	00 00 00 
+    392f:	c4 c2 79 4b bc 0a c0 	tileloaddt1 0xc0(%r10,%rcx,1),%tmm7
+    3936:	00 00 00 
+    3939:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    393e:	c4 82 7b 4b ac 33 00 	tileloadd 0xc0000(%r11,%r14,1),%tmm5
+    3945:	00 0c 00 
+    3948:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    394d:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    3952:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    3957:	4d 8b 9c 2d 78 01 00 	mov    0x178(%r13,%rbp,1),%r11
+    395e:	00 
+    395f:	4d 8b 94 2d 80 01 00 	mov    0x180(%r13,%rbp,1),%r10
+    3966:	00 
+    3967:	ba 00 50 00 00       	mov    $0x5000,%edx
+    396c:	c4 82 7b 4b a4 33 00 	tileloadd 0x80000(%r11,%r14,1),%tmm4
+    3973:	00 08 00 
+    3976:	c4 c2 79 4b b4 0a 80 	tileloaddt1 0x80(%r10,%rcx,1),%tmm6
+    397d:	00 00 00 
+    3980:	c4 c2 79 4b bc 0a c0 	tileloaddt1 0xc0(%r10,%rcx,1),%tmm7
+    3987:	00 00 00 
+    398a:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    398f:	c4 82 7b 4b ac 33 00 	tileloadd 0xc0000(%r11,%r14,1),%tmm5
+    3996:	00 0c 00 
+    3999:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    399e:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    39a3:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    39a8:	4d 8b 9c 2d a0 01 00 	mov    0x1a0(%r13,%rbp,1),%r11
+    39af:	00 
+    39b0:	4d 8b 94 2d a8 01 00 	mov    0x1a8(%r13,%rbp,1),%r10
+    39b7:	00 
+    39b8:	ba 00 50 00 00       	mov    $0x5000,%edx
+    39bd:	c4 82 7b 4b a4 33 00 	tileloadd 0x80000(%r11,%r14,1),%tmm4
+    39c4:	00 08 00 
+    39c7:	c4 c2 79 4b b4 0a 80 	tileloaddt1 0x80(%r10,%rcx,1),%tmm6
+    39ce:	00 00 00 
+    39d1:	c4 c2 79 4b bc 0a c0 	tileloaddt1 0xc0(%r10,%rcx,1),%tmm7
+    39d8:	00 00 00 
+    39db:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    39e0:	c4 82 7b 4b ac 33 00 	tileloadd 0xc0000(%r11,%r14,1),%tmm5
+    39e7:	00 0c 00 
+    39ea:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    39ef:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    39f4:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    39f9:	4d 8b 9c 2d c8 01 00 	mov    0x1c8(%r13,%rbp,1),%r11
+    3a00:	00 
+    3a01:	4d 8b 94 2d d0 01 00 	mov    0x1d0(%r13,%rbp,1),%r10
+    3a08:	00 
+    3a09:	ba 00 50 00 00       	mov    $0x5000,%edx
+    3a0e:	c4 82 7b 4b a4 33 00 	tileloadd 0x80000(%r11,%r14,1),%tmm4
+    3a15:	00 08 00 
+    3a18:	c4 c2 79 4b b4 0a 80 	tileloaddt1 0x80(%r10,%rcx,1),%tmm6
+    3a1f:	00 00 00 
+    3a22:	c4 c2 79 4b bc 0a c0 	tileloaddt1 0xc0(%r10,%rcx,1),%tmm7
+    3a29:	00 00 00 
+    3a2c:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    3a31:	c4 82 7b 4b ac 33 00 	tileloadd 0xc0000(%r11,%r14,1),%tmm5
+    3a38:	00 0c 00 
+    3a3b:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    3a40:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    3a45:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    3a4a:	4d 8b 9c 2d f0 01 00 	mov    0x1f0(%r13,%rbp,1),%r11
+    3a51:	00 
+    3a52:	4d 8b 94 2d f8 01 00 	mov    0x1f8(%r13,%rbp,1),%r10
+    3a59:	00 
+    3a5a:	ba 00 50 00 00       	mov    $0x5000,%edx
+    3a5f:	c4 82 7b 4b a4 33 00 	tileloadd 0x80000(%r11,%r14,1),%tmm4
+    3a66:	00 08 00 
+    3a69:	c4 c2 79 4b b4 0a 80 	tileloaddt1 0x80(%r10,%rcx,1),%tmm6
+    3a70:	00 00 00 
+    3a73:	c4 c2 79 4b bc 0a c0 	tileloaddt1 0xc0(%r10,%rcx,1),%tmm7
+    3a7a:	00 00 00 
+    3a7d:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    3a82:	c4 82 7b 4b ac 33 00 	tileloadd 0xc0000(%r11,%r14,1),%tmm5
+    3a89:	00 0c 00 
+    3a8c:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    3a91:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    3a96:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    3a9b:	4d 8b 9c 6d 18 fe ff 	mov    -0x1e8(%r13,%rbp,2),%r11
+    3aa2:	ff 
+    3aa3:	4d 8b 94 6d 20 fe ff 	mov    -0x1e0(%r13,%rbp,2),%r10
+    3aaa:	ff 
+    3aab:	ba 00 50 00 00       	mov    $0x5000,%edx
+    3ab0:	c4 82 7b 4b a4 33 00 	tileloadd 0x80000(%r11,%r14,1),%tmm4
+    3ab7:	00 08 00 
+    3aba:	c4 c2 79 4b b4 0a 80 	tileloaddt1 0x80(%r10,%rcx,1),%tmm6
+    3ac1:	00 00 00 
+    3ac4:	c4 c2 79 4b bc 0a c0 	tileloaddt1 0xc0(%r10,%rcx,1),%tmm7
+    3acb:	00 00 00 
+    3ace:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    3ad3:	c4 82 7b 4b ac 33 00 	tileloadd 0xc0000(%r11,%r14,1),%tmm5
+    3ada:	00 0c 00 
+    3add:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    3ae2:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    3ae7:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    3aec:	4d 8b 9c 6d 40 fe ff 	mov    -0x1c0(%r13,%rbp,2),%r11
+    3af3:	ff 
+    3af4:	4d 8b 94 6d 48 fe ff 	mov    -0x1b8(%r13,%rbp,2),%r10
+    3afb:	ff 
+    3afc:	ba 00 50 00 00       	mov    $0x5000,%edx
+    3b01:	c4 82 7b 4b a4 33 00 	tileloadd 0x80000(%r11,%r14,1),%tmm4
+    3b08:	00 08 00 
+    3b0b:	c4 c2 79 4b b4 0a 80 	tileloaddt1 0x80(%r10,%rcx,1),%tmm6
+    3b12:	00 00 00 
+    3b15:	c4 c2 79 4b bc 0a c0 	tileloaddt1 0xc0(%r10,%rcx,1),%tmm7
+    3b1c:	00 00 00 
+    3b1f:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    3b24:	c4 82 7b 4b ac 33 00 	tileloadd 0xc0000(%r11,%r14,1),%tmm5
+    3b2b:	00 0c 00 
+    3b2e:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    3b33:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    3b38:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    3b3d:	4d 8b 9c 6d 68 fe ff 	mov    -0x198(%r13,%rbp,2),%r11
+    3b44:	ff 
+    3b45:	4d 8b 94 6d 70 fe ff 	mov    -0x190(%r13,%rbp,2),%r10
+    3b4c:	ff 
+    3b4d:	ba 00 50 00 00       	mov    $0x5000,%edx
+    3b52:	c4 82 7b 4b a4 33 00 	tileloadd 0x80000(%r11,%r14,1),%tmm4
+    3b59:	00 08 00 
+    3b5c:	c4 c2 79 4b b4 0a 80 	tileloaddt1 0x80(%r10,%rcx,1),%tmm6
+    3b63:	00 00 00 
+    3b66:	c4 c2 79 4b bc 0a c0 	tileloaddt1 0xc0(%r10,%rcx,1),%tmm7
+    3b6d:	00 00 00 
+    3b70:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    3b75:	c4 82 7b 4b ac 33 00 	tileloadd 0xc0000(%r11,%r14,1),%tmm5
+    3b7c:	00 0c 00 
+    3b7f:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    3b84:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    3b89:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    3b8e:	4d 8b 9c 6d 90 fe ff 	mov    -0x170(%r13,%rbp,2),%r11
+    3b95:	ff 
+    3b96:	4d 8b 94 6d 98 fe ff 	mov    -0x168(%r13,%rbp,2),%r10
+    3b9d:	ff 
+    3b9e:	ba 00 50 00 00       	mov    $0x5000,%edx
+    3ba3:	c4 82 7b 4b a4 33 00 	tileloadd 0x80000(%r11,%r14,1),%tmm4
+    3baa:	00 08 00 
+    3bad:	c4 c2 79 4b b4 0a 80 	tileloaddt1 0x80(%r10,%rcx,1),%tmm6
+    3bb4:	00 00 00 
+    3bb7:	c4 c2 79 4b bc 0a c0 	tileloaddt1 0xc0(%r10,%rcx,1),%tmm7
+    3bbe:	00 00 00 
+    3bc1:	c4 e2 4b 5e c4       	tdpbssd %tmm6,%tmm4,%tmm0
+    3bc6:	c4 82 7b 4b ac 33 00 	tileloadd 0xc0000(%r11,%r14,1),%tmm5
+    3bcd:	00 0c 00 
+    3bd0:	c4 e2 43 5e cc       	tdpbssd %tmm7,%tmm4,%tmm1
+    3bd5:	c4 e2 4b 5e d5       	tdpbssd %tmm6,%tmm5,%tmm2
+    3bda:	c4 e2 43 5e dd       	tdpbssd %tmm7,%tmm5,%tmm3
+    3bdf:	ba 00 50 00 00       	mov    $0x5000,%edx
+    3be4:	c4 c2 7a 4b 84 17 80 	tilestored %tmm0,0xa0080(%r15,%rdx,1)
+    3beb:	00 0a 00 
+    3bee:	c4 c2 7a 4b 8c 17 c0 	tilestored %tmm1,0xa00c0(%r15,%rdx,1)
+    3bf5:	00 0a 00 
+    3bf8:	c4 c2 7a 4b 94 17 80 	tilestored %tmm2,0xf0080(%r15,%rdx,1)
+    3bff:	00 0f 00 
+    3c02:	c4 c2 7a 4b 9c 17 c0 	tilestored %tmm3,0xf00c0(%r15,%rdx,1)
+    3c09:	00 0f 00 
+    3c0c:	48 83 c4 30          	add    $0x30,%rsp
+    3c10:	41 5f                	pop    %r15
+    3c12:	41 5e                	pop    %r14
+    3c14:	41 5d                	pop    %r13
+    3c16:	41 5c                	pop    %r12
+    3c18:	5b                   	pop    %rbx
+    3c19:	5d                   	pop    %rbp
+    3c1a:	c5 f8 77             	vzeroupper
+    3c1d:	c3                   	ret

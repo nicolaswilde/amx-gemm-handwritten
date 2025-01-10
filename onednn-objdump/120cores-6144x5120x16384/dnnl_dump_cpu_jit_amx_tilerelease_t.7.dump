@@ -1,0 +1,9 @@
+
+dnnl_dump_cpu_jit_amx_tilerelease_t.7.bin:     file format binary
+
+
+Disassembly of section .data:
+
+0000000000000000 <.data>:
+   0:	c4 e2 78 49 c0       	tilerelease
+   5:	c3                   	ret
